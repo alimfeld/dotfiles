@@ -17,6 +17,7 @@ command! Reload execute "source $MYVIMRC"
 " Plugins {{{
 call plug#begin(stdpath('data') . '/plugged')
 
+Plug 'mhinz/vim-startify'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
