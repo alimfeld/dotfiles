@@ -1,5 +1,20 @@
-" --- Plugins
+" vim:fdm=marker
 
+" Core {{{
+set number
+set tw=4 sw=4
+" }}}
+
+" Mappings {{{
+inoremap jj <esc>			" jump out of insert mode by typing jj
+" }}}
+
+" Commands {{{
+command! Config execute ":e $MYVIMRC"
+command! Reload execute "source $MYVIMRC"
+" }}}
+
+" Plugins {{{
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'scrooloose/nerdtree'
@@ -9,9 +24,9 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'vim-test/vim-test'
 
 call plug#end()
+" }}}
 
-" --- Language Server
-
+" LSP {{{
 lua <<EOF
 require'nvim_lsp'.jdtls.setup{}
 EOF
@@ -25,27 +40,11 @@ nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+" }}}
 
-" --- Boilerplate
-
-set number
-set tw=4 sw=4
-
-" Jump out of insert mode by typing jj
-inoremap jj <esc>
-
-" --- VIM Config
-
-command! Config execute ":e $MYVIMRC"
-command! Reload execute "source $MYVIMRC"
-
-" --- FZF
-
-" Bind "//" to a fzf-powered buffer search
+" FZF {{{
 nmap // :BLines!<CR>
-" Bind "??" to a fzf-powered project search
 nmap ?? :Rg!<CR>
-" Bind "<leader>p" to a fzf-powered filename search
 nmap <leader>p :Files!<CR>
-" Bind "cc" to a fzf-powered command search
 nmap cc :Commands!<CR>
+" }}}
