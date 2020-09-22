@@ -2,7 +2,15 @@
 
 " Core {{{
 set number
-set tw=4 sw=4
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set incsearch
+set showmatch
+set ignorecase
+set smartcase
+set clipboard+=unnamedplus
 " }}}
 
 " Mappings {{{
@@ -21,16 +29,24 @@ Plug 'mhinz/vim-startify'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'neovim/nvim-lspconfig'
 Plug 'vim-test/vim-test'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/diagnostic-nvim'
 
 call plug#end()
 " }}}
 
 " LSP {{{
-lua <<EOF
-require'nvim_lsp'.jdtls.setup{}
+lua << EOF
+local on_attach_vim = function(client)
+  require'completion'.on_attach(client)
+  require'diagnostic'.on_attach(client)
+end
+require'nvim_lsp'.jdtls.setup{on_attach=on_attach_vim}
 EOF
+
+let g:diagnostic_enable_virtual_text = 1
 
 nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
