@@ -25,6 +25,12 @@ set showmatch
 set ignorecase
 set smartcase
 set completeopt=menuone,noinsert,noselect
+set nowrap
+" }}}
+
+" Leader {{{
+nnoremap <SPACE> <Nop>
+let mapleader=" "
 " }}}
 
 " Escape {{{
@@ -51,25 +57,23 @@ command! Reload execute "source $MYVIMRC"
 " }}}
 
 " LSP {{{
-lua << EOF
-local on_attach_vim = function(client)
-  require'completion'.on_attach(client)
-  require'diagnostic'.on_attach(client)
-end
-require'nvim_lsp'.jdtls.setup{on_attach=on_attach_vim}
-EOF
+lua require('lsp')
 
 let g:diagnostic_enable_virtual_text = 1
 
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> gH    <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+func! s:lsp_mappings()
+    if luaeval('vim.tbl_isempty(vim.lsp.buf_get_clients())') 
+        return
+    endif
+
+    nnoremap <silent> <c-]>     <cmd>lua vim.lsp.buf.definition()<CR>
+    nnoremap <silent> <leader>a <cmd>lua vim.lsp.buf.code_action()<CR>
+    nnoremap <silent> <leader>r <cmd>lua vim.lsp.buf.rename()<CR>
+endfunc
+
+augroup LSP | au!
+    autocmd FileType * call s:lsp_mappings()
+augroup END
 " }}}
 
 " FZF {{{
