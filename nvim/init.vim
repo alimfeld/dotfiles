@@ -1,20 +1,6 @@
 " vim:fdm=marker
 
-" Plugins {{{
-call plug#begin(stdpath('data') . '/plugged')
-Plug 'mhinz/vim-startify'
-Plug 'scrooloose/nerdtree'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'vim-test/vim-test'
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/diagnostic-nvim'
-Plug 'gruvbox-community/gruvbox'
-call plug#end()
-" }}}
-
-" Basics {{{
+" Settings {{{
 set number
 set tabstop=4
 set shiftwidth=4
@@ -26,29 +12,21 @@ set ignorecase
 set smartcase
 set completeopt=menuone,noinsert,noselect
 set nowrap
-" }}}
-
-" Leader {{{
-nnoremap <SPACE> <Nop>
-let mapleader=" "
-" }}}
-
-" Escape {{{
-inoremap jj <esc>			" jump out of insert mode by typing jj
-" }}}
-
-" Splits {{{
 set splitbelow
 set splitright
+set clipboard+=unnamedplus
+" }}}
 
+" Mappings {{{
+inoremap jj <esc>			" jump out of insert mode by typing jj
+" -- Splits
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
 nnoremap <C-l> <C-w><C-l>
 nnoremap <C-h> <C-w><C-h>
-" }}}
-
-" Clipboard {{{
-set clipboard+=unnamedplus
+" -- Leader
+nnoremap <SPACE> <Nop>
+let mapleader=" "
 " }}}
 
 " Commands {{{
@@ -56,7 +34,22 @@ command! Config execute ":e $MYVIMRC"
 command! Reload execute "source $MYVIMRC"
 " }}}
 
-" LSP {{{
+" Plugins {{{
+call plug#begin(stdpath('data') . '/plugged')
+Plug 'mhinz/vim-startify'
+Plug 'scrooloose/nerdtree'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-test/vim-test'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/diagnostic-nvim'
+Plug 'gruvbox-community/gruvbox'
+call plug#end()
+" }}}
+
+" PlugConf - LSP {{{
 lua require('lsp')
 
 let g:diagnostic_enable_virtual_text = 1
@@ -76,14 +69,14 @@ augroup LSP | au!
 augroup END
 " }}}
 
-" FZF {{{
+" PlugConf - FZF {{{
 nmap // :BLines!<CR>
 nmap ?? :Rg!<CR>
 nmap <leader>p :Files!<CR>
 nmap cc :Commands!<CR>
 " }}}
 
-" Colorscheme {{{
+" PlugConf - Gruvbox {{{
 colorscheme gruvbox
 set background=dark
 " }}}
