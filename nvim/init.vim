@@ -18,13 +18,11 @@ set clipboard+=unnamedplus
 " }}}
 
 " Mappings {{{
-inoremap jj <esc>			" jump out of insert mode by typing jj
-" -- Splits
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
 nnoremap <C-l> <C-w><C-l>
 nnoremap <C-h> <C-w><C-h>
-" -- Leader
+
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 " }}}
@@ -45,11 +43,12 @@ Plug 'vim-test/vim-test'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
+Plug 'vim-airline/vim-airline'
 Plug 'gruvbox-community/gruvbox'
 call plug#end()
 " }}}
 
-" PlugConf - LSP {{{
+" Plug - LSP {{{
 lua require('lsp')
 
 let g:diagnostic_enable_virtual_text = 1
@@ -69,14 +68,14 @@ augroup LSP | au!
 augroup END
 " }}}
 
-" PlugConf - FZF {{{
+" Plug - FZF {{{
 nmap // :BLines!<CR>
 nmap ?? :Rg!<CR>
 nmap <leader>p :Files!<CR>
 nmap cc :Commands!<CR>
 " }}}
 
-" PlugConf - Gruvbox {{{
+" Plug - Gruvbox {{{
 colorscheme gruvbox
 set background=dark
 " }}}
