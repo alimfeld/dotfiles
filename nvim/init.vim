@@ -40,32 +40,9 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-test/vim-test'
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/diagnostic-nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'gruvbox-community/gruvbox'
 call plug#end()
-" }}}
-
-" Plug - LSP {{{
-lua require('lsp')
-
-let g:diagnostic_enable_virtual_text = 1
-
-func! s:lsp_mappings()
-    if luaeval('vim.tbl_isempty(vim.lsp.buf_get_clients())') 
-        return
-    endif
-
-    nnoremap <silent> <c-]>     <cmd>lua vim.lsp.buf.definition()<CR>
-    nnoremap <silent> <leader>a <cmd>lua vim.lsp.buf.code_action()<CR>
-    nnoremap <silent> <leader>r <cmd>lua vim.lsp.buf.rename()<CR>
-endfunc
-
-augroup LSP | au!
-    autocmd FileType * call s:lsp_mappings()
-augroup END
 " }}}
 
 " Plug - FZF {{{
