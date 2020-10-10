@@ -33,15 +33,13 @@ command! Reload execute "source $MYVIMRC"
 " }}}
 
 " Plugins {{{
-call plug#begin(stdpath('data') . '/plugged')
+call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-startify'
-Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-test/vim-test'
 Plug 'vim-airline/vim-airline'
 Plug 'gruvbox-community/gruvbox'
 call plug#end()
@@ -61,4 +59,5 @@ set background=dark
 
 " Plug - Airline {{{
 let g:airline_powerline_fonts=1
+Plug 'scrooloose/nerdtree'
 " }}}
