@@ -38,6 +38,8 @@ Plug 'mhinz/vim-startify'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-test/vim-test'
 Plug 'vim-airline/vim-airline'
@@ -55,4 +57,8 @@ nmap cc :Commands!<CR>
 " Plug - Gruvbox {{{
 colorscheme gruvbox
 set background=dark
+" }}}
+
+" Plug - Airline {{{
+let g:airline_powerline_fonts=1
 " }}}
