@@ -2,8 +2,8 @@
 
 ## Font
 
-* Powerline glyphs
-  - Nerd fonts: [nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
+* Powerline glyphs:
+  - [nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
 
 ## (neo)vim
 
