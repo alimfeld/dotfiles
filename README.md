@@ -5,11 +5,11 @@
 * Powerline glyphs:
   - [nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
 
-## (neo)vim
+## Vim
 
 * Plugin management: [vim-plug](https://github.com/junegunn/vim-plug)
 
-## zsh
+## Zsh
 
 * Config management: [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)
 
