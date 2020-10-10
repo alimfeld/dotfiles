@@ -40,3 +40,5 @@ map <S-Space> :action GotoNextError<CR>
 
 map <leader>b :action ToggleLineBreakpoint<CR>
 map <leader>o :action FileStructurePopup<CR>
+
+source ~/.vimrc
