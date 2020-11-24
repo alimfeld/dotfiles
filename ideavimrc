@@ -24,4 +24,7 @@ map <leader>r :action RenameElement<CR>
 map <leader>z :action ToggleDistractionFreeMode<CR>
 map <leader>s :action SelectInProjectView<CR>
 map <leader>o :action FileStructurePopup<CR>
+
+nnoremap gn :action GotoNextError<CR>
+nnoremap gp :action GotoPreviousError<CR>
 " }}}
