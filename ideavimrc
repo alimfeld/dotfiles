@@ -8,7 +8,7 @@ set smartcase
 set clipboard+=unnamedplus
 set signcolumn=number
 
-set mapleader=" "
+let mapleader=" "
 
 " set easymotion
 set surround
@@ -23,10 +23,10 @@ set highlightedyank
 set ideajoin
 set idearefactormode=keep
 
-map <leader>r :action RenameElement<CR>
-map <leader>z :action ToggleDistractionFreeMode<CR>
-map <leader>s :action SelectInProjectView<CR>
-map <leader>o :action FileStructurePopup<CR>
+map <leader>r <Action>(RenameElement)
+map <leader>z <Action>(ToggleDistractionFreeMode)
+map <leader>s <Action>(SelectInProjectView)
+map <leader>o <Action>(FileStructurePopup)
 
-nnoremap gn :action GotoNextError<CR>
-nnoremap gp :action GotoPreviousError<CR>
+nnoremap gn <Action>(GotoNextError)
+nnoremap gp <Action>(GotoPreviousError)
