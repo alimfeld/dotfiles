@@ -52,6 +52,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'gruvbox-community/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'leafOfTree/vim-svelte-plugin'
 call plug#end()
 " }}}
 
