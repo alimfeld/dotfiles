@@ -1,0 +1,61 @@
+setopt NO_BEEP
+setopt AUTO_CD
+setopt CORRECT
+
+# completion
+autoload -Uz compinit && compinit
+
+# history
+export HISTSIZE=1000
+export SAVEHIST=1000
+setopt HIST_IGNORE_DUPS
+
+# color support
+autoload -Uz colors && colors
+
+# vcs_info
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' formats '(%b) '
+
+# prompt
+setopt PROMPT_SUBST
+PROMPT='%K{black}%F{cyan}%~ %F{magenta}${vcs_info_msg_0_}%f>%k '
+
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
+function _block-cursor { echo -ne '\e[1 q' }
+function _beam-cursor { echo -ne '\e[5 q' }
+function zle-keymap-select {
+    if [ $KEYMAP = vicmd ]; then
+        _block-cursor
+    else
+        _beam-cursor
+    fi
+}
+zle -N zle-keymap-select
+_beam-cursor
+
+# dircolors
+eval $(dircolors)
+
+# direnv
+if (( $+commands[direnv] )); then
+    eval "$(direnv hook zsh)"
+fi
+
+# path
+if [[ -d ~/bin ]]; then
+    typeset -U path
+    path[1,0]=~/bin
+fi
+
+# aliases
+alias ls="ls --color=auto"
+alias ll="ls -l"
+alias la="ls -a"
+
+alias vi=nvim
+alias vim=nvim

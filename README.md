@@ -1,18 +1,15 @@
-# Dependencies
+# Dotfiles
 
-## Font
+No-frills configurations following a "from scratch" approach (i.e. no
+frameworks, plugin managers, etc).
 
-* Powerline glyphs:
-  - [nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
+## Installation
 
-## Vim
+```shell
+dotfiles/install.sh
+```
 
-* Plugin management: [vim-plug](https://github.com/junegunn/vim-plug)
+## Submodules
 
-## Zsh
-
-* Config management: [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)
-
-## IntelliJ
-
-* Vim emulation: [IdeaVim](https://github.com/JetBrains/ideavim)
+Git submodules are used to install 3rd party packages. The are placed in
+`.submodules` and symlinked where required.
