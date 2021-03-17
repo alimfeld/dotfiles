@@ -1,3 +1,4 @@
+""" Common settings -------------------------
 set number
 set relativenumber
 set expandtab
@@ -8,25 +9,32 @@ set smartcase
 set clipboard+=unnamedplus
 set signcolumn=number
 
-let mapleader=" "
-
+""" Plugins ---------------------------------
 " set easymotion
 set surround
 " set multiple-cursors
 set commentary
-" set ReplaceWithRegister
 " set argtextobj
-set exchange
 " set textobj-entire
+" set ReplaceWithRegister
+set exchange
 set highlightedyank
 
+""" Plugin settings -------------------------
+let g:argtextobj_pairs="[:],(:),<:>"
+
+""" Idea specific settings ------------------
 set ideajoin
 set idearefactormode=keep
 
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Mappings --------------------------------
 map <leader>r <Action>(RenameElement)
 map <leader>z <Action>(ToggleDistractionFreeMode)
 map <leader>s <Action>(SelectInProjectView)
 map <leader>o <Action>(FileStructurePopup)
 
-nnoremap gn <Action>(GotoNextError)
-nnoremap gp <Action>(GotoPreviousError)
+map gn <Action>(GotoNextError)
+map gp <Action>(GotoPreviousError)
