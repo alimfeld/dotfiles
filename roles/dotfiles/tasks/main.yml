@@ -1,8 +1,0 @@
----
-- name: Checkout dotfiles
-  git:
-          repo: https://github.com/alimfeld/dotfiles
-          dest: ~/dotfiles
-          update: no
-
-
