@@ -3,7 +3,11 @@
 No-frills configurations following a "from scratch" approach (i.e. no
 frameworks, plugin managers, etc).
 
+yadayada ... POSIX
+
 ## Installation
+
+yadayada ... ansible
 
 ```shell
 dotfiles/install.sh

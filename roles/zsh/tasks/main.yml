@@ -1,0 +1,11 @@
+- name: Install zsh
+  package:
+      name: zsh
+      state: present
+  become: yes
+
+- name: Symlink config
+  file:
+      src: ~/dotfiles/zsh/zshrc
+      dest: ~/.zshrc
+      state: link
