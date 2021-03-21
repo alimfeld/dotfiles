@@ -7,7 +7,7 @@ Mainly shell (zsh) and neovim so far...
 The dotifiles are installed with ansible:
 
 ```shell
-ansible-pull -K https://github.com/alimfeld/dotfiles
+ansible-pull -K -U https://github.com/alimfeld/dotfiles
 ```
 
 or (once pulled):
