@@ -1,19 +1,18 @@
 # Dotfiles
 
-No-frills configurations following a "from scratch" approach (i.e. no
-frameworks, plugin managers, etc).
-
-yadayada ... POSIX
+Mainly shell (zsh) and neovim so far...
 
 ## Installation
 
-yadayada ... ansible
+The dotifiles are installed with ansible:
 
 ```shell
-dotfiles/install.sh
+ansible-pull -K https://github.com/alimfeld/dotfiles
 ```
 
-## Submodules
+or (once pulled):
 
-Git submodules are used to install 3rd party packages. The are placed in
-`.submodules` and symlinked where required.
+```shell
+cd ~/dotfiles
+ansible-playbook -K local.yml
+```
