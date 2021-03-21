@@ -1,0 +1,11 @@
+---
+- name: Ensure folder structure
+  file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - ~/.cache
+    - ~/.config
+    - ~/.local/bin
+    - ~/.local/lib
+    - ~/.local/share

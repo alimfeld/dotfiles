@@ -1,0 +1,66 @@
+---
+- name: Setup local environment
+  hosts: localhost
+
+  tasks:
+    - name: Checkout dotfiles
+      git:
+        repo: "https://github.com/alimfeld/dotfiles"
+        dest: "~/dotfiles"
+        update: no
+
+    - name: Ensure folder structure
+      file:
+        path: "{{ item }}"
+        state: directory
+      loop:
+        - ~/.cache
+        - ~/.config
+        - ~/.local/bin
+        - ~/.local/lib
+        - ~/.local/lib/eclipse/jdtls
+        - ~/.local/share
+        - ~/.local/share/nvim/site/pack/plugins/start
+
+    - name: Install packages
+      package:
+        name:
+          - neovim
+          - zsh
+        state: present
+      become: yes
+
+    - name: Install neovim plugins
+      git:
+        repo: "https://github.com/{{ item }}" 
+        dest: "~/.local/share/nvim/site/pack/plugins/start/{{ item | basename }}"
+      loop:
+        - mfussenegger/nvim-dap
+        - mfussenegger/nvim-jdtls
+        - neovim/nvim-lspconfig
+        - nvim-lua/plenary.nvim
+        - nvim-lua/popup.nvim
+        - nvim-telescope/telescope.nvim
+        - tpope/vim-surround
+
+    - name: Install jdtls
+      unarchive:
+        src: "https://download.eclipse.org/jdtls/milestones/0.70.0/jdt-language-server-0.70.0-202103051608.tar.gz"
+        dest: "~/.local/lib/eclipse/jdtls"
+        remote_src: yes
+
+    - name: Symlink bin
+      file:
+        src: "{{ item }}"
+        dest: "~/.local/bin/{{ item | basename }}"
+        state: link
+      with_fileglob: "~/dotfiles/bin/*"
+
+    - name: Symlink config
+      file:
+        src: "~/dotfiles/config/{{ item.0 }}"
+        dest: "{{ item.1 }}"
+        state: link
+      loop:
+        - [nvim, ~/.config/nvim]
+        - [zsh/zshrc, ~/.zshrc]

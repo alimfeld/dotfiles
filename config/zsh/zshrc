@@ -47,9 +47,9 @@ if (( $+commands[direnv] )); then
 fi
 
 # path
-if [[ -d ~/bin ]]; then
+if [[ -d ~/.local/bin ]]; then
     typeset -U path
-    path[1,0]=~/bin
+    path[1,0]=~/.local/bin
 fi
 
 # aliases
