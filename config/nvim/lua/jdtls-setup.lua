@@ -51,7 +51,7 @@ function M.setup()
 	local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
 	local config = {}
-	config.cmd = {'jdtls.sh', workspace_folder}
+	config.cmd = {'jdtls', workspace_folder}
 	config.on_attach = on_attach
 	config.root_dir = root_dir
 

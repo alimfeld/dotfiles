@@ -18,7 +18,6 @@
         - ~/.config
         - ~/.local/bin
         - ~/.local/lib
-        - ~/.local/lib/eclipse/jdtls
         - ~/.local/share
         - ~/.local/share/nvim/site/pack/plugins/start
 
@@ -42,12 +41,7 @@
         - nvim-lua/popup.nvim
         - nvim-telescope/telescope.nvim
         - tpope/vim-surround
-
-    - name: Install jdtls
-      unarchive:
-        src: "https://download.eclipse.org/jdtls/milestones/0.70.0/jdt-language-server-0.70.0-202103051608.tar.gz"
-        dest: "~/.local/lib/eclipse/jdtls"
-        remote_src: yes
+        - morhetz/gruvbox
 
     - name: Symlink bin
       file:
