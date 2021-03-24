@@ -18,8 +18,10 @@
         - ~/.config
         - ~/.local/bin
         - ~/.local/lib
+        - ~/.local/lib/eclipse/jdt-language-server
         - ~/.local/share
         - ~/.local/share/nvim/site/pack/plugins/start
+        - ~/.local/share/eclipse/jdt-language-server
 
     - name: Install packages
       package:

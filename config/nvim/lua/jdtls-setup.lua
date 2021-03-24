@@ -48,12 +48,35 @@ function M.setup()
 	local root_markers = {'.git', 'mvnw', 'gradlew'}
 	local root_dir = require('jdtls.setup').find_root(root_markers)
 	local home = os.getenv('HOME')
-	local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
+	local workspace_folder = home .. "/.local/share/eclipse/jdt-language-server/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
 	local config = {}
 	config.cmd = {'jdtls', workspace_folder}
 	config.on_attach = on_attach
 	config.root_dir = root_dir
+	config.settings = {
+		java = {
+			signatureHelp = { enabled = true };
+			sources = {
+				organizeImports = {
+					starThreshold = 9999;
+					staticStarThreshold = 9999;
+				};
+			};
+			configuration = {
+				runtimes = {
+					{
+						name = "JavaSE-1.8",
+						path = home .. "/.sdkman/candidates/java/8.0.282-open/",
+					},
+					{
+						name = "JavaSE-11",
+						path = home .. "/.sdkman/candidates/java/11.0.10-open/",
+					},
+				}
+			};
+		};
+	}
 
 	-- Server
 	require('jdtls').start_or_attach(config)
