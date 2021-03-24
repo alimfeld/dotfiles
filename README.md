@@ -16,3 +16,10 @@ or (once pulled):
 cd ~/dotfiles
 ansible-playbook -K local.yml
 ```
+
+## Java
+
+A script `jdtls` is installed alongside the dotfiles to install or launch the
+eclipse jdt-language-server.
+
+Use [sdkman](https://sdkman.io) to install Java.
