@@ -1,0 +1,53 @@
+#!/bin/sh
+
+eclipse_home="$HOME/.local/lib/eclipse"
+jdtls_home="$eclipse_home/jdt-language-server"
+
+while getopts i: opt
+do
+    case $opt in 
+        i) version="$OPTARG";;
+        ?) printf "Usage: %s [-i version]\n" $0
+            exit 2;;
+    esac
+done
+
+if [ ! -z "$version" ]; then
+    [ "$version" = "latest" ] && path="snapshots" || path="milestones/$version"
+    base_url="https://download.eclipse.org/jdtls/$path"
+    archive_file=$(curl -s "$base_url/latest.txt")
+    archive_url="$base_url/$archive_file"
+    install_dir="${archive_file%.tar.gz}"
+    install_path="$eclipse_home/${install_dir}"
+    if [ ! -d "$install_path" ]; then
+        echo "Downloading $archive_url"
+        mkdir -p "$install_path"
+        curl "$archive_url" | tar zx -C "$install_path"
+    fi
+    echo "Symlinking $install_path"
+    ln -sf "$install_dir" "$jdtls_home"
+    exit 0
+fi
+
+
+case "$(uname -s)" in
+	Linux*)  config="$jdtls_home/config_linux";;
+	Darwin*) config="$jdtls_home/config_mac";;
+	*)
+esac
+
+java \
+	-Declipse.application=org.eclipse.jdt.ls.core.id1 \
+	-Dosgi.bundles.defaultStartLevel=4 \
+	-Declipse.product=org.eclipse.jdt.ls.core.product \
+	-Dlog.protocol=true \
+	-Dlog.level=ALL \
+	-noverify \
+	-Xms1G \
+	-Xmx2G \
+	-jar $(echo "$jdtls_home/plugins/org.eclipse.equinox.launcher_*.jar") \
+	-configuration "$config" \
+	-data "${1:-$HOME/workspace}" \
+	--add-modules=ALL-SYSTEM \
+	--add-opens java.base/java.util=ALL-UNNAMED \
+	--add-opens java.base/java.lang=ALL-UNNAMED
