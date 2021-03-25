@@ -38,9 +38,6 @@ function zle-keymap-select {
 zle -N zle-keymap-select
 _beam-cursor
 
-# dircolors
-eval $(dircolors)
-
 # direnv
 if (( $+commands[direnv] )); then
     eval "$(direnv hook zsh)"
@@ -53,7 +50,6 @@ if [[ -d ~/.local/bin ]]; then
 fi
 
 # aliases
-alias ls="ls --color=auto"
 alias ll="ls -l"
 alias la="ls -a"
 
