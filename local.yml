@@ -29,7 +29,6 @@
           - neovim
           - zsh
         state: present
-      become: yes
 
     - name: Install neovim plugins
       git:
