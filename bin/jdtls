@@ -1,7 +1,8 @@
 #!/bin/sh
 
 eclipse_home="$HOME/.local/lib/eclipse"
-jdtls_home="$eclipse_home/jdt-language-server"
+jdtls_dir="jdt-language-server"
+jdtls_home="$eclipse_home/$jdtls_dir"
 
 while getopts i: opt
 do
@@ -25,7 +26,7 @@ if [ ! -z "$version" ]; then
         curl "$archive_url" | tar zx -C "$install_path"
     fi
     echo "Symlinking $install_path"
-    ln -sf "$install_dir" "$jdtls_home"
+    cd "$eclipse_home" && ln -sf "$install_dir" "$jdtls_dir"
     exit 0
 fi
 
