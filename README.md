@@ -1,25 +1,35 @@
 # Dotfiles
 
-Mainly shell (zsh) and neovim so far...
-
 ## Installation
 
-The dotifiles are installed with ansible:
+The dotfiles are installed with ansible:
 
 ```shell
-ansible-pull -K -U https://github.com/alimfeld/dotfiles
+ansible-pull -U https://github.com/alimfeld/dotfiles
 ```
 
 or (once pulled):
 
 ```shell
 cd ~/dotfiles
-ansible-playbook -K local.yml
+ansible-playbook local.yml
 ```
 
-## Java
+## Targets
 
-A script `jdtls` is installed alongside the dotfiles to install or launch the
-eclipse jdt-language-server.
+- neovim
+- tmux
+- zsh
 
-Use [sdkman](https://sdkman.io) to install Java.
+## Dependencies
+
+For installation of dotfiles:
+- ansible
+
+Used in shell scripts:
+- curl
+- ln
+- tar
+
+For installation of java:
+- [sdkman](https://sdkman.io)
