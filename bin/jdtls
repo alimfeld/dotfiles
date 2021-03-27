@@ -4,14 +4,21 @@ eclipse_home="$HOME/.local/lib/eclipse"
 jdtls_dir="jdt-language-server"
 jdtls_home="$eclipse_home/$jdtls_dir"
 
-while getopts i: opt
+while getopts li: opt
 do
     case $opt in 
         i) version="$OPTARG";;
-        ?) printf "Usage: %s [-i version]\n" $0
+        l) list=true;;
+        ?) printf "Usage: %s [-l] [-i version]\n" $0
             exit 2;;
     esac
 done
+
+if [ $list ]; then
+    curl -s "https://download.eclipse.org/jdtls/milestones/" | \
+        grep -Po "href='/jdtls/milestones/\K\d+\.\d+\.\d+" | sort -V
+    exit 0
+fi
 
 if [ ! -z "$version" ]; then
     [ "$version" = "latest" ] && path="snapshots" || path="milestones/$version"
@@ -26,7 +33,7 @@ if [ ! -z "$version" ]; then
         curl "$archive_url" | tar zx -C "$install_path"
     fi
     echo "Symlinking $install_path"
-    cd "$eclipse_home" && ln -sf "$install_dir" "$jdtls_dir"
+    cd "$eclipse_home" && ln -sfn "$install_dir" "$jdtls_dir"
     exit 0
 fi
 
