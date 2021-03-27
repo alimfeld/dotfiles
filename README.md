@@ -23,13 +23,13 @@ ansible-playbook local.yml
 
 ## Dependencies
 
-For installation of dotfiles:
+Installation time:
 - ansible
+- npm
+- [sdkman](https://sdkman.io)
 
-Used in shell scripts:
+Runtime:
 - curl
 - ln
 - tar
-
-For installation of java:
-- [sdkman](https://sdkman.io)
+- [clipboard-cli](https://github.com/sindresorhus/clipboard-cli)
