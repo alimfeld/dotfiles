@@ -2,6 +2,9 @@ local M = {}
 
 function M.setup()
 	local on_attach = function(client, bufnr)
+		require('jdtls.setup').add_commands()
+		require('jdtls').setup_dap()
+
 		local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 		local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -42,7 +45,6 @@ function M.setup()
 		buf_set_keymap("v", "crm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", opts)
 		buf_set_keymap("n", "<leader>df", "<Cmd>lua require'jdtls'.test_class()<CR>", opts)
 		buf_set_keymap("n", "<leader>dn", "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", opts)
-		require('jdtls.setup').add_commands()
 	end
 
 	local root_markers = {'.git', 'mvnw', 'gradlew'}
@@ -54,29 +56,40 @@ function M.setup()
 	config.cmd = {'jdtls', workspace_folder}
 	config.on_attach = on_attach
 	config.root_dir = root_dir
-	config.settings = {
-		java = {
-			signatureHelp = { enabled = true };
-			sources = {
-				organizeImports = {
-					starThreshold = 9999;
-					staticStarThreshold = 9999;
-				};
-			};
-			configuration = {
-				runtimes = {
-					{
-						name = "JavaSE-1.8",
-						path = home .. "/.sdkman/candidates/java/8.0.282-open/",
-					},
-					{
-						name = "JavaSE-11",
-						path = home .. "/.sdkman/candidates/java/11.0.10-open/",
-					},
-				}
-			};
-		};
-	}
+
+    -- settings
+    config.settings = {
+        java = {
+            signatureHelp = { enabled = true },
+            sources = {
+                organizeImports = {
+                    starThreshold = 9999,
+                    staticStarThreshold = 9999
+                }
+            },
+            configuration = {
+                runtimes = {
+                    {
+                        name = "JavaSE-1.8",
+                        path = home .. "/.sdkman/candidates/java/8.0.282-open/"
+                    },
+                    {
+                        name = "JavaSE-11",
+                        path = home .. "/.sdkman/candidates/java/11.0.10-open/"
+                    }
+                }
+            }
+        },
+    }
+
+    -- init_options
+    local bundles = {
+        vim.fn.glob(home .. "/.jdtls/java-debug.jar")
+    }
+    vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/.jdtls/vscode-java-test/*.jar"), "\n"))
+    config.init_options = {
+        bundles = bundles
+    }
 
 	-- Server
 	require('jdtls').start_or_attach(config)

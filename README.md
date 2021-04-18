@@ -33,3 +33,12 @@ Runtime:
 - ln
 - tar
 - [clipboard-cli](https://github.com/sindresorhus/clipboard-cli)
+
+## TODO
+
+- make nvim-dap work
+- java completion
+- java code formatting
+- lombok support
+- Switch from ansible to dotbot (more lightweight)
+- Dockerize
