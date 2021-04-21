@@ -15,7 +15,6 @@
 - link:
     ~/.dotfiles: ""
     ~/.tmux.conf: "~/.dotfiles/config/tmux/tmux.conf"
-    ~/.npmrc: "~/.dotfiles/config/npm/npmrc"
     ~/.zshrc: "~/.dotfiles/config/zsh/zshrc"
     ~/.config/nvim: "~/.dotfiles/config/nvim"
     ~/.local/share/nvim/site/pack/plugins/start/gruvbox: "~/.dotfiles/pack/gruvbox"
@@ -30,6 +29,6 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-  - [npm install -g clipboard-cli, Installing clipboard-cli]
+  - [npm install -g --prefix ~/.local clipboard-cli, Installing clipboard-cli]
   - [~/.dotfiles/bin/jdtls-install, Installing Java language server]
   - [curl -s "https://get.sdkman.io" | bash, Installing SDKMAN!]
