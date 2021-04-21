@@ -1,0 +1,30 @@
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
+[submodule "pack/nvim-dap"]
+	path = pack/nvim-dap
+	url = https://github.com/mfussenegger/nvim-dap
+[submodule "pack/nvim-jdtls"]
+	path = pack/nvim-jdtls
+	url = https://github.com/mfussenegger/nvim-jdtls
+[submodule "pack/nvim-lspconfig"]
+	path = pack/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig
+[submodule "pack/popup.nvim"]
+	path = pack/popup.nvim
+	url = https://github.com/nvim-lua/popup.nvim
+[submodule "pack/plenary.nvim"]
+	path = pack/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim
+[submodule "pack/telescope.nvim"]
+	path = pack/telescope.nvim
+	url = https://github.com/nvim-telescope/telescope.nvim
+[submodule "pack/vim-surround"]
+	path = pack/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "pack/gruvbox"]
+	path = pack/gruvbox
+	url = https://github.com/morhetz/gruvbox
+[submodule "pack/vim-which-key"]
+	path = pack/vim-which-key
+	url = https://github.com/liuchengxu/vim-which-key
