@@ -48,6 +48,10 @@ if [[ -d ~/.local/bin ]]; then
     typeset -U path
     path[1,0]=~/.local/bin
 fi
+if [[ -d ~/.dotfiles/bin ]]; then
+    typeset -U path
+    path[1,0]=~/.dotfiles/bin
+fi
 
 # aliases
 alias ll="ls -l"

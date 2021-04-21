@@ -1,0 +1,35 @@
+- defaults:
+    link:
+      relink: true
+
+- create:
+  - "~/.config"
+  - "~/.local/bin"
+  - "~/.local/share/nvim/site/pack/plugins/start"
+
+- clean: 
+  - "~"
+  - "~/.config"
+  - "~/.local/share/nvim/site/pack/plugins/start"
+
+- link:
+    ~/.dotfiles: ""
+    ~/.tmux.conf: "~/.dotfiles/config/tmux/tmux.conf"
+    ~/.npmrc: "~/.dotfiles/config/npm/npmrc"
+    ~/.zshrc: "~/.dotfiles/config/zsh/zshrc"
+    ~/.config/nvim: "~/.dotfiles/config/nvim"
+    ~/.local/share/nvim/site/pack/plugins/start/gruvbox: "~/.dotfiles/pack/gruvbox"
+    ~/.local/share/nvim/site/pack/plugins/start/nvim-dap: "~/.dotfiles/pack/nvim-dap"
+    ~/.local/share/nvim/site/pack/plugins/start/nvim-jdtls: "~/.dotfiles/pack/nvim-jdtls"
+    ~/.local/share/nvim/site/pack/plugins/start/nvim-lspconfig: "~/.dotfiles/pack/nvim-lspconfig"
+    ~/.local/share/nvim/site/pack/plugins/start/plenary.nvim: "~/.dotfiles/pack/plenary.nvim"
+    ~/.local/share/nvim/site/pack/plugins/start/popup.nvim: "~/.dotfiles/pack/popup.nvim"
+    ~/.local/share/nvim/site/pack/plugins/start/telescope.nvim: "~/.dotfiles/pack/telescope.nvim"
+    ~/.local/share/nvim/site/pack/plugins/start/vim-surround: "~/.dotfiles/pack/vim-surround"
+    ~/.local/share/nvim/site/pack/plugins/start/vim-which-key: "~/.dotfiles/pack/vim-which-key"
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+  - [npm install -g clipboard-cli, Installing clipboard-cli]
+  - [~/.dotfiles/bin/jdtls-install, Installing Java language server]
+  - [curl -s "https://get.sdkman.io" | bash, Installing SDKMAN!]

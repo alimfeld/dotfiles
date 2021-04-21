@@ -2,43 +2,26 @@
 
 ## Installation
 
-The dotfiles are installed with ansible:
+The dotfiles are installed with dotbot:
 
 ```shell
-ansible-pull -U https://github.com/alimfeld/dotfiles
+git clone https://github.com/alimfeld/dotfiles
+cd dotfiles
+./install
 ```
-
-or (once pulled):
-
-```shell
-cd ~/dotfiles
-ansible-playbook local.yml
-```
-
-## Targets
-
-- neovim
-- tmux
-- zsh
 
 ## Dependencies
 
-Installation time:
-- ansible
-- npm
-- [sdkman](https://sdkman.io)
-
-Runtime:
 - curl
 - ln
+- npm
+- python
 - tar
+
+## 3rd party tools
+
+Those are installed alongside the dotfiles:
+
+- [SDKMAN!](https://sdkman.io)
 - [clipboard-cli](https://github.com/sindresorhus/clipboard-cli)
-
-## TODO
-
-- make nvim-dap work
-- java completion
-- java code formatting
-- lombok support
-- Switch from ansible to dotbot (more lightweight)
-- Dockerize
+- [Eclipse JDT Language Server](https://projects.eclipse.org/projects/eclipse.jdt.ls)
