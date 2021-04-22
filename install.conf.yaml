@@ -17,18 +17,17 @@
     ~/.tmux.conf: "~/.dotfiles/config/tmux/tmux.conf"
     ~/.zshrc: "~/.dotfiles/config/zsh/zshrc"
     ~/.config/nvim: "~/.dotfiles/config/nvim"
-    ~/.local/share/nvim/site/pack/plugins/start/gruvbox: "~/.dotfiles/pack/gruvbox"
-    ~/.local/share/nvim/site/pack/plugins/start/nvim-dap: "~/.dotfiles/pack/nvim-dap"
-    ~/.local/share/nvim/site/pack/plugins/start/nvim-jdtls: "~/.dotfiles/pack/nvim-jdtls"
-    ~/.local/share/nvim/site/pack/plugins/start/nvim-lspconfig: "~/.dotfiles/pack/nvim-lspconfig"
-    ~/.local/share/nvim/site/pack/plugins/start/plenary.nvim: "~/.dotfiles/pack/plenary.nvim"
-    ~/.local/share/nvim/site/pack/plugins/start/popup.nvim: "~/.dotfiles/pack/popup.nvim"
-    ~/.local/share/nvim/site/pack/plugins/start/telescope.nvim: "~/.dotfiles/pack/telescope.nvim"
-    ~/.local/share/nvim/site/pack/plugins/start/vim-surround: "~/.dotfiles/pack/vim-surround"
-    ~/.local/share/nvim/site/pack/plugins/start/vim-which-key: "~/.dotfiles/pack/vim-which-key"
+    ~/.local/share/nvim/site/pack/plugins/start/gruvbox: "~/.dotfiles/plugins/nvim/gruvbox"
+    ~/.local/share/nvim/site/pack/plugins/start/nvim-dap: "~/.dotfiles/plugins/nvim/nvim-dap"
+    ~/.local/share/nvim/site/pack/plugins/start/nvim-jdtls: "~/.dotfiles/plugins/nvim/nvim-jdtls"
+    ~/.local/share/nvim/site/pack/plugins/start/nvim-lspconfig: "~/.dotfiles/plugins/nvim/nvim-lspconfig"
+    ~/.local/share/nvim/site/pack/plugins/start/plenary.nvim: "~/.dotfiles/plugins/nvim/plenary.nvim"
+    ~/.local/share/nvim/site/pack/plugins/start/popup.nvim: "~/.dotfiles/plugins/nvim/popup.nvim"
+    ~/.local/share/nvim/site/pack/plugins/start/telescope.nvim: "~/.dotfiles/plugins/nvim/telescope.nvim"
+    ~/.local/share/nvim/site/pack/plugins/start/vim-surround: "~/.dotfiles/plugins/nvim/vim-surround"
+    ~/.local/share/nvim/site/pack/plugins/start/vim-which-key: "~/.dotfiles/plugins/nvim/vim-which-key"
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
-  - [npm install -g --prefix ~/.local clipboard-cli, Installing clipboard-cli]
+  - [git submodule update, Updating submodules]
   - [~/.dotfiles/bin/jdtls-install, Installing Java language server]
   - [curl -s "https://get.sdkman.io" | bash, Installing SDKMAN!]

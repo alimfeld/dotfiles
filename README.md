@@ -13,7 +13,6 @@ git submodule update --init
 
 ## Dependencies
 
-- npm
 - python
 - curl, ln, sed, tar, unzip, zip
 
