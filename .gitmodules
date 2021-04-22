@@ -1,30 +1,33 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
-[submodule "pack/nvim-dap"]
-	path = pack/nvim-dap
+[submodule "plugins/nvim/nvim-dap"]
+	path = plugins/nvim/nvim-dap
 	url = https://github.com/mfussenegger/nvim-dap
-[submodule "pack/nvim-jdtls"]
-	path = pack/nvim-jdtls
+[submodule "plugins/nvim/nvim-jdtls"]
+	path = plugins/nvim/nvim-jdtls
 	url = https://github.com/mfussenegger/nvim-jdtls
-[submodule "pack/nvim-lspconfig"]
-	path = pack/nvim-lspconfig
+[submodule "plugins/nvim/nvim-lspconfig"]
+	path = plugins/nvim/nvim-lspconfig
 	url = https://github.com/neovim/nvim-lspconfig
-[submodule "pack/popup.nvim"]
-	path = pack/popup.nvim
+[submodule "plugins/nvim/popup.nvim"]
+	path = plugins/nvim/popup.nvim
 	url = https://github.com/nvim-lua/popup.nvim
-[submodule "pack/plenary.nvim"]
-	path = pack/plenary.nvim
+[submodule "plugins/nvim/plenary.nvim"]
+	path = plugins/nvim/plenary.nvim
 	url = https://github.com/nvim-lua/plenary.nvim
-[submodule "pack/telescope.nvim"]
-	path = pack/telescope.nvim
+[submodule "plugins/nvim/telescope.nvim"]
+	path = plugins/nvim/telescope.nvim
 	url = https://github.com/nvim-telescope/telescope.nvim
-[submodule "pack/vim-surround"]
-	path = pack/vim-surround
+[submodule "plugins/nvim/vim-surround"]
+	path = plugins/nvim/vim-surround
 	url = https://github.com/tpope/vim-surround
-[submodule "pack/gruvbox"]
-	path = pack/gruvbox
+[submodule "plugins/nvim/gruvbox"]
+	path = plugins/nvim/gruvbox
 	url = https://github.com/morhetz/gruvbox
-[submodule "pack/vim-which-key"]
-	path = pack/vim-which-key
+[submodule "plugins/nvim/vim-which-key"]
+	path = plugins/nvim/vim-which-key
 	url = https://github.com/liuchengxu/vim-which-key
+[submodule "plugins/tmux/tmux-yank"]
+	path = plugins/tmux/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank
