@@ -12,11 +12,9 @@ cd dotfiles
 
 ## Dependencies
 
-- curl
-- ln
 - npm
 - python
-- tar
+- curl, ln, sed, tar, unzip, zip
 
 ## 3rd party tools
 
