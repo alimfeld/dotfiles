@@ -1,6 +1,5 @@
 setopt NO_BEEP
 setopt AUTO_CD
-setopt CORRECT
 
 # completion
 autoload -Uz compinit && compinit
