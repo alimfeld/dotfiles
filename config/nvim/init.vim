@@ -12,6 +12,9 @@ set smartcase
 " clipboard
 set clipboard+=unnamedplus
 
+" completion
+set completeopt=menuone,noselect
+
 " ui
 set number
 set relativenumber
