@@ -31,3 +31,6 @@
 [submodule "plugins/tmux/tmux-yank"]
 	path = plugins/tmux/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank
+[submodule "plugins/nvim/nvim-compe"]
+	path = plugins/nvim/nvim-compe
+	url = https://github.com/hrsh7th/nvim-compe
