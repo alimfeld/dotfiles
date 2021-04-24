@@ -8,6 +8,7 @@ lombok_ver="1.18.20"
 vscode_java_test_ver="0.28.1"
 
 mkdir -p "$jdtls_home"
+mkdir "$jdtls_home/workspace"
 
 # server
 
