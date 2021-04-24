@@ -67,6 +67,12 @@ function M.setup()
                     staticStarThreshold = 9999
                 }
             },
+            format = {
+                settings = {
+                    url = home .. "/.jdtls/eclipse-java-google-style.xml",
+                    profile = "GoogleStyle"
+                }
+            },
             configuration = {
                 runtimes = {
                     {
@@ -79,7 +85,7 @@ function M.setup()
                     }
                 }
             }
-        },
+        }
     }
 
     -- init_options

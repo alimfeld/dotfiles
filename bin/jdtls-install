@@ -7,8 +7,7 @@ java_debug_ver="0.30.1"
 lombok_ver="1.18.20"
 vscode_java_test_ver="0.28.1"
 
-mkdir -p "$jdtls_home"
-mkdir "$jdtls_home/workspace"
+mkdir -p "$jdtls_home/workspace"
 
 # server
 
@@ -69,3 +68,14 @@ fi
 
 echo "Symlinking $vscode_java_test_dir"
 cd "$jdtls_home" && ln -sfn "$vscode_java_test_dir/server" vscode-java-test
+
+# google style
+
+google_style_xml="eclipse-java-google-style.xml"
+google_style_url="https://raw.githubusercontent.com/google/styleguide/gh-pages/$google_style_xml"
+google_style_path="$jdtls_home/$google_style_xml"
+
+if [ ! -e "$google_style_path" ]; then
+    echo "Downloading $google_style_xml"
+    curl "$google_style_url" --output "$google_style_path"
+fi
