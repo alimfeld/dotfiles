@@ -2,10 +2,10 @@
 
 jdtls_home="$HOME/.jdtls"
 
-language_server_ver="0.70.0"
-java_debug_ver="0.30.1"
-lombok_ver="1.18.20"
-vscode_java_test_ver="0.28.1"
+language_server_ver=$(curl -s "https://download.eclipse.org/jdtls/milestones/" | grep -o "/jdtls/milestones/[0-9.]*" | sed "s/[^0-9]*//" | sort -t. -k1,1n -k2,2n -k3,3n | tail -1)
+java_debug_ver=$(curl -s "https://repo1.maven.org/maven2/com/microsoft/java/com.microsoft.java.debug.plugin/maven-metadata.xml" | grep -o "<version>[0-9.]*" | tail -1 | sed "s/[^0-9]*//")
+lombok_ver=$(curl -s "https://repo1.maven.org/maven2/org/projectlombok/lombok/maven-metadata.xml" | grep -o "<version>[0-9.]*" | tail -1 | sed "s/[^0-9]*//")
+vscode_java_test_ver=$(curl -s "https://github.com/microsoft/vscode-java-test/releases/latest" | grep -o "/releases/tag/[0-9.]*" | sed "s/[^0-9]*//")
 
 mkdir -p "$jdtls_home/workspace"
 
@@ -15,6 +15,8 @@ language_server_url="https://download.eclipse.org/jdtls/milestones/$language_ser
 language_server_tar=$(curl -s "$language_server_url/latest.txt")
 language_server_dir="${language_server_tar%.tar.gz}"
 language_server_path="$jdtls_home/$language_server_dir"
+
+echo "Installing $language_server_dir"
 
 if [ ! -d "$language_server_path" ]; then
     echo "Downloading $language_server_url/$language_server_tar"
@@ -31,6 +33,8 @@ java_debug_jar="com.microsoft.java.debug.plugin-$java_debug_ver.jar"
 java_debug_url="https://repo1.maven.org/maven2/com/microsoft/java/com.microsoft.java.debug.plugin/$java_debug_ver/$java_debug_jar"
 java_debug_path="$jdtls_home/$java_debug_jar"
 
+echo "Installing $java_debug_jar"
+
 if [ ! -e "$java_debug_path" ]; then
     echo "Downloading $java_debug_url"
     curl "$java_debug_url" --output "$java_debug_path"
@@ -45,6 +49,8 @@ lombok_jar="lombok-$lombok_ver.jar"
 lombok_url="https://repo1.maven.org/maven2/org/projectlombok/lombok/$lombok_ver/$lombok_jar"
 lombok_path="$jdtls_home/$lombok_jar"
 
+echo "Installing $lombok_jar"
+
 if [ ! -e "$lombok_path" ]; then
     echo "Downloading $lombok_url"
     curl "$lombok_url" --output "$lombok_path"
@@ -58,6 +64,8 @@ cd "$jdtls_home" && ln -sfn "$lombok_jar" lombok.jar
 vscode_java_test_url="https://github.com/microsoft/vscode-java-test"
 vscode_java_test_dir="vscode-java-test-$vscode_java_test_ver"
 vscode_java_test_path="$jdtls_home/$vscode_java_test_dir"
+
+echo "Installing $vscode_java_test_dir"
 
 if [ ! -d "$vscode_java_test_path" ]; then
     echo "Cloning $vscode_java_test_url"
@@ -74,6 +82,8 @@ cd "$jdtls_home" && ln -sfn "$vscode_java_test_dir/server" vscode-java-test
 google_style_xml="eclipse-java-google-style.xml"
 google_style_url="https://raw.githubusercontent.com/google/styleguide/gh-pages/$google_style_xml"
 google_style_path="$jdtls_home/$google_style_xml"
+
+echo "Installing $google_style_xml"
 
 if [ ! -e "$google_style_path" ]; then
     echo "Downloading $google_style_xml"
