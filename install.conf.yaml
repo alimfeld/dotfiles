@@ -18,6 +18,7 @@
     ~/.zshrc: "~/.dotfiles/config/zsh/zshrc"
     ~/.config/nvim: "~/.dotfiles/config/nvim"
     ~/.local/share/nvim/site/pack/plugins/start: "~/.dotfiles/plugins/nvim"
+    ~/.ideavimrc: "~/.dotfiles/config/ideavim/ideavimrc"
 
 - shell:
   - [git submodule update, Updating submodules]
