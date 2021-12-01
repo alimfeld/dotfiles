@@ -5,7 +5,7 @@
 - create:
   - "~/.config"
   - "~/.local/bin"
-  - "~/.local/share/nvim/site/pack/plugins"
+  - "~/.local/share/nvim/site/pack/packer/start"
 
 - clean: 
   - "~"
@@ -17,10 +17,10 @@
     ~/.tmux.conf: "~/.dotfiles/config/tmux/tmux.conf"
     ~/.zshrc: "~/.dotfiles/config/zsh/zshrc"
     ~/.config/nvim: "~/.dotfiles/config/nvim"
-    ~/.local/share/nvim/site/pack/plugins/start: "~/.dotfiles/plugins/nvim"
+    ~/.local/share/nvim/site/pack/packer/start/packer.nvim: "~/.dotfiles/sub/packer.nvim"
     ~/.ideavimrc: "~/.dotfiles/config/ideavim/ideavimrc"
 
 - shell:
   - [git submodule update, Updating submodules]
-  - [~/.dotfiles/bin/jdtls-install, Installing Java language server]
+  - [nvim --headless +PackerSync +qa]
   - [curl -s "https://get.sdkman.io" | bash, Installing SDKMAN!]
