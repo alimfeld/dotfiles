@@ -33,7 +33,7 @@ local server_opts = {
         settings = {
             Lua = {
                 diagnostics = {
-                    globals = {"vim", "use"}
+                    globals = {"vim"}
                 }
             }
         }

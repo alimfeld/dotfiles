@@ -1,9 +1,33 @@
-[submodule "sub/packer.nvim"]
-	path = sub/packer.nvim
-	url = https://github.com/wbthomason/packer.nvim
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
-[submodule "sub/tpm"]
-	path = sub/tpm
-	url = https://github.com/tmux-plugins/tpm
+[submodule "plugins/nvim/nvim-lsp-installer"]
+	path = plugins/nvim/nvim-lsp-installer
+	url = https://github.com/williamboman/nvim-lsp-installer
+[submodule "plugins/nvim/nvim-lspconfig"]
+	path = plugins/nvim/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig
+[submodule "plugins/nvim/telescope.nvim"]
+	path = plugins/nvim/telescope.nvim
+	url = https://github.com/nvim-telescope/telescope.nvim
+[submodule "plugins/nvim/plenary.nvim"]
+	path = plugins/nvim/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim
+[submodule "plugins/nvim/nvim-cmp"]
+	path = plugins/nvim/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp
+[submodule "plugins/nvim/cmp-nvim-lsp"]
+	path = plugins/nvim/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp
+[submodule "plugins/nvim/cmp-buffer"]
+	path = plugins/nvim/cmp-buffer
+	url = https://github.com/hrsh7th/cmp-buffer
+[submodule "plugins/nvim/gruvbox"]
+	path = plugins/nvim/gruvbox
+	url = https://github.com/morhetz/gruvbox
+[submodule "plugins/tmux/tmux-yank"]
+	path = plugins/tmux/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank
+[submodule "plugins/tmux/tmux-sensible"]
+	path = plugins/tmux/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible
