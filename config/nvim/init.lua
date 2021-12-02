@@ -1,3 +1,5 @@
-require('options')
-require('mappings')
-require('plugins')
+require('basics')
+
+require('theme')
+require('telescope')
+require('ide')
