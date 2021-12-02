@@ -31,3 +31,15 @@
 [submodule "plugins/tmux/tmux-sensible"]
 	path = plugins/tmux/tmux-sensible
 	url = https://github.com/tmux-plugins/tmux-sensible
+[submodule "plugins/nvim/nvim-treesitter"]
+	path = plugins/nvim/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter
+[submodule "plugins/nvim/neoformat"]
+	path = plugins/nvim/neoformat
+	url = https://github.com/sbdchd/neoformat
+[submodule "plugins/nvim/lualine.nvim"]
+	path = plugins/nvim/lualine.nvim
+	url = https://github.com/nvim-lualine/lualine.nvim
+[submodule "plugins/nvim/vim-fugitive"]
+	path = plugins/nvim/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive

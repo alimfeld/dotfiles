@@ -3,6 +3,7 @@ local function map(lhs, rhs)
 end
 
 map('ff', 'find_files')
-map('fg', 'live_grep')
+map('fg', 'git_files')
+map('fr', 'live_grep')
 map('fb', 'buffers')
 map('fh', 'help_tags')
