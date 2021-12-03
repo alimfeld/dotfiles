@@ -1,5 +1,4 @@
-require('basics')
-
-require('theme')
-require('telescope')
-require('ide')
+require'options'
+require'keymap'
+require'plugins'
+require'lsp'

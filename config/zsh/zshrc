@@ -9,9 +9,6 @@ export HISTSIZE=1000
 export SAVEHIST=1000
 setopt HIST_IGNORE_DUPS
 
-# color support
-autoload -Uz colors && colors
-
 # vcs_info
 autoload -Uz vcs_info
 precmd() { vcs_info }
@@ -20,7 +17,7 @@ zstyle ':vcs_info:git:*' formats '(%b) '
 
 # prompt
 setopt PROMPT_SUBST
-PROMPT='%K{black}%F{cyan}%~ %F{magenta}${vcs_info_msg_0_}%f>%k '
+PROMPT='%K{235}%F{148}%~ %F{168}${vcs_info_msg_0_}%f>%k '
 
 # vi mode
 bindkey -v

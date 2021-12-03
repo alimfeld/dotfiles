@@ -43,3 +43,9 @@
 [submodule "plugins/nvim/vim-fugitive"]
 	path = plugins/nvim/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
+[submodule "plugins/nvim/gitsigns.nvim"]
+	path = plugins/nvim/gitsigns.nvim
+	url = https://github.com/lewis6991/gitsigns.nvim
+[submodule "plugins/nvim/nvim-tree.lua"]
+	path = plugins/nvim/nvim-tree.lua
+	url = https://github.com/kyazdani42/nvim-tree.lua
