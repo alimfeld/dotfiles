@@ -1,9 +1,22 @@
 -- cmp
 local cmp = require('cmp')
-require'cmp'.setup({
+cmp.setup({
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
+        { name = 'nvim_lua' },
+        { name = 'buffer' },
+        { name = 'path' },
     })
+})
+cmp.setup.cmdline(':', {
+  sources = {
+    { name = 'cmdline' }
+  }
+})
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  }
 })
 
 -- colorscheme

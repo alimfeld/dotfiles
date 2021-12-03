@@ -49,3 +49,12 @@
 [submodule "plugins/nvim/gruvbox-material"]
 	path = plugins/nvim/gruvbox-material
 	url = https://github.com/sainnhe/gruvbox-material
+[submodule "plugins/nvim/cmp-path"]
+	path = plugins/nvim/cmp-path
+	url = https://github.com/hrsh7th/cmp-path
+[submodule "plugins/nvim/cmp-cmdline"]
+	path = plugins/nvim/cmp-cmdline
+	url = https://github.com/hrsh7th/cmp-cmdline
+[submodule "plugins/nvim/cmp-nvim-lua"]
+	path = plugins/nvim/cmp-nvim-lua
+	url = https://github.com/hrsh7th/cmp-nvim-lua
