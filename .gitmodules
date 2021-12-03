@@ -58,3 +58,9 @@
 [submodule "plugins/nvim/cmp-nvim-lua"]
 	path = plugins/nvim/cmp-nvim-lua
 	url = https://github.com/hrsh7th/cmp-nvim-lua
+[submodule "plugins/nvim/nvim-dap"]
+	path = plugins/nvim/nvim-dap
+	url = https://github.com/mfussenegger/nvim-dap
+[submodule "plugins/nvim/DAPInstall.nvim"]
+	path = plugins/nvim/DAPInstall.nvim
+	url = https://github.com/Pocco81/DAPInstall.nvim

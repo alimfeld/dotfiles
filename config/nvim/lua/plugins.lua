@@ -1,5 +1,5 @@
 -- cmp
-local cmp = require('cmp')
+local cmp = require'cmp'
 cmp.setup({
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
@@ -23,10 +23,10 @@ cmp.setup.cmdline('/', {
 vim.cmd([[colorscheme gruvbox-material]])
 
 -- gitsign
-require('gitsigns').setup()
+require'gitsigns'.setup()
 
 -- lualine
-require('lualine').setup {
+require'lualine'.setup {
     options = {
         theme= 'gruvbox-material'
     }
@@ -37,3 +37,7 @@ require'nvim-tree'.setup()
 
 -- nvim-treeitter
 require'nvim-treesitter'.setup()
+
+-- dap-install
+local dap_install = require'dap-install'
+dap_install.config('chrome')
