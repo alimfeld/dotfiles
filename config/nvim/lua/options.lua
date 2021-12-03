@@ -23,4 +23,5 @@ vim.opt.visualbell = true
 vim.opt.wrap = false
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.termguicolors = true
 vim.opt.background = 'dark'
