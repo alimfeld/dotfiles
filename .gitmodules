@@ -22,9 +22,6 @@
 [submodule "plugins/nvim/cmp-buffer"]
 	path = plugins/nvim/cmp-buffer
 	url = https://github.com/hrsh7th/cmp-buffer
-[submodule "plugins/nvim/gruvbox"]
-	path = plugins/nvim/gruvbox
-	url = https://github.com/morhetz/gruvbox
 [submodule "plugins/tmux/tmux-yank"]
 	path = plugins/tmux/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank
@@ -49,3 +46,6 @@
 [submodule "plugins/nvim/nvim-tree.lua"]
 	path = plugins/nvim/nvim-tree.lua
 	url = https://github.com/kyazdani42/nvim-tree.lua
+[submodule "plugins/nvim/gruvbox-material"]
+	path = plugins/nvim/gruvbox-material
+	url = https://github.com/sainnhe/gruvbox-material
