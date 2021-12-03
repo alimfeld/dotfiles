@@ -17,7 +17,7 @@ zstyle ':vcs_info:git:*' formats '(%b) '
 
 # prompt
 setopt PROMPT_SUBST
-PROMPT='%K{235}%F{142}%~ %F{214}${vcs_info_msg_0_}%F{223}>%k '
+PROMPT='%K{235}%F{142}%~ %F{214}${vcs_info_msg_0_}%F{248}>%k '
 
 # vi mode
 bindkey -v
