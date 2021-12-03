@@ -7,13 +7,17 @@ require'cmp'.setup({
 })
 
 -- colorscheme
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme gruvbox-material]])
 
 -- gitsign
 require('gitsigns').setup()
 
 -- lualine
-require('lualine').setup()
+require('lualine').setup {
+    options = {
+        theme= 'gruvbox-material'
+    }
+}
 
 -- nvim-tree
 require'nvim-tree'.setup()
