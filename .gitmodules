@@ -67,3 +67,6 @@
 [submodule "plugins/nvim/Comment.nvim"]
 	path = plugins/nvim/Comment.nvim
 	url = https://github.com/numToStr/Comment.nvim
+[submodule "plugins/nvim/vim-tmux-navigator"]
+	path = plugins/nvim/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator

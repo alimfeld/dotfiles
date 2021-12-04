@@ -11,7 +11,7 @@ font:
   bold_italic:
     family: Hack Nerd Font
     style: Bold Italic
-  size: 14.0
+  size: 16.0
 
 schemes:
   gruvbox_material_hard_dark: &gruvbox_material_hard_dark

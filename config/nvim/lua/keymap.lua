@@ -5,10 +5,10 @@ vim.g.mapleader = ' '
 map('n', '<Space>', '<Nop>', {noremap = true})
 
 -- split navigation
-map('n', '<C-j>', '<C-w><C-j>', {noremap = true})
-map('n', '<C-k>', '<C-w><C-k>', {noremap = true})
-map('n', '<C-l>', '<C-w><C-l>', {noremap = true})
-map('n', '<C-h>', '<C-w><C-h>', {noremap = true})
+-- map('n', '<C-j>', '<C-w><C-j>', {noremap = true})
+-- map('n', '<C-k>', '<C-w><C-k>', {noremap = true})
+-- map('n', '<C-l>', '<C-w><C-l>', {noremap = true})
+-- map('n', '<C-h>', '<C-w><C-h>', {noremap = true})
 
 -- Telescope
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', {noremap=true})
