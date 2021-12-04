@@ -64,3 +64,6 @@
 [submodule "plugins/nvim/DAPInstall.nvim"]
 	path = plugins/nvim/DAPInstall.nvim
 	url = https://github.com/Pocco81/DAPInstall.nvim
+[submodule "plugins/nvim/Comment.nvim"]
+	path = plugins/nvim/Comment.nvim
+	url = https://github.com/numToStr/Comment.nvim

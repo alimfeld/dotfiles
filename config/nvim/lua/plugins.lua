@@ -41,3 +41,6 @@ require'nvim-treesitter'.setup()
 -- dap-install
 local dap_install = require'dap-install'
 dap_install.config('chrome')
+
+-- Comment
+require'Comment'.setup()
