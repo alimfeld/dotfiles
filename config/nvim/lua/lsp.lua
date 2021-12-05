@@ -26,6 +26,17 @@ local on_attach = function(_, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+  -- dap mappings
+  buf_set_keymap('n', '<F5>', "<cmd>lua require'dap'.continue()<CR>", opts)
+  buf_set_keymap('n', '<F10>', "<cmd>lua require'dap'.step_over()<CR>", opts)
+  buf_set_keymap('n', '<F11>', "<cmd>lua require'dap'.step_into()<CR>", opts)
+  buf_set_keymap('n', '<F12>', "<cmd>lua require'dap'.step_out()<CR>", opts)
+  buf_set_keymap('n', '<leader>b', "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
+  buf_set_keymap('n', '<leader>B', "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
+  buf_set_keymap('n', '<leader>lp', "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", opts)
+  buf_set_keymap('n', '<leader>dr', "<cmd>lua require'dap'.repl.open()<CR>", opts)
+  buf_set_keymap('n', '<leader>dl', "<cmd>lua require'dap'.run_last()<CR>", opts)
 end
 
 local server_opts = {
