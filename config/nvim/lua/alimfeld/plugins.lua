@@ -48,3 +48,6 @@ end
 
 -- Comment
 require'Comment'.setup()
+
+-- which-key
+require'which-key'.setup()

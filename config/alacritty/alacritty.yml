@@ -1,5 +1,5 @@
 shell:
-  program: fish
+  program: /usr/local/bin/fish
 
 font:
   normal:
