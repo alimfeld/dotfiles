@@ -18,6 +18,7 @@
     ~/.local/share/nvim/site/pack/plugins/start: "~/.dotfiles/plugins/nvim"
     ~/.config/tmux: "~/.dotfiles/config/tmux"
     ~/.config/alacritty: "~/.dotfiles/config/alacritty"
+    ~/.config/fish: "~/.dotfiles/config/fish"
     ~/.zshrc: "~/.dotfiles/config/zsh/zshrc"
     ~/.ideavimrc: "~/.dotfiles/config/ideavim/ideavimrc"
 
