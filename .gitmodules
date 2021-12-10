@@ -1,9 +1,6 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
-[submodule "plugins/nvim/nvim-lsp-installer"]
-	path = plugins/nvim/nvim-lsp-installer
-	url = https://github.com/williamboman/nvim-lsp-installer
 [submodule "plugins/nvim/nvim-lspconfig"]
 	path = plugins/nvim/nvim-lspconfig
 	url = https://github.com/neovim/nvim-lspconfig
@@ -61,12 +58,15 @@
 [submodule "plugins/nvim/nvim-dap"]
 	path = plugins/nvim/nvim-dap
 	url = https://github.com/mfussenegger/nvim-dap
-[submodule "plugins/nvim/DAPInstall.nvim"]
-	path = plugins/nvim/DAPInstall.nvim
-	url = https://github.com/Pocco81/DAPInstall.nvim
-[submodule "plugins/nvim/Comment.nvim"]
-	path = plugins/nvim/Comment.nvim
-	url = https://github.com/numToStr/Comment.nvim
 [submodule "plugins/nvim/vim-tmux-navigator"]
 	path = plugins/nvim/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator
+[submodule "plugins/nvim/which-key.nvim"]
+	path = plugins/nvim/which-key.nvim
+	url = https://github.com/folke/which-key.nvim
+[submodule "plugins/nvim/vim-vsnip"]
+	path = plugins/nvim/vim-vsnip
+	url = https://github.com/hrsh7th/vim-vsnip
+[submodule "plugins/nvim/vim-vsnip-integ"]
+	path = plugins/nvim/vim-vsnip-integ
+	url = https://github.com/hrsh7th/vim-vsnip-integ
