@@ -23,5 +23,5 @@
     ~/.ideavimrc: "~/.dotfiles/config/ideavim/ideavimrc"
 
 - shell:
-  - [git submodule update, Updating submodules]
+  - [git submodule update --init, Updating submodules]
   - [curl -s "https://get.sdkman.io" | bash, Installing SDKMAN!]
