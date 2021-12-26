@@ -68,6 +68,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	-- Comment
 	use({
 		"numToStr/Comment.nvim",
 		config = function()
@@ -121,6 +122,9 @@ return require("packer").startup(function(use)
 			require("config.lualine")
 		end,
 	})
+
+	-- web-devicons
+	use("kyazdani42/nvim-web-devicons")
 
 	-- Sync upon bootstrap
 	if packer_bootstrap then
