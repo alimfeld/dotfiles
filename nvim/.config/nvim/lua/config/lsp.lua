@@ -58,5 +58,21 @@ lsp_installer.on_server_ready(function(server)
 		}
 	end
 
+	if server.name == "jsonls" then
+		opts.settings = {
+			json = {
+				schemas = {
+					{
+						description = "NPM package.json files",
+						fileMatch = {
+							"package.json",
+						},
+						url = "https://json.schemastore.org/package.json",
+					},
+				},
+			},
+		}
+	end
+
 	server:setup(opts)
 end)
