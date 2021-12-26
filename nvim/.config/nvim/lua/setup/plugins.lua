@@ -27,7 +27,7 @@ return require("packer").startup(function(use)
 	-- packer itself
 	use("wbthomason/packer.nvim")
 
-    -- treesitter
+	-- treesitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
 	-- lsp
@@ -36,7 +36,7 @@ return require("packer").startup(function(use)
 		requires = {
 			"neovim/nvim-lspconfig",
 			"hrsh7th/cmp-nvim-lsp",
-            "folke/which-key.nvim",
+			"folke/which-key.nvim",
 		},
 		config = function()
 			require("config.lsp")
@@ -68,10 +68,17 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-    -- vim-fugitive
-    use("tpope/vim-fugitive")
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("config.Comment")
+		end,
+	})
 
-    -- gitsigns
+	-- vim-fugitive
+	use("tpope/vim-fugitive")
+
+	-- gitsigns
 	use({
 		"lewis6991/gitsigns.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
@@ -80,7 +87,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-    -- vim-tmux-navigator
+	-- vim-tmux-navigator
 	use("christoomey/vim-tmux-navigator")
 
 	-- nvim-tree
