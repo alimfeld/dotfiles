@@ -126,6 +126,15 @@ return require("packer").startup(function(use)
 	-- web-devicons
 	use("kyazdani42/nvim-web-devicons")
 
+    -- neorg
+	use({
+		"nvim-neorg/neorg",
+		requires = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("config/neorg")
+		end,
+	})
+
 	-- Sync upon bootstrap
 	if packer_bootstrap then
 		require("packer").sync()
