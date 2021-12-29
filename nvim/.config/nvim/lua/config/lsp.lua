@@ -31,10 +31,18 @@ local on_attach = function(_, bufnr)
 	})
 
 	wk.register({
+		["cr"] = {
+			name = "refactor",
+			n = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+			a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+		},
+	}, {
+		buffer = bufnr,
+	})
+
+	wk.register({
 		["<leader>l"] = {
 			name = "lsp",
-			r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-			c = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
 			f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
 		},
 	}, {
