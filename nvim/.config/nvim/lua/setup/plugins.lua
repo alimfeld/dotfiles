@@ -135,6 +135,15 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+    -- bufferline
+	use({
+		"akinsho/bufferline.nvim",
+		requires = { "kyazdani42/nvim-web-devicons" },
+		config = function()
+			require("config/bufferline")
+		end,
+	})
+
 	-- Sync upon bootstrap
 	if packer_bootstrap then
 		require("packer").sync()
