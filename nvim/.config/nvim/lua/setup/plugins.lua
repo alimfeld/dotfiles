@@ -43,6 +43,18 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+    -- null-ls
+	use({
+		"jose-elias-alvarez/null-ls.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim"
+		},
+		config = function()
+			require("config.null-ls")
+		end,
+	})
+
+
 	-- telescope
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -99,14 +111,6 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	-- neoformat
-	use({
-		"sbdchd/neoformat",
-		config = function()
-			require("config.neoformat")
-		end,
-	})
-
 	-- colorscheme
 	use({
 		"sainnhe/gruvbox-material",
@@ -125,24 +129,6 @@ return require("packer").startup(function(use)
 
 	-- web-devicons
 	use("kyazdani42/nvim-web-devicons")
-
-    -- neorg
-	use({
-		"nvim-neorg/neorg",
-		requires = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("config/neorg")
-		end,
-	})
-
-    -- bufferline
-	use({
-		"akinsho/bufferline.nvim",
-		requires = { "kyazdani42/nvim-web-devicons" },
-		config = function()
-			require("config/bufferline")
-		end,
-	})
 
 	-- Sync upon bootstrap
 	if packer_bootstrap then
