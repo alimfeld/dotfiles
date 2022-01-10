@@ -4,7 +4,7 @@ local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protoco
 
 local wk = require("which-key")
 
-local on_attach = function(_, bufnr)
+local default_on_attach = function(_, bufnr)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
@@ -52,7 +52,7 @@ end
 
 lsp_installer.on_server_ready(function(server)
 	local opts = {
-		on_attach = on_attach,
+		on_attach = default_on_attach,
 		capabilities = capabilities,
 	}
 
@@ -80,6 +80,14 @@ lsp_installer.on_server_ready(function(server)
 				},
 			},
 		}
+	end
+
+	if server.name == "tsserver" then
+		opts.on_attach = function(client, bufnr)
+			client.resolved_capabilities.document_formatting = false
+			client.resolved_capabilities.document_range_formatting = false
+			default_on_attach(client, bufnr)
+		end
 	end
 
 	server:setup(opts)
