@@ -27,21 +27,27 @@ return require("packer").startup(function(use)
 	-- packer itself
 	use("wbthomason/packer.nvim")
 
-	-- treesitter
-	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+    -- treesitter
+    use({
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate",
+        config = function()
+            require("config.treesitter")
+        end,
+    })
 
 	-- lsp
-	use({
-		"williamboman/nvim-lsp-installer",
-		requires = {
-			"neovim/nvim-lspconfig",
-			"hrsh7th/cmp-nvim-lsp",
-			"folke/which-key.nvim",
-		},
-		config = function()
-			require("config.lsp")
-		end,
-	})
+    use({
+        "williamboman/nvim-lsp-installer",
+        requires = {
+            "neovim/nvim-lspconfig",
+            "hrsh7th/cmp-nvim-lsp",
+            "folke/which-key.nvim",
+        },
+        config = function()
+            require("config.lsp")
+        end,
+    })
 
 	-- telescope
 	use({
