@@ -1,6 +1,9 @@
 shell:
   program: /usr/local/bin/fish
 
+selection:
+  save_to_clipboard: true
+
 font:
   normal:
     family: Hack Nerd Font
