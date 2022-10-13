@@ -132,6 +132,9 @@ return require("packer").startup(function(use)
 	-- web-devicons
 	use("kyazdani42/nvim-web-devicons")
 
+    -- plantuml
+    use("aklt/plantuml-syntax")
+
 	-- Sync upon bootstrap
 	if packer_bootstrap then
 		require("packer").sync()
