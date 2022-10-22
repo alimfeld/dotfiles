@@ -1,47 +1,48 @@
+# exports
+export EDITOR=nvim
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export PATH="$PATH:$HOME/.local/bin"
+
 # aliases
 alias ll="ls -lG"
 alias vim="nvim"
 
-# exports
-export EDITOR=nvim
-
 # history
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.cache/zsh/histfile
+HISTFILE="$XDG_CACHE_HOME/histfile"
 
 # completion
 autoload -Uz compinit && compinit
 
-# plugins (install w/ your package manager of choice and symlink)
-source ~/.local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 # vi
 bindkey -v
-KEYTIMEOUT=5
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-   [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-     [[ ${KEYMAP} == viins ]] ||
-     [[ ${KEYMAP} = '' ]] ||
-     [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
-}
-zle -N zle-keymap-select
-_fix_cursor() {
-   echo -ne '\e[5 q'
-}
-precmd_functions+=(_fix_cursor)
 
-# prompt
-autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-setopt prompt_subst
-RPROMPT=\$vcs_info_msg_0_
-zstyle ':vcs_info:git:*' formats '%F{240}(%b)%r%f'
-zstyle ':vcs_info:*' enable git
+# plugins
+PLUGINS_HOME="${XDG_DATA_HOME}/zsh-plugins"
+plugins=(
+  zsh-users/zsh-autosuggestions
+  mafredri/zsh-async
+  sindresorhus/pure
+  zsh-users/zsh-syntax-highlighting
+)
+for plugin in $plugins; do
+  if [[ ! -d ${PLUGINS_HOME}/$plugin ]]; then
+    mkdir -p ${PLUGINS_HOME}/${plugin%/*}
+    git clone --depth 1 https://github.com/$plugin.git ${PLUGINS_HOME}/$plugin
+  fi
+  source ${PLUGINS_HOME}/$plugin/*.plugin.zsh
+done
+zsh-plugins-update() {
+  for plugin in $plugins; do
+    git -C ${PLUGINS_HOME}/$plugin pull
+  done
+}
+zsh-plugins-remove() {
+  for plugin in ${PLUGINS_HOME}/*; do
+    rm -rf $plugin
+  done
+}
