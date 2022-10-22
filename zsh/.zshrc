@@ -7,6 +7,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export PATH="$PATH:$HOME/.local/bin"
 
 # aliases
+alias ls="ls -G"
 alias ll="ls -lG"
 alias vim="nvim"
 
