@@ -1,3 +1,8 @@
+-- {{{ Init
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+-- }}}
+
 -- {{{ Plugins
 local ensure_packer = function()
   local fn = vim.fn
@@ -39,6 +44,8 @@ require('packer').startup(function(use)
   -- Telescope
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable "make" == 1 }
+  -- Tree
+  use { 'nvim-tree/nvim-tree.lua', requires = { 'nvim-tree/nvim-web-devicons' } }
 
   if packer_bootstrap then
     require('packer').sync()
@@ -235,6 +242,12 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+-- }}}
+
+-- {{{ nvim-tree
+require 'nvim-tree'.setup()
+
+vim.keymap.set('n', '<C-n>', '<Cmd>NvimTreeToggle<CR>')
 -- }}}
 
 -- {{{ LSP
