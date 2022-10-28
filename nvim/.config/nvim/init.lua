@@ -282,7 +282,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require('mason').setup()
 
-local servers = { 'sumneko_lua', 'tsserver', 'jdtls' }
+local servers = { 'sumneko_lua', 'tsserver', 'jdtls', 'terraformls', 'tflint' }
 
 require('mason-lspconfig').setup {
   ensure_installed = servers,
