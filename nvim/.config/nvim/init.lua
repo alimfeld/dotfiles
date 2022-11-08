@@ -31,6 +31,8 @@ require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
+  use 'jose-elias-alvarez/null-ls.nvim'
+  use 'jayp0521/mason-null-ls.nvim'
   -- Completion
   use { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/cmp-nvim-lsp' } }
   use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }
@@ -295,47 +297,34 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require('mason').setup()
-
-local servers = { 'sumneko_lua', 'tsserver', 'jdtls', 'terraformls', 'tflint' }
-
-require('mason-lspconfig').setup {
-  ensure_installed = servers,
+require('mason-null-ls').setup {
+  automatic_setup = true
 }
-
-for _, lsp in ipairs(servers) do
-  require('lspconfig')[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-end
-
--- {{{ sumneko_lua
--- Make runtime files discoverable to the server
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
-
-require('lspconfig').sumneko_lua.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = runtime_path,
+require('mason-null-ls').setup_handlers {}
+require('null-ls').setup()
+require('mason-lspconfig').setup()
+require('mason-lspconfig').setup_handlers {
+  function(lsp)
+    require('lspconfig')[lsp].setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+    }
+  end,
+  ['sumneko_lua'] = function ()
+    require('lspconfig').sumneko_lua.setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { 'vim' },
+          },
+          telemetry = { enable = false },
+        },
       },
-      diagnostics = {
-        globals = { 'vim' },
-      },
-      workspace = { library = vim.api.nvim_get_runtime_file('', true) },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = { enable = false },
-    },
-  },
+    }
+  end
 }
--- }}}
 
 -- }}}
 
