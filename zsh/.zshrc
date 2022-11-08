@@ -28,7 +28,8 @@ plugins=(
   zsh-users/zsh-autosuggestions
   mafredri/zsh-async
   sindresorhus/pure
-  zsh-users/zsh-syntax-highlighting
+  agkozak/zsh-z
+  zsh-users/zsh-syntax-highlighting # must be last
 )
 for plugin in $plugins; do
   if [[ ! -d ${PLUGINS_HOME}/$plugin ]]; then
