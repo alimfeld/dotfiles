@@ -147,7 +147,7 @@ vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { de
 
 -- {{{ nvim-treesitter
 require("nvim-treesitter.configs").setup({
-  ensure_installed = { "lua", "typescript", "java" },
+  ensure_installed = {},
 
   highlight = { enable = true },
   indent = { enable = true },
