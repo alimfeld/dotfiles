@@ -29,6 +29,7 @@ plugins=(
   mafredri/zsh-async
   sindresorhus/pure
   agkozak/zsh-z
+  kutsan/zsh-system-clipboard
   zsh-users/zsh-syntax-highlighting # must be last
 )
 for plugin in $plugins; do
