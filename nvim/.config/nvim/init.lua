@@ -1,4 +1,5 @@
--- {{{ Init
+-- {{{ Preamble
+-- disable netrw at the very start of init.lua (as advised by nvim-tree.lua)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 -- }}}
@@ -39,9 +40,9 @@ require("packer").startup(function(use)
   -- Bling
   use("ellisonleao/gruvbox.nvim")
   use("nvim-lualine/lualine.nvim")
-  -- Formatting
+  -- Use heuristics to adjust 'shiftwidth' and 'expandtab' 
   use("tpope/vim-sleuth")
-  -- Integration
+  -- Tmux integration
   use("christoomey/vim-tmux-navigator")
   -- Telescope
   use({ "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } })
@@ -92,6 +93,8 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
+
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 -- }}}
 
 -- {{{ Configs
@@ -151,11 +154,10 @@ require("nvim-treesitter.configs").setup({
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = "<c-space>",
-      node_incremental = "<c-space>",
-      -- TODO: I'm not sure for this one.
-      scope_incremental = "<c-s>",
-      node_decremental = "<c-backspace>",
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
     },
   },
   textobjects = {
@@ -283,15 +285,6 @@ local on_attach = function(_, bufnr)
   nmap("<leader>wl", function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, "[W]orkspace [L]ist Folders")
-
-  -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-    if vim.lsp.buf.format then
-      vim.lsp.buf.format()
-    elseif vim.lsp.buf.formatting then
-      vim.lsp.buf.formatting()
-    end
-  end, { desc = "Format current buffer with LSP" })
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
