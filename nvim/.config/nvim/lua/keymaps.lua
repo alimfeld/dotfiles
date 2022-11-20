@@ -22,11 +22,11 @@ nmap("[d",              vim.diagnostic.goto_prev,              "Previous [d]iagn
 nmap("]d",              vim.diagnostic.goto_next,              "Next [d]iagnostic")
 
 nmap("<leader>=",       vim.lsp.buf.format,                    "Format")
-nmap("<leader>r",       vim.lsp.buf.rename,                    "LSP: [r]ename")
-nmap("<leader>c",       vim.lsp.buf.code_action,               "LSP: [c]ode action")
+nmap("<leader>r",       vim.lsp.buf.rename,                    "LSP [r]ename")
+nmap("<leader>c",       vim.lsp.buf.code_action,               "LSP [c]ode action")
 
-nmap("<leader>d",       telescope_builtin.diagnostics,         "LSP: List [d]iagnostics")
-nmap("gd",              telescope_builtin.lsp_definitions,     "LSP: Goto [d]efinition")
-nmap("gr",              telescope_builtin.lsp_references,      "LSP: Goto [r]eferences")
+nmap("<leader>d",       telescope_builtin.diagnostics,         "LSP [d]iagnostics")
+nmap("gd",              telescope_builtin.lsp_definitions,     "LSP [d]efinitions")
+nmap("gr",              telescope_builtin.lsp_references,      "LSP [r]eferences")
 
 nmap("K",               vim.lsp.buf.hover,                     "Hover Documentation")
