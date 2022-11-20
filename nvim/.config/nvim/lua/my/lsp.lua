@@ -1,7 +1,7 @@
 local M = {}
 
 local on_attach = function(_, _)
-  -- Currently all LSP related keymaps are applied globally
+  -- Additional keymaps are setup in an 'LspAttach' autocmd.
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
