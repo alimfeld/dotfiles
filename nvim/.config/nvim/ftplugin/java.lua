@@ -1,1 +1,1 @@
-require("config.lsp").setup_java()
+require("my.lsp").setup_java()
