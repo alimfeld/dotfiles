@@ -79,13 +79,15 @@ require("packer").startup({
     use("L3MON4D3/LuaSnip")
     -- Completion
     use({ "hrsh7th/nvim-cmp", requires = { "hrsh7th/cmp-nvim-lsp", "saadparwaiz1/cmp_luasnip" } })
-    -- LSP
+    -- LSP & Co
     use("neovim/nvim-lspconfig")
     use("williamboman/mason.nvim")
     use("williamboman/mason-lspconfig.nvim")
     use("jose-elias-alvarez/null-ls.nvim")
-    use("jayp0521/mason-null-ls.nvim")
     use("mfussenegger/nvim-jdtls")
+    use("mfussenegger/nvim-dap")
+    use("jayp0521/mason-null-ls.nvim")
+    use("jayp0521/mason-nvim-dap.nvim")
 
     if packer_bootstrap then
       require("packer").sync()
