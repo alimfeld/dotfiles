@@ -8,38 +8,47 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 
 local telescope_builtin = require("telescope.builtin")
 
-local function setup()
-  local function nmap(lhs, rhs, desc)
-    vim.keymap.set("n", lhs, rhs, { desc = desc })
-  end
+local function map(lhs, rhs, desc)
+  vim.keymap.set("n", lhs, rhs, { desc = desc })
+end
 
+if 1 then
   ---@format disable
-  nmap("<leader>f",       telescope_builtin.find_files,          "List [f]iles")
-  nmap("<leader>b",       telescope_builtin.buffers,             "List open [b]uffers")
-  nmap("<leader>/",       telescope_builtin.live_grep,           "Grep files")
-  nmap("<leader>t",       "<Cmd>NvimTreeToggle<CR>",             "Toggle [t]ree")
+  map("<leader>f",       telescope_builtin.find_files,          "List [f]iles")
+  map("<leader>b",       telescope_builtin.buffers,             "List open [b]uffers")
+  map("<leader>/",       telescope_builtin.live_grep,           "Grep files")
+  map("<leader>t",       "<Cmd>NvimTreeToggle<CR>",             "Toggle [t]ree")
 
-  nmap("[d",              vim.diagnostic.goto_prev,              "Previous [d]iagnostic")
-  nmap("]d",              vim.diagnostic.goto_next,              "Next [d]iagnostic")
+  map("[d",              vim.diagnostic.goto_prev,              "Previous [d]iagnostic")
+  map("]d",              vim.diagnostic.goto_next,              "Next [d]iagnostic")
 end
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
-    local function nmap(lhs, rhs, desc)
+    local function buf_map(lhs, rhs, desc)
       vim.keymap.set("n", lhs, rhs, { desc = desc, buffer = args.buf })
     end
 
-    ---@format disable
-    nmap("<leader>=",       vim.lsp.buf.format,                    "LSP format")
-    nmap("<leader>r",       vim.lsp.buf.rename,                    "LSP [r]ename")
-    nmap("<leader>c",       vim.lsp.buf.code_action,               "LSP [c]ode action")
+    if 1 then
+      ---@format disable
+      buf_map("<leader>=",       vim.lsp.buf.format,                    "LSP format")
+      buf_map("<leader>r",       vim.lsp.buf.rename,                    "LSP [r]ename")
+      buf_map("<leader>c",       vim.lsp.buf.code_action,               "LSP [c]ode action")
 
-    nmap("<leader>d",       telescope_builtin.diagnostics,         "LSP [d]iagnostics")
-    nmap("gd",              telescope_builtin.lsp_definitions,     "LSP [d]efinitions")
-    nmap("gr",              telescope_builtin.lsp_references,      "LSP [r]eferences")
+      buf_map("<leader>e",       telescope_builtin.diagnostics,         "LSP diagnostics")
+      buf_map("gd",              telescope_builtin.lsp_definitions,     "LSP [d]efinitions")
+      buf_map("gr",              telescope_builtin.lsp_references,      "LSP [r]eferences")
 
-    nmap("K",               vim.lsp.buf.hover,                     "LSP hover")
+      buf_map("K",               vim.lsp.buf.hover,                     "LSP hover")
+    end
+
+
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if (client.name == 'jdtls') then
+      local jdtls = require("jdtls")
+      ---@format disable
+      buf_map("<leader>df",      jdtls.test_class,                      "Test class")
+      buf_map("<leader>dn",      jdtls.test_nearest_method,             "Test nearest method")
+    end
   end,
 })
-
-setup()
