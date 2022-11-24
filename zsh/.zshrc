@@ -26,19 +26,20 @@ bindkey -v
 PLUGINS_HOME="${XDG_DATA_HOME}/zsh-plugins"
 plugins=(
   zsh-users/zsh-autosuggestions
-  mafredri/zsh-async
+  mafredri/zsh-async # required by pure
   sindresorhus/pure
-  agkozak/zsh-z
   kutsan/zsh-system-clipboard
   zsh-users/zsh-syntax-highlighting # must be last
 )
-for plugin in $plugins; do
-  if [[ ! -d ${PLUGINS_HOME}/$plugin ]]; then
-    mkdir -p ${PLUGINS_HOME}/${plugin%/*}
-    git clone --depth 1 https://github.com/$plugin.git ${PLUGINS_HOME}/$plugin
-  fi
-  source ${PLUGINS_HOME}/$plugin/*.plugin.zsh
-done
+zsh-plugins-install() {
+  for plugin in $plugins; do
+    if [[ ! -d ${PLUGINS_HOME}/$plugin ]]; then
+      mkdir -p ${PLUGINS_HOME}/${plugin%/*}
+      git clone --depth 1 https://github.com/$plugin.git ${PLUGINS_HOME}/$plugin
+    fi
+    source ${PLUGINS_HOME}/$plugin/*.plugin.zsh
+  done
+}
 zsh-plugins-update() {
   for plugin in $plugins; do
     git -C ${PLUGINS_HOME}/$plugin pull
@@ -49,3 +50,7 @@ zsh-plugins-remove() {
     rm -rf $plugin
   done
 }
+zsh-plugins-install
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(zoxide init zsh)"

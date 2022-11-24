@@ -154,3 +154,6 @@ schemes:
       white:   '0xe6d5ae'
 
 colors: *gruvbox_material_medium_dark
+
+key_bindings:
+  - { key: Space, mods: Control, chars: "\x00" }
