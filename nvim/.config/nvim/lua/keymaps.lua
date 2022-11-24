@@ -21,6 +21,8 @@ nmap("<C-n>", "<Cmd>NvimTreeToggle<CR>", "Toggle tree")
 nmap("[d", vim.diagnostic.goto_prev, "Previous diagnostic")
 nmap("]d", vim.diagnostic.goto_next, "Next diagnostic")
 
+nmap("gs", ":e $HOME/scratch.md<CR>", "Goto scratch")
+
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     local function buf_map(lhs, rhs, desc)
