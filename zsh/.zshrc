@@ -21,6 +21,10 @@ autoload -Uz compinit && compinit
 
 # vi
 bindkey -v
+KEYTIMEOUT=1
+
+# keybindings
+bindkey -s ^n "tmux-sessionizer\n"
 
 # plugins
 PLUGINS_HOME="${XDG_DATA_HOME}/zsh-plugins"
