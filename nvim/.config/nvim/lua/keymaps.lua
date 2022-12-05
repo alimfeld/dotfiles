@@ -16,8 +16,6 @@ nmap("<leader>sf", telescope_builtin.find_files, "Search file")
 nmap("<leader>sb", telescope_builtin.buffers, "Search buffer")
 nmap("<leader>sp", telescope_builtin.live_grep, "Search pattern")
 
-nmap("<C-n>", "<Cmd>NvimTreeToggle<CR>", "Toggle tree")
-
 nmap("[d", vim.diagnostic.goto_prev, "Previous diagnostic")
 nmap("]d", vim.diagnostic.goto_next, "Next diagnostic")
 
