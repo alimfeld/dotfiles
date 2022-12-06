@@ -1,3 +1,3 @@
-require("options")
-require("plugins")
-require("keymaps")
+require("aim.core")
+require("aim.packer")
+require("aim.plugins")
