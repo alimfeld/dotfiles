@@ -10,6 +10,7 @@ export PATH="$PATH:$HOME/.local/bin"
 alias ls="ls -G"
 alias ll="ls -lG"
 alias vim="nvim"
+alias lg="lazygit"
 
 # history
 HISTSIZE=10000
