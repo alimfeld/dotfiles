@@ -14,8 +14,8 @@ if not jdtls_configured then
       "--jvm-arg=-javaagent:" .. lombok,
     }
     -- add bundles installed w/ Mason
-    jdtls_bundles = {}
-    vim.fn.glob(mason_packages .. "/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar", 1, 1)
+    jdtls_bundles = vim.fn.glob(mason_packages ..
+      "/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar", 1, 1)
     vim.list_extend(jdtls_bundles, vim.fn.glob(mason_packages .. "/java-test/extension/server/*[0123456789].jar", 1, 1))
   end
   -- do this configuration just once

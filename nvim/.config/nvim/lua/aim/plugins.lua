@@ -14,45 +14,6 @@ require("lualine").setup({
 require("gruvbox").setup()
 vim.cmd([[colorscheme gruvbox]])
 
-local cmp = require("cmp")
-local luasnip = require("luasnip")
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
-  mapping = cmp.mapping.preset.insert({
-    ["<C-Space>"] = cmp.mapping.complete({}),
-    ["<CR>"] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    }),
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-  }),
-  sources = {
-    { name = "nvim_lsp" },
-    { name = "luasnip" },
-  },
-})
-
 require("nvim-treesitter.configs").setup({
   highlight = {
     enable = true,
@@ -115,8 +76,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     local dap = require("dap")
     vim.keymap.set("n", "<C-p>", dap.toggle_breakpoint, { desc = "Toggle breakpoint", buffer = 0 })
-    vim.keymap.set("n", "gd", telescope_builtin.lsp_definitions, { desc = "Goto definitions", buffer = 0 })
-    vim.keymap.set("n", "gr", telescope_builtin.lsp_references, { desc = "Goto references", buffer = 0 })
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     if (client.name == 'jdtls') then
       local jdtls = require("jdtls")
@@ -127,38 +86,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-require("mason").setup()
+local lsp = require('lsp-zero')
+lsp.preset('recommended')
+lsp.nvim_workspace()
+lsp.build_options("jdtls")
+lsp.setup()
 
 require("mason-null-ls").setup({ automatic_setup = true })
 require("mason-null-ls").setup_handlers({})
-
 require("null-ls").setup()
-
-require("mason-lspconfig").setup()
-require("mason-lspconfig").setup_handlers({
-  function(lsp)
-    require("lspconfig")[lsp].setup({
-      capabilities = capabilities,
-    })
-  end,
-  ["jdtls"] = function()
-    -- do nothing... jdtls setup is handled by nvim-jdtls
-  end,
-  ["sumneko_lua"] = function()
-    require("lspconfig").sumneko_lua.setup({
-      capabilities = capabilities,
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { "vim" },
-          },
-        },
-      },
-    })
-  end,
-})
-
 require("mason-nvim-dap").setup({ automatic_setup = true })
 require("mason-nvim-dap").setup_handlers({})
