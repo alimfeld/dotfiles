@@ -24,15 +24,12 @@ vim.wo.signcolumn = "yes"
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 vim.keymap.set("n", "gs", ":e $HOME/scratch.md<CR>", { desc = "Goto scratch" })
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function()
-    vim.keymap.set("n", "<leader>fo", vim.lsp.buf.format, { desc = "Format", buffer = 0 })
-    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename", buffer = 0 })
-    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action", buffer = 0 })
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP hover", buffer = 0 })
+    vim.keymap.set("n", "<leader>jf", vim.lsp.buf.format, { desc = "Format", buffer = 0 })
+    vim.keymap.set("n", "<leader>jn", vim.lsp.buf.rename, { desc = "Rename", buffer = 0 })
+    vim.keymap.set("n", "<leader>ja", vim.lsp.buf.code_action, { desc = "Code action", buffer = 0 })
   end,
 })

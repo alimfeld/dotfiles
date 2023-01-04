@@ -67,10 +67,10 @@ require("nvim-treesitter.configs").setup({
 })
 
 local telescope_builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>sf", telescope_builtin.find_files, { desc = "Search file" })
-vim.keymap.set("n", "<leader>sb", telescope_builtin.buffers, { desc = "Search buffer" })
-vim.keymap.set("n", "<leader>sp", telescope_builtin.live_grep, { desc = "Search pattern" })
-vim.keymap.set("n", "<leader>sd", telescope_builtin.diagnostics, { desc = "Search diagnostics" })
+vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, { desc = "Find file" })
+vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers, { desc = "Find buffer" })
+vim.keymap.set("n", "<leader>fp", telescope_builtin.live_grep, { desc = "Find pattern" })
+vim.keymap.set("n", "<leader>fd", telescope_builtin.diagnostics, { desc = "Find diagnostics" })
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
@@ -79,7 +79,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     if (client.name == 'jdtls') then
       local jdtls = require("jdtls")
-      vim.keymap.set("n", "<leader>oi", jdtls.organize_imports, { desc = "Organize imports", buffer = 0 })
+      vim.keymap.set("n", "<leader>ji", jdtls.organize_imports, { desc = "Organize imports", buffer = 0 })
       vim.keymap.set("n", "<leader>df", jdtls.test_class, { desc = "Test class", buffer = 0 })
       vim.keymap.set("n", "<leader>dn", jdtls.test_nearest_method, { desc = "Test nearest method", buffer = 0 })
     end
