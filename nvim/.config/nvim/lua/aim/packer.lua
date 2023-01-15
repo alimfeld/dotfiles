@@ -16,20 +16,60 @@ require("packer").startup({
 
     use { "wbthomason/packer.nvim" }
 
+    -- Utils
+    use { "nvim-lua/plenary.nvim" }
+
+    -- Colorscheme
+    use { "ellisonleao/gruvbox.nvim" }
+
+    -- Icons
+    use { "kyazdani42/nvim-web-devicons" }
+
+    -- Statusline
+    use { "nvim-lualine/lualine.nvim" }
+
+    -- Bufferline
+    use { "akinsho/bufferline.nvim" }
+
+    -- Indent guides
+    use { "lukas-reineke/indent-blankline.nvim" }
+
+    -- Tree
+    use { "kyazdani42/nvim-tree.lua"}
+
+    -- Telescope
+    use { "nvim-telescope/telescope.nvim", branch = "0.1.x" }
+
+    -- Term
+    use { "akinsho/toggleterm.nvim" }
+
+    -- Git
     use { "tpope/vim-fugitive" }
+    use { "lewis6991/gitsigns.nvim" }
+
+    -- Comment
+    use { "numToStr/Comment.nvim" }
+
+    -- Utils
+    use { "wellle/targets.vim" }
     use { "tpope/vim-sleuth" }
     use { "tpope/vim-surround" }
+    use { "tpope/vim-repeat" }
+
+    -- Editorconfig
+    use { "editorconfig/editorconfig-vim" }
+
+    -- Tmux integration
     use { "christoomey/vim-tmux-navigator" }
-    use { "ellisonleao/gruvbox.nvim" }
+
+    -- Keymappings
     use { "folke/which-key.nvim" }
-    use { "lewis6991/gitsigns.nvim" }
-    use { "numToStr/Comment.nvim" }
-    use { "nvim-lua/plenary.nvim" }
-    use { "nvim-lualine/lualine.nvim" }
-    use { "nvim-telescope/telescope.nvim", branch = "0.1.x" }
+
+    -- Treesitter
     use { "nvim-treesitter/nvim-treesitter" }
     use { "nvim-treesitter/nvim-treesitter-textobjects" }
 
+    -- LSP & Snippets
     use {
       'VonHeikemen/lsp-zero.nvim',
       requires = {
@@ -49,11 +89,17 @@ require("packer").startup({
         { 'rafamadriz/friendly-snippets' },
       }
     }
+
+    -- Java
     use { "mfussenegger/nvim-jdtls" }
+
+    -- DAP
     use { "mfussenegger/nvim-dap" }
-    use { "jayp0521/mason-null-ls.nvim" }
     use { "jayp0521/mason-nvim-dap.nvim" }
+
+    -- Null-ls
     use { "jose-elias-alvarez/null-ls.nvim" }
+    use { "jayp0521/mason-null-ls.nvim" }
 
     if packer_bootstrap then
       require("packer").sync()
