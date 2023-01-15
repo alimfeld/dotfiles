@@ -11,6 +11,12 @@ require("lualine").setup({
   },
 })
 
+require("bufferline").setup()
+
+require("nvim-tree").setup()
+
+require("toggleterm").setup()
+
 require("gruvbox").setup()
 vim.cmd([[colorscheme gruvbox]])
 
