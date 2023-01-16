@@ -14,6 +14,7 @@ require("lualine").setup({
 require("bufferline").setup()
 
 require("nvim-tree").setup()
+vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "Toggle tree" })
 
 require("toggleterm").setup()
 
