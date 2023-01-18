@@ -11,10 +11,21 @@ require("lualine").setup({
   },
 })
 
-require("bufferline").setup()
+require("bufferline").setup({
+  options = {
+    offsets = {
+      {
+        filetype = "NvimTree"
+      }
+    }
+  }
+})
 
-require("nvim-tree").setup()
-vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "Toggle tree" })
+require("nvim-tree").setup({
+  view = {
+    adaptive_size = true
+  }
+})
 
 require("toggleterm").setup()
 
@@ -73,26 +84,29 @@ require("nvim-treesitter.configs").setup({
   },
 })
 
-local telescope_builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, { desc = "Find file" })
-vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers, { desc = "Find buffer" })
-vim.keymap.set("n", "<leader>fp", telescope_builtin.live_grep, { desc = "Find pattern" })
-vim.keymap.set("n", "<leader>fd", telescope_builtin.diagnostics, { desc = "Find diagnostics" })
-
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
 lsp.set_preferences({
-  set_lsp_keymaps = { omit = { "<C-k>" } }
+  set_lsp_keymaps = { omit = { "K", "<C-k>" } }
 })
 lsp.nvim_workspace()
 lsp.build_options("jdtls")
 lsp.setup()
-
 require("mason-null-ls").setup({ automatic_setup = true })
 require("mason-null-ls").setup_handlers({})
 require("null-ls").setup()
 require("mason-nvim-dap").setup({ automatic_setup = true })
 require("mason-nvim-dap").setup_handlers({})
+
+vim.keymap.set("n", "J", ":BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "K", ":BufferLineCycleNext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<C-m>", ":ToggleTerm<CR>", { desc = "Toggle term" })
+vim.keymap.set("n", "<C-n>", ":NvimTreeFindFileToggle<CR>", { desc = "Toggle tree" })
+local telescope = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", telescope.find_files, { desc = "Find file" })
+vim.keymap.set("n", "<leader>fb", telescope.buffers, { desc = "Find buffer" })
+vim.keymap.set("n", "<leader>fp", telescope.live_grep, { desc = "Find pattern" })
+vim.keymap.set("n", "<leader>fd", telescope.diagnostics, { desc = "Find diagnostics" })
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
