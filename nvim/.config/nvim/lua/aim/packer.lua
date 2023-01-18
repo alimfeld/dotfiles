@@ -28,9 +28,6 @@ require("packer").startup({
     -- Statusline
     use { "nvim-lualine/lualine.nvim" }
 
-    -- Bufferline
-    use { "akinsho/bufferline.nvim" }
-
     -- Indent guides
     use { "lukas-reineke/indent-blankline.nvim" }
 
@@ -40,9 +37,6 @@ require("packer").startup({
     -- Telescope
     use { "nvim-telescope/telescope.nvim", branch = "0.1.x" }
 
-    -- Term
-    use { "akinsho/toggleterm.nvim" }
-
     -- Git
     use { "tpope/vim-fugitive" }
     use { "lewis6991/gitsigns.nvim" }
@@ -51,13 +45,8 @@ require("packer").startup({
     use { "numToStr/Comment.nvim" }
 
     -- Utils
-    use { "wellle/targets.vim" }
     use { "tpope/vim-sleuth" }
     use { "tpope/vim-surround" }
-    use { "tpope/vim-repeat" }
-
-    -- Editorconfig
-    use { "editorconfig/editorconfig-vim" }
 
     -- Tmux integration
     use { "christoomey/vim-tmux-navigator" }
