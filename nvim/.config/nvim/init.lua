@@ -1,3 +1,3 @@
-require("aim.core")
-require("aim.packer")
-require("aim.plugins")
+require("user.core")
+require("user.packer")
+require("user.plugins")
