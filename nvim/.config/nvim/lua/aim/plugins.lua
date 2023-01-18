@@ -11,23 +11,11 @@ require("lualine").setup({
   },
 })
 
-require("bufferline").setup({
-  options = {
-    offsets = {
-      {
-        filetype = "NvimTree"
-      }
-    }
-  }
-})
-
 require("nvim-tree").setup({
   view = {
     adaptive_size = true
   }
 })
-
-require("toggleterm").setup()
 
 require("gruvbox").setup()
 vim.cmd([[colorscheme gruvbox]])
@@ -87,7 +75,7 @@ require("nvim-treesitter.configs").setup({
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
 lsp.set_preferences({
-  set_lsp_keymaps = { omit = { "K", "<C-k>" } }
+  set_lsp_keymaps = { omit = { "<C-k>" } }
 })
 lsp.nvim_workspace()
 lsp.build_options("jdtls")
@@ -98,9 +86,6 @@ require("null-ls").setup()
 require("mason-nvim-dap").setup({ automatic_setup = true })
 require("mason-nvim-dap").setup_handlers({})
 
-vim.keymap.set("n", "J", ":BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
-vim.keymap.set("n", "K", ":BufferLineCycleNext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<C-m>", ":ToggleTerm<CR>", { desc = "Toggle term" })
 vim.keymap.set("n", "<C-n>", ":NvimTreeFindFileToggle<CR>", { desc = "Toggle tree" })
 local telescope = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", telescope.find_files, { desc = "Find file" })
