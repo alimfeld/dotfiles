@@ -20,7 +20,6 @@ vim.o.undofile = true
 vim.o.updatetime = 250
 
 vim.wo.number = true
-vim.wo.relativenumber = true
 vim.wo.signcolumn = "yes"
 
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
