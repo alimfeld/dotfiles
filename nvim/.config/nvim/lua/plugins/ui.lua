@@ -1,14 +1,12 @@
 return {
   {
+    lazy = true,
     "ellisonleao/gruvbox.nvim",
-    lazy = false,
     priority = 1000,
-    config = function()
-      vim.cmd([[colorscheme gruvbox]])
-    end,
   },
   {
     "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
     opts = {
       options = {
         theme = "gruvbox",
@@ -18,9 +16,10 @@ return {
   },
   {
     "nvim-tree/nvim-tree.lua",
+    event = "VeryLazy",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
-      { "<C-n>", ":NvimTreeFindFileToggle<CR>", { desc = "Toggle tree" }}
+      { "<C-n>", ":NvimTreeFindFileToggle<CR>", { desc = "Toggle tree" } }
     },
     opts = {
       view = {
@@ -29,4 +28,3 @@ return {
     }
   }
 }
-

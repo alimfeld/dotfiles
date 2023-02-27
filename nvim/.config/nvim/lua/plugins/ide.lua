@@ -1,6 +1,7 @@
 return {
   {
     'VonHeikemen/lsp-zero.nvim',
+    event = "VeryLazy",
     branch = 'v1.x',
     dependencies = {
       -- LSP Support
@@ -33,6 +34,7 @@ return {
   },
   {
     "mfussenegger/nvim-jdtls",
+    event = "VeryLazy",
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
@@ -49,6 +51,7 @@ return {
   },
   {
     "mfussenegger/nvim-dap",
+    event = "VeryLazy",
     dependencies = { "jayp0521/mason-nvim-dap.nvim" },
     config = function()
       require("mason-nvim-dap").setup({ automatic_setup = true })
