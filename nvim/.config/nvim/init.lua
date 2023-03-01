@@ -20,7 +20,7 @@ vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set("n", "gs", ":e $HOME/scratch.md<CR>", { desc = "Goto scratch" })
 
-vim.api.nvim_create_autocmd('LspAttach', {
+vim.api.nvim_create_autocmd("LspAttach", {
   callback = function()
     vim.keymap.set("n", "<leader>jf", vim.lsp.buf.format, { desc = "Format", buffer = 0 })
     vim.keymap.set("n", "<leader>jn", vim.lsp.buf.rename, { desc = "Rename", buffer = 0 })

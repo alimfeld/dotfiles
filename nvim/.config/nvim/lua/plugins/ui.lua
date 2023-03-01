@@ -11,20 +11,28 @@ return {
       options = {
         theme = "gruvbox",
         globalstatus = true,
-      }
-    }
+      },
+    },
   },
   {
     "nvim-tree/nvim-tree.lua",
-    event = "VeryLazy",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
-      { "<C-n>", ":NvimTreeFindFileToggle<CR>", { desc = "Toggle tree" } }
+      { "<C-n>", ":NvimTreeFindFileToggle<CR>", { desc = "Toggle tree" } },
     },
     opts = {
       view = {
-        adaptive_size = true
-      }
-    }
-  }
+        adaptive_size = true,
+      },
+    },
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    config = true,
+  },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    config = true,
+  },
 }
