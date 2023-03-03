@@ -22,8 +22,8 @@ vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
 -- Navigate quickfix list
-vim.keymap.set("n", "]q", ":cn<CR>", { desc = "Next error in quickfix list" })
-vim.keymap.set("n", "[q", ":cp<CR>", { desc = "Previous error in quickfix list" })
+vim.keymap.set("n", "<C-.>", ":cn<CR>", { desc = "Next item in quickfix list" })
+vim.keymap.set("n", "<C-,>", ":cp<CR>", { desc = "Previous item in quickfix list" })
 
 vim.keymap.set("n", "gs", ":e $HOME/scratch.md<CR>", { desc = "Goto scratch" })
 
