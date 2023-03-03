@@ -16,8 +16,15 @@ vim.wo.number = true
 vim.wo.signcolumn = "yes"
 
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- Shift left/right retaining selection in visual mode
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+
+-- Navigate quickfix list
+vim.keymap.set("n", "]q", ":cn<CR>", { desc = "Next error in quickfix list" })
+vim.keymap.set("n", "[q", ":cp<CR>", { desc = "Previous error in quickfix list" })
+
 vim.keymap.set("n", "gs", ":e $HOME/scratch.md<CR>", { desc = "Goto scratch" })
 
 vim.api.nvim_create_autocmd("LspAttach", {

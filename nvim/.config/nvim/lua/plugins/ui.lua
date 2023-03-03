@@ -27,7 +27,7 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    event = { "BufReadPost", "BufNewFile" },
+    event = "VeryLazy",
     config = true,
   },
   {

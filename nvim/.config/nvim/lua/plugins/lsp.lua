@@ -1,7 +1,7 @@
 return {
   {
     "VonHeikemen/lsp-zero.nvim",
-    event = { "BufReadPost", "BufNewFile" },
+    event = "VeryLazy",
     branch = "v1.x",
     dependencies = {
       -- LSP Support
@@ -29,7 +29,7 @@ return {
       -- lsp-zero setup
       local lsp = require("lsp-zero").preset({
         name = "minimal",
-        set_lsp_keymaps = { omit = { "<C-k>" } },
+        set_lsp_keymaps = { preserve_mappings = false, omit = { "<C-k>" } },
         manage_nvim_cmp = true,
         suggest_lsp_servers = false,
       })
