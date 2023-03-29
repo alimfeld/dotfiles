@@ -21,10 +21,6 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
--- Navigate quickfix list
-vim.keymap.set("n", "<C-.>", ":cn<CR>", { desc = "Next item in quickfix list" })
-vim.keymap.set("n", "<C-,>", ":cp<CR>", { desc = "Previous item in quickfix list" })
-
 vim.keymap.set("n", "gs", ":e $HOME/scratch.md<CR>", { desc = "Goto scratch" })
 
 vim.api.nvim_create_autocmd("LspAttach", {
