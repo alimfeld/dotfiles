@@ -36,6 +36,10 @@ return {
       lsp.nvim_workspace()
       lsp.skip_server_setup({ "jdtls" })
       lsp.setup()
+      -- diagnostics
+      vim.diagnostic.config({
+        virtual_text = true,
+      })
 
       -- null-ls setup
       local null_ls = require("null-ls")
