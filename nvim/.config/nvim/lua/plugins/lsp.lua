@@ -13,6 +13,9 @@ return {
       { "jose-elias-alvarez/null-ls.nvim" },
       { "jay-babu/mason-null-ls.nvim" },
 
+      -- format
+      { "lukas-reineke/lsp-format.nvim" },
+
       -- Autocompletion
       { "hrsh7th/nvim-cmp" }, -- Required
       { "hrsh7th/cmp-nvim-lsp" }, -- Required
@@ -33,6 +36,9 @@ return {
         manage_nvim_cmp = true,
         suggest_lsp_servers = false,
       })
+      lsp.on_attach(function(client, _)
+        require("lsp-format").on_attach(client)
+      end)
       lsp.nvim_workspace()
       lsp.skip_server_setup({ "jdtls" })
       lsp.setup()
