@@ -25,9 +25,8 @@ vim.keymap.set("n", "gs", ":e $HOME/scratch.md<CR>", { desc = "Goto scratch" })
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function()
-    vim.keymap.set("n", "<leader>jf", vim.lsp.buf.format, { desc = "Format", buffer = 0 })
-    vim.keymap.set("n", "<leader>jn", vim.lsp.buf.rename, { desc = "Rename", buffer = 0 })
-    vim.keymap.set("n", "<leader>ja", vim.lsp.buf.code_action, { desc = "Code action", buffer = 0 })
+    vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "Rename", buffer = 0 })
+    vim.keymap.set("n", "<leader>c", vim.lsp.buf.code_action, { desc = "Code action", buffer = 0 })
   end,
 })
 
