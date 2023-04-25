@@ -4,4 +4,8 @@ return {
     event = "VeryLazy",
     config = true,
   },
+  {
+    "tpope/vim-surround",
+    event = "VeryLazy",
+  },
 }
