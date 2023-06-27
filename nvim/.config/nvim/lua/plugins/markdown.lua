@@ -3,6 +3,6 @@ return {
   ft = "markdown",
   build = "cd app && yarn install",
   keys = {
-    { "<leader>m", ":MarkdownPreview<CR>", { desc = "Toggle tree" } },
+    { "<leader>m", ":MarkdownPreview<CR>", desc = "Markdown Preview" },
   },
 }
