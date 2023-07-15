@@ -1,3 +1,3 @@
 return {
-	{ "christoomey/vim-tmux-navigator", event = "VeryLazy" },
+  "christoomey/vim-tmux-navigator", event = "VeryLazy"
 }
