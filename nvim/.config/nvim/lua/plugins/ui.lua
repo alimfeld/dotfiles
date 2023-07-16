@@ -38,4 +38,8 @@ return {
       wk.register(opts.defaults)
     end,
   },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+  },
 }
