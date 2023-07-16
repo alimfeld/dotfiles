@@ -12,13 +12,24 @@ return {
       telescope.load_extension("live_grep_args")
       local builtin = require("telescope.builtin")
       -- find (file)
-      vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find Buffer" })
-      vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find File" })
+      vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Files" })
+      vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Recent files" })
+      vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Buffers" })
       -- search
-      vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "Search Diagnostics" })
+      vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "Diagnostics" })
       vim.keymap.set("n", "<leader>sg", telescope.extensions.live_grep_args.live_grep_args,
         { desc = "Grep" })
-      vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "Search Keymaps" })
+      vim.keymap.set("n", "<leader>sc", builtin.commands, { desc = "Commands" })
+      vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "Help tags" })
+      vim.keymap.set("n", "<leader>sq", builtin.quickfix, { desc = "Quickfix" })
+      -- LSP
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function()
+          vim.keymap.set("n", "gd", builtin.lsp_definitions, { buffer = 0, desc = "Definitions" })
+          vim.keymap.set("n", "gr", builtin.lsp_references, { buffer = 0, desc = "References" })
+          vim.keymap.set("n", "gi", builtin.lsp_implementations, { buffer = 0, desc = "Implementations" })
+        end,
+      })
     end,
   },
 }
