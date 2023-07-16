@@ -11,11 +11,11 @@ return {
       local telescope = require("telescope")
       telescope.load_extension("live_grep_args")
       local builtin = require("telescope.builtin")
-      -- find (file)
+      -- <f>ind (file)
       vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Files" })
       vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Recent files" })
       vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Buffers" })
-      -- search
+      -- <s>earch
       vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "Diagnostics" })
       vim.keymap.set("n", "<leader>sg", telescope.extensions.live_grep_args.live_grep_args,
         { desc = "Grep" })
@@ -25,6 +25,7 @@ return {
       -- LSP
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function()
+          -- <g>oto
           vim.keymap.set("n", "gd", builtin.lsp_definitions, { buffer = 0, desc = "Definitions" })
           vim.keymap.set("n", "gr", builtin.lsp_references, { buffer = 0, desc = "References" })
           vim.keymap.set("n", "gi", builtin.lsp_implementations, { buffer = 0, desc = "Implementations" })
