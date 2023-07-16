@@ -21,22 +21,7 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    opts = {
-      defaults = {
-        mode = { "n", "v" },
-        ["g"] = { name = "+Goto" },
-        ["]"] = { name = "+Next" },
-        ["["] = { name = "+Prev" },
-        ["<leader>f"] = { name = "+File/Find" },
-        ["<leader>s"] = { name = "+Search" },
-        ["<leader>c"] = { name = "+Code" },
-      }
-    },
-    config = function(_, opts)
-      local wk = require("which-key")
-      wk.setup(opts)
-      wk.register(opts.defaults)
-    end,
+    config = true,
   },
   {
     "lukas-reineke/indent-blankline.nvim",
