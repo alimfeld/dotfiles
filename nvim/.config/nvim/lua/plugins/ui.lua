@@ -1,14 +1,16 @@
 return {
   {
     "ellisonleao/gruvbox.nvim",
+    version = false,
     priority = 1000,
   },
   {
     "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
+    version = false,
     dependencies = {
       "nvim-tree/nvim-web-devicons"
     },
+    event = "VeryLazy",
     opts = {
       options = {
         theme = "gruvbox",
@@ -28,7 +30,6 @@ return {
         ["<leader>f"] = { name = "+File/Find" },
         ["<leader>s"] = { name = "+Search" },
         ["<leader>c"] = { name = "+Code" },
-        ["<leader>h"] = { name = "+Harpoon" },
       }
     },
     config = function(_, opts)
