@@ -14,8 +14,6 @@ vim.o.updatetime = 250
 vim.wo.number = true
 vim.wo.signcolumn = "yes"
 
-vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
-
 -- Shift left/right retaining selection in visual mode
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
