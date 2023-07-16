@@ -4,15 +4,14 @@ return {
   build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile" },
   cmd = { "TSUpdateSync" },
-  opts = {
-    highlight = {
-      enable = true,
-    },
-    indent = {
-      enable = true,
-    },
-  },
-  config = function(_, opts)
-    require("nvim-treesitter.configs").setup(opts)
+  config = function()
+    require("nvim-treesitter.configs").setup({
+      highlight = {
+        enable = true,
+      },
+      indent = {
+        enable = true,
+      },
+    })
   end,
 }
