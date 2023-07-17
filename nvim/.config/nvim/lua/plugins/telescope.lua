@@ -12,6 +12,7 @@ return {
       telescope.load_extension("live_grep_args")
       local builtin = require("telescope.builtin")
       -- <f>ind (file)
+      vim.keymap.set("n", "<leader><space>", builtin.find_files, { desc = "Files" })
       vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Files" })
       vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Recent files" })
       vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Buffers" })
