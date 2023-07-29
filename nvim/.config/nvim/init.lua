@@ -32,6 +32,12 @@ vim.filetype.add({
   },
 })
 
+-- Buffers
+vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete buffer" })
+
+-- Scratch
+vim.keymap.set("n", "gs", "<cmd>e $HOME/scratch.md<cr>", { desc = "Goto scratch" })
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
