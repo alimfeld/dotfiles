@@ -13,6 +13,8 @@ alias ll="ls -lG"
 alias vim="nvim"
 alias lg="lazygit"
 
+[ -f ~/.aliases ] && source ~/.aliases
+
 # history
 HISTSIZE=10000
 SAVEHIST=10000
@@ -60,3 +62,4 @@ zsh-plugins-install
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(zoxide init zsh)"
+eval "$(direnv hook zsh)"
