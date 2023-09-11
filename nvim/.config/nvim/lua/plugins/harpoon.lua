@@ -5,8 +5,8 @@ return {
   },
   event = { "VeryLazy" },
   config = function()
-    vim.keymap.set("n", "<leader>th", require("harpoon.ui").toggle_quick_menu, { desc = "Toggle quick menu" })
-    vim.keymap.set("n", "<leader>a", require("harpoon.mark").add_file, { desc = "Add file" })
+    vim.keymap.set("n", "<leader>hh", require("harpoon.ui").toggle_quick_menu, { desc = "Toggle quick menu" })
+    vim.keymap.set("n", "<leader>ha", require("harpoon.mark").add_file, { desc = "Add file" })
     vim.keymap.set("n", "<leader>j", function()
       require("harpoon.ui").nav_file(1)
     end, { desc = "Nav file 1" })
