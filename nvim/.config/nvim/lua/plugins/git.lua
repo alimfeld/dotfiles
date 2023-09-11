@@ -6,6 +6,10 @@ return {
   {
     "sindrets/diffview.nvim",
     event = { "VeryLazy" },
+    config = function()
+      vim.keymap.set("n", "<leader>gh", ":DiffviewFileHistory ~<CR>", { desc = "Git filehistory" })
+      vim.keymap.set("n", "<leader>gH", ":DiffviewFileHistory<CR>", { desc = "Git history" })
+    end
   },
   {
     "lewis6991/gitsigns.nvim",
@@ -29,7 +33,7 @@ return {
             gs.next_hunk()
           end)
           return "<Ignore>"
-        end, { expr = true })
+        end, { expr = true, desc = "Next hunk" })
 
         map("n", "[c", function()
           if vim.wo.diff then
@@ -39,27 +43,15 @@ return {
             gs.prev_hunk()
           end)
           return "<Ignore>"
-        end, { expr = true })
+        end, { expr = true, desc = "Previous hunk" })
 
         -- Actions
-        map("n", "<leader>hs", gs.stage_hunk, { desc = "Stage hunk" })
-        map("n", "<leader>hr", gs.reset_hunk, { desc = "Reset hunk" })
-        map("v", "<leader>hs", function()
-          gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") }, { desc = "Stage hunk" })
-        end)
-        map("v", "<leader>hr", function()
-          gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") }, { desc = "Reset hunk" })
-        end)
-        map("n", "<leader>hS", gs.stage_buffer, { desc = "Stage buffer" })
-        map("n", "<leader>hu", gs.undo_stage_hunk, { desc = "Undo stage hunk" })
-        map("n", "<leader>hR", gs.reset_buffer, { desc = "Reset buffer" })
-        map("n", "<leader>hp", gs.preview_hunk, { desc = "Preview hunk" })
-        map("n", "<leader>hb", function()
+        map("n", "<leader>gb", function()
           gs.blame_line({ full = true })
         end, { desc = "Blame line" })
         map("n", "<leader>tb", gs.toggle_current_line_blame, { desc = "Toggle current line blame" })
-        map("n", "<leader>hd", gs.diffthis, { desc = "Diff" })
-        map("n", "<leader>hD", function()
+        map("n", "<leader>gd", gs.diffthis, { desc = "Diff" })
+        map("n", "<leader>gD", function()
           gs.diffthis("~")
         end, { desc = "Diff HEAD" })
         map("n", "<leader>td", gs.toggle_deleted, { desc = "Toggle deleted" })
