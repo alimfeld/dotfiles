@@ -7,8 +7,10 @@ return {
     "sindrets/diffview.nvim",
     event = { "VeryLazy" },
     config = function()
-      vim.keymap.set("n", "<leader>gh", ":DiffviewFileHistory ~<CR>", { desc = "Git filehistory" })
-      vim.keymap.set("n", "<leader>gH", ":DiffviewFileHistory<CR>", { desc = "Git history" })
+      vim.keymap.set("n", "<leader>gf", ":DiffviewFileHistory %<CR>", { desc = "File history" })
+      vim.keymap.set("n", "<leader>gF", ":DiffviewFileHistory<CR>", { desc = "Files history" })
+      vim.keymap.set("n", "<leader>gd", ":DiffviewOpen<CR>", { desc = "Diff" })
+      vim.keymap.set("n", "<leader>gD", ":DiffviewOpen HEAD<CR>", { desc = "Diff HEAD" })
     end
   },
   {
@@ -50,10 +52,6 @@ return {
           gs.blame_line({ full = true })
         end, { desc = "Blame line" })
         map("n", "<leader>tb", gs.toggle_current_line_blame, { desc = "Toggle current line blame" })
-        map("n", "<leader>gd", gs.diffthis, { desc = "Diff" })
-        map("n", "<leader>gD", function()
-          gs.diffthis("~")
-        end, { desc = "Diff HEAD" })
         map("n", "<leader>td", gs.toggle_deleted, { desc = "Toggle deleted" })
 
         -- Text object
