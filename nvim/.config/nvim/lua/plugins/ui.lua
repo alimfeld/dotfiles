@@ -35,6 +35,7 @@ return {
         ["<leader>h"] = { name = "+harpoon" },
         ["<leader>q"] = { name = "+quit/session" },
         ["<leader>s"] = { name = "+search" },
+        ["<leader>t"] = { name = "+tab" },
       },
     },
     config = function(_, opts)
