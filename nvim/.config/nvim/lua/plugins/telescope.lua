@@ -52,7 +52,8 @@ return {
         builtin.find_files({ hidden = true })
       end, { desc = "Hidden files" })
       vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Recent files" })
-      vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Buffers" })
+      -- <b>uffers
+      vim.keymap.set("n", "<leader>bb", builtin.buffers, { desc = "Buffers" })
       -- <s>earch
       vim.keymap.set("n", "<leader>sb", builtin.git_branches, { desc = "Branches" })
       vim.keymap.set("n", "<leader>sc", builtin.git_commits, { desc = "Commits" })

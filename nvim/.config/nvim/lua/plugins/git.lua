@@ -2,6 +2,9 @@ return {
   {
     "tpope/vim-fugitive",
     event = { "VeryLazy" },
+    config = function()
+      vim.keymap.set("n", "<leader>gg", ":Git<CR>", { desc = "Git" })
+    end,
   },
   {
     "sindrets/diffview.nvim",
@@ -11,7 +14,7 @@ return {
       vim.keymap.set("n", "<leader>gF", ":DiffviewFileHistory<CR>", { desc = "Files history" })
       vim.keymap.set("n", "<leader>gd", ":DiffviewOpen<CR>", { desc = "Diff" })
       vim.keymap.set("n", "<leader>gD", ":DiffviewOpen HEAD<CR>", { desc = "Diff HEAD" })
-    end
+    end,
   },
   {
     "lewis6991/gitsigns.nvim",
@@ -51,8 +54,8 @@ return {
         map("n", "<leader>gb", function()
           gs.blame_line({ full = true })
         end, { desc = "Blame line" })
-        map("n", "<leader>tb", gs.toggle_current_line_blame, { desc = "Toggle current line blame" })
-        map("n", "<leader>td", gs.toggle_deleted, { desc = "Toggle deleted" })
+        map("n", "<leader>gtb", gs.toggle_current_line_blame, { desc = "Toggle current line blame" })
+        map("n", "<leader>gtd", gs.toggle_deleted, { desc = "Toggle deleted" })
 
         -- Text object
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
