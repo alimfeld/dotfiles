@@ -1,5 +1,4 @@
 return {
-  "numToStr/Comment.nvim",
+  "AndrewRadev/linediff.vim",
   event = { "BufReadPre", "BufNewFile" },
-  config = true,
 }
