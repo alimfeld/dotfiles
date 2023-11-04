@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.netrw_banner = 0
 
-vim.o.breakindent = true
 vim.o.clipboard = "unnamedplus"
 vim.o.completeopt = "menuone,noselect"
 vim.o.ignorecase = true
@@ -10,41 +10,63 @@ vim.o.smartcase = true
 vim.o.termguicolors = true
 vim.o.undofile = true
 vim.o.updatetime = 250
+vim.o.laststatus = 3 -- global statusline
 
 vim.wo.number = true
 vim.wo.signcolumn = "yes"
+vim.wo.wrap = false
 
 -- Shift left/right retaining selection in visual mode
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
+-- Moving lines and preserving indentation
+vim.keymap.set("n", "<A-j>", ":move .+1<CR>==")
+vim.keymap.set("n", "<A-k>", ":move .-2<CR>==")
+vim.keymap.set("v", "<A-j>", ":move '>+1<CR>gv=gv")
+vim.keymap.set("v", "<A-k>", ":move '<-2<CR>gv=gv")
+
+-- Re-center after scrolling
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
 -- Clear search with <esc>
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- Quit
-vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
+vim.keymap.set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit all" })
 
--- Filetypes
-vim.filetype.add({
-  extension = {
-    tf = "terraform",
-    tfvars = "terraform",
-  },
-})
+-- Quickfix list
+vim.keymap.set("n", "[q", "<cmd>cprevious<cr>", { desc = "Previous quickfix item" })
+vim.keymap.set("n", "]q", "<cmd>cnext<cr>", { desc = "Next quickfix item" })
 
 -- Buffers
-vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete buffer" })
 vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
 vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
 
+-- Windows
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
+
 -- Tabs
-vim.keymap.set("n", "<leader>tc", "<cmd>tabclose<cr>", { desc = "Close tab" })
 vim.keymap.set("n", "[t", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
 vim.keymap.set("n", "]t", "<cmd>tabnext<cr>", { desc = "Next tab" })
 
 -- Scratch
 vim.keymap.set("n", "gs", "<cmd>e $HOME/scratch.md<cr>", { desc = "Goto scratch" })
 
+-- Netrw
+vim.keymap.set("n", "<leader>e", ":Explore %:p:h<CR>", { desc = "Explore" })
+
+-- Colorscheme
+vim.cmd("colorscheme retrobox")
+vim.cmd("highlight DiffAdd gui=bold")
+vim.cmd("highlight DiffChange gui=bold")
+vim.cmd("highlight DiffDelete gui=bold")
+
+-- Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -70,9 +92,6 @@ require("lazy").setup("plugins", {
     rtp = {
       disabled_plugins = {
         "gzip",
-        "matchit",
-        "matchparen",
-        "netrwPlugin",
         "tarPlugin",
         "tohtml",
         "tutor",
@@ -81,6 +100,3 @@ require("lazy").setup("plugins", {
     },
   },
 })
-
-vim.cmd([[colorscheme gruvbox]])
-vim.cmd([[highlight Normal guibg=none]])

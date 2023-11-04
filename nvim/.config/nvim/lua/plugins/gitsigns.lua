@@ -32,13 +32,6 @@ return {
         return "<Ignore>"
       end, { expr = true, desc = "Previous hunk" })
 
-      -- Actions
-      map("n", "<leader>gb", function()
-        gs.blame_line({ full = true })
-      end, { desc = "Blame line" })
-      map("n", "<leader>gtb", gs.toggle_current_line_blame, { desc = "Toggle current line blame" })
-      map("n", "<leader>gtd", gs.toggle_deleted, { desc = "Toggle deleted" })
-
       -- Text object
       map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
     end,
