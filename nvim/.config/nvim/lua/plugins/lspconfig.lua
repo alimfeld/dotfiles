@@ -1,15 +1,47 @@
 return {
   "neovim/nvim-lspconfig",
+  event = { "BufReadPre", "BufNewFile" },
   config = function()
+    local lspconfig = require("lspconfig")
+
+    -- Lua
+    lspconfig.lua_ls.setup({
+      settings = {
+        Lua = {
+          runtime = {
+            version = "LuaJIT",
+          },
+          diagnostics = {
+            globals = { "vim" },
+          },
+          telemetry = {
+            enable = false,
+          },
+        },
+      },
+    })
+
+    -- Terraform
+    lspconfig.terraformls.setup({})
+
+    -- Use LspAttach autocommand to only map the following keys
+    -- after the language server attaches to the current buffer
     vim.api.nvim_create_autocmd("LspAttach", {
-      callback = function()
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0, desc = "Hover" })
-        -- <c>ode
-        vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = 0, desc = "Code action" })
-        vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = 0, desc = "Rename" })
-        -- vim.keymap.set("n", "<leader>cf", function()
-        --   vim.lsp.buf.format({ async = true })
-        -- end, { buffer = 0, desc = "Format" })
+      group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+      callback = function(ev)
+        -- Enable completion triggered by <c-x><c-o>
+        vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+        -- Buffer local mappings.
+        -- See `:help vim.lsp.*` for documentation on any of the below functions
+        local opts = { buffer = ev.buf }
+        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+        vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
+        vim.keymap.set({ "n", "v" }, "<leader>a", vim.lsp.buf.code_action, opts)
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
       end,
     })
   end,

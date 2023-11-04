@@ -12,6 +12,6 @@ return {
         json = { "prettier" },
       },
     })
-    vim.keymap.set({ "n", "v" }, "<leader>cf", conform.format, { desc = "Format" })
+    vim.keymap.set({ "n", "v" }, "<leader>f", conform.format, { desc = "Format" })
   end,
 }
