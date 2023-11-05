@@ -50,21 +50,17 @@ vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 
+vim.keymap.set("n", "<C-A-l>", [[<cmd>vertical resize +5<cr>]])
+vim.keymap.set("n", "<C-A-h>", [[<cmd>vertical resize -5<cr>]])
+vim.keymap.set("n", "<C-A-j>", [[<cmd>horizontal resize +2<cr>]])
+vim.keymap.set("n", "<C-A-k>", [[<cmd>horizontal resize -2<cr>]])
+
 -- Tabs
 vim.keymap.set("n", "[t", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
 vim.keymap.set("n", "]t", "<cmd>tabnext<cr>", { desc = "Next tab" })
 
 -- Scratch
 vim.keymap.set("n", "gs", "<cmd>e $HOME/scratch.md<cr>", { desc = "Goto scratch" })
-
--- Netrw
-vim.keymap.set("n", "<leader>e", ":Explore %:p:h<CR>", { desc = "Explore" })
-
--- Colorscheme
-vim.cmd("colorscheme retrobox")
-vim.cmd("highlight DiffAdd gui=bold")
-vim.cmd("highlight DiffChange gui=bold")
-vim.cmd("highlight DiffDelete gui=bold")
 
 -- Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -92,6 +88,8 @@ require("lazy").setup("plugins", {
     rtp = {
       disabled_plugins = {
         "gzip",
+        "matchit",
+        "netrwPlugin",
         "tarPlugin",
         "tohtml",
         "tutor",
@@ -100,3 +98,7 @@ require("lazy").setup("plugins", {
     },
   },
 })
+
+-- Colorscheme
+vim.cmd("colorscheme gruvbox")
+
