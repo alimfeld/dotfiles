@@ -1,11 +1,17 @@
 return {
   "neovim/nvim-lspconfig",
+  dependencies = {
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-nvim-lsp",
+  },
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local lspconfig = require("lspconfig")
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
     -- Lua
     lspconfig.lua_ls.setup({
+      capabilites = capabilities,
       settings = {
         Lua = {
           runtime = {
@@ -39,8 +45,8 @@ return {
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-        vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
-        vim.keymap.set({ "n", "v" }, "<leader>a", vim.lsp.buf.code_action, opts)
+        vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = ev.buf, desc = "[Rename"})
+        vim.keymap.set({ "n", "v" }, "<leader>a", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "Code [A]ction"} )
         vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
       end,
     })

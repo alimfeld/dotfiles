@@ -6,7 +6,6 @@ return {
   event = "VeryLazy",
   opts = {
     options = {
-      theme = "gruvbox",
       globalstatus = true,
     },
   },
