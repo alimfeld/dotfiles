@@ -36,14 +36,6 @@ vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and 
 -- Quit
 vim.keymap.set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit all" })
 
--- Quickfix list
-vim.keymap.set("n", "[q", "<cmd>cprevious<cr>", { desc = "Previous quickfix item" })
-vim.keymap.set("n", "]q", "<cmd>cnext<cr>", { desc = "Next quickfix item" })
-
--- Buffers
-vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
-vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
-
 -- Windows
 vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-j>", "<C-w>j")
@@ -54,10 +46,6 @@ vim.keymap.set("n", "<C-A-l>", [[<cmd>vertical resize +5<cr>]])
 vim.keymap.set("n", "<C-A-h>", [[<cmd>vertical resize -5<cr>]])
 vim.keymap.set("n", "<C-A-j>", [[<cmd>horizontal resize +2<cr>]])
 vim.keymap.set("n", "<C-A-k>", [[<cmd>horizontal resize -2<cr>]])
-
--- Tabs
-vim.keymap.set("n", "[t", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
-vim.keymap.set("n", "]t", "<cmd>tabnext<cr>", { desc = "Next tab" })
 
 -- Scratch
 vim.keymap.set("n", "gs", "<cmd>e $HOME/scratch.md<cr>", { desc = "Goto scratch" })
