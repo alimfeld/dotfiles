@@ -10,6 +10,8 @@ return {
         markdown = { "prettier" },
         yaml = { "prettier" },
         json = { "prettier" },
+        terraform = { "terraform_fmt" },
+        go = { "gofmt" },
       },
     })
     vim.keymap.set({ "n", "v" }, "<leader>f", conform.format, { desc = "Format" })
