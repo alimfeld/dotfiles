@@ -12,6 +12,7 @@ return {
         json = { "prettier" },
         terraform = { "terraform_fmt" },
         go = { "gofmt" },
+        xml = { "xmlformat" },
       },
     })
     vim.keymap.set({ "n", "v" }, "<leader>f", conform.format, { desc = "Format" })
