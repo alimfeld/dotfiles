@@ -50,6 +50,13 @@ vim.keymap.set("n", "<C-A-k>", [[<cmd>horizontal resize -2<cr>]])
 -- Scratch
 vim.keymap.set("n", "gs", "<cmd>e $HOME/scratch.md<cr>", { desc = "Goto scratch" })
 
+-- Filetype
+vim.filetype.add({
+  extension = {
+    puml = "plantuml",
+  },
+})
+
 -- Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -89,4 +96,3 @@ require("lazy").setup("plugins", {
 
 -- Colorscheme
 vim.cmd("colorscheme gruvbox")
-
