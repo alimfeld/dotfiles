@@ -1,6 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.netrw_banner = 0
+vim.g.tmux_navigator_preserve_zoom = 1
+vim.g.tmux_navigator_no_wrap = 1
 
 vim.o.clipboard = "unnamedplus"
 vim.o.completeopt = "menuone,noselect"
