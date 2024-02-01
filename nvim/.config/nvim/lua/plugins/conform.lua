@@ -5,14 +5,15 @@ return {
     local conform = require("conform")
     conform.setup({
       formatters_by_ft = {
-        lua = { "stylua" },
-        python = { "isort", "black" },
-        markdown = { "prettier" },
-        yaml = { "prettier" },
-        json = { "prettier" },
-        terraform = { "terraform_fmt" },
         go = { "gofmt" },
+        javascript = { "prettier" },
+        json = { "prettier" },
+        lua = { "stylua" },
+        markdown = { "prettier" },
+        python = { "isort", "black" },
+        terraform = { "terraform_fmt" },
         xml = { "xmlformat" },
+        yaml = { "prettier" },
       },
     })
     vim.keymap.set({ "n", "v" }, "<leader>f", conform.format, { desc = "Format" })
