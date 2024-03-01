@@ -56,6 +56,7 @@ vim.keymap.set("n", "gs", "<cmd>e $HOME/scratch.md<cr>", { desc = "Goto scratch"
 vim.filetype.add({
   extension = {
     puml = "plantuml",
+    tf = "terraform",
   },
 })
 
