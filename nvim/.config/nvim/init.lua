@@ -1,22 +1,47 @@
+-- [[ Globals ]]
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.netrw_banner = 0
-vim.g.tmux_navigator_preserve_zoom = 1
-vim.g.tmux_navigator_no_wrap = 1
 
-vim.o.clipboard = "unnamedplus"
-vim.o.completeopt = "menuone,noselect"
-vim.o.ignorecase = true
-vim.o.mouse = "a"
-vim.o.smartcase = true
-vim.o.termguicolors = true
-vim.o.undofile = true
-vim.o.updatetime = 250
-vim.o.laststatus = 3 -- global statusline
+-- [[ Options ]]
 
-vim.wo.number = true
-vim.wo.signcolumn = "yes"
-vim.wo.wrap = false
+vim.opt.clipboard = "unnamedplus"
+vim.opt.cursorline = true
+vim.opt.hlsearch = true
+vim.opt.ignorecase = true
+vim.opt.inccommand = "split"
+vim.opt.laststatus = 3 -- global statusline
+vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.mouse = "a"
+vim.opt.number = true
+vim.opt.scrolloff = 10
+vim.opt.showmode = false -- mode is already in the status line
+vim.opt.signcolumn = "yes"
+vim.opt.smartcase = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.timeoutlen = 300
+vim.opt.undofile = true
+vim.opt.updatetime = 250
+
+-- [[ Keymaps ]]
+
+-- Quit
+vim.keymap.set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit all" })
+
+-- Lazy
+vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+
+-- Error messages
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic error messages" })
+
+-- Next/Previous mappings (unimpaired / bracketed)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Diagnostic message" })
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Diagnostic message" })
+vim.keymap.set("n", "]q", "<cmd>cnext<cr>", { desc = "Quickfix item" })
+vim.keymap.set("n", "[q", "<cmd>cprevious<cr>", { desc = "Quickfix item" })
 
 -- Shift left/right retaining selection in visual mode
 vim.keymap.set("v", "<", "<gv")
@@ -35,15 +60,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- Clear search with <esc>
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
--- Quit
-vim.keymap.set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit all" })
-
--- Windows
-vim.keymap.set("n", "<C-h>", "<C-w>h")
-vim.keymap.set("n", "<C-j>", "<C-w>j")
-vim.keymap.set("n", "<C-k>", "<C-w>k")
-vim.keymap.set("n", "<C-l>", "<C-w>l")
-
+-- Resize splits
 vim.keymap.set("n", "<C-A-l>", [[<cmd>vertical resize +5<cr>]])
 vim.keymap.set("n", "<C-A-h>", [[<cmd>vertical resize -5<cr>]])
 vim.keymap.set("n", "<C-A-j>", [[<cmd>horizontal resize +2<cr>]])
@@ -52,7 +69,8 @@ vim.keymap.set("n", "<C-A-k>", [[<cmd>horizontal resize -2<cr>]])
 -- Scratch
 vim.keymap.set("n", "gs", "<cmd>e $HOME/scratch.md<cr>", { desc = "Goto scratch" })
 
--- Filetype
+-- [[ Filetype ]]
+
 vim.filetype.add({
   extension = {
     puml = "plantuml",
@@ -60,7 +78,19 @@ vim.filetype.add({
   },
 })
 
--- Lazy
+-- [[ Autocommands ]]
+
+-- Highlight when yanking (copying) text
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight when yanking (copying) text",
+  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
+
+-- [[ Lazy ]]
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -75,10 +105,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", {
-  defaults = {
-    lazy = true,
-    version = false,
-  },
   change_detection = {
     enabled = false,
   },
@@ -86,8 +112,11 @@ require("lazy").setup("plugins", {
     rtp = {
       disabled_plugins = {
         "gzip",
+        "man",
         "matchit",
         "netrwPlugin",
+        "rplugin",
+        "tarPlugin",
         "tarPlugin",
         "tohtml",
         "tutor",
@@ -96,6 +125,3 @@ require("lazy").setup("plugins", {
     },
   },
 })
-
--- Colorscheme
-vim.cmd("colorscheme gruvbox")
