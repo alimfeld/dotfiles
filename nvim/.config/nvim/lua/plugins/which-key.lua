@@ -1,6 +1,5 @@
 return {
   "folke/which-key.nvim",
-  event = "VeryLazy",
   opts = {
     plugins = { spelling = true },
     defaults = {
@@ -8,6 +7,9 @@ return {
       ["g"] = { name = "+goto" },
       ["]"] = { name = "+next" },
       ["["] = { name = "+prev" },
+      ["s"] = { name = "+Surrounding" },
+      ["<leader>h"] = { name = "+Hunks (Git)", _ = "which_key_ignore" },
+      ["<leader>t"] = { name = "+Toggle", _ = "which_key_ignore" },
     },
   },
   config = function(_, opts)

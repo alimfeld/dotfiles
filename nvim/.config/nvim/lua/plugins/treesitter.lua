@@ -1,16 +1,14 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  event = { "BufReadPre", "BufNewFile" },
-  cmd = { "TSUpdateSync" },
   config = function()
     require("nvim-treesitter.configs").setup({
-      highlight = {
-        enable = true,
-      },
-      indent = {
-        enable = true,
-      },
+      modules = {},
+      ensure_installed = {},
+      sync_install = false,
+      auto_install = true,
+      ignore_install = {},
+      highlight = { enable = true, additional_vim_regex_highlighting = false },
     })
   end,
 }
