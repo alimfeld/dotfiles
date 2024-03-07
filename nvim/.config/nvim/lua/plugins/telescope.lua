@@ -17,9 +17,6 @@ return {
         ["ui-select"] = {
           require("telescope.themes").get_dropdown(),
         },
-        file_browser = {
-          initial_mode = "normal",
-        },
       },
     })
 
@@ -43,6 +40,8 @@ return {
       }))
     end, { desc = "Fuzzy find in buffer" })
 
-    vim.keymap.set("n", "<leader>.", telescope.extensions.file_browser.file_browser, { desc = "File browser" })
+    vim.keymap.set("n", "<leader>.", function()
+      telescope.extensions.file_browser.file_browser({ path = "%:p:h", select_buffer = true })
+    end, { desc = "File browser" })
   end,
 }
