@@ -6,7 +6,6 @@ return {
     "nvim-tree/nvim-web-devicons",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     "nvim-telescope/telescope-live-grep-args.nvim",
-    "nvim-telescope/telescope-file-browser.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
   },
   config = function()
@@ -22,7 +21,6 @@ return {
 
     telescope.load_extension("fzf")
     telescope.load_extension("live_grep_args")
-    telescope.load_extension("file_browser")
     telescope.load_extension("ui-select")
 
     local builtin = require("telescope.builtin")
@@ -39,9 +37,5 @@ return {
         previewer = false,
       }))
     end, { desc = "Fuzzy find in buffer" })
-
-    vim.keymap.set("n", "<leader>.", function()
-      telescope.extensions.file_browser.file_browser({ path = "%:p:h", select_buffer = true })
-    end, { desc = "File browser" })
   end,
 }
