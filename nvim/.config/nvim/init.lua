@@ -42,6 +42,8 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Diagnostic message
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Diagnostic message" })
 vim.keymap.set("n", "]q", "<cmd>cnext<cr>", { desc = "Quickfix item" })
 vim.keymap.set("n", "[q", "<cmd>cprevious<cr>", { desc = "Quickfix item" })
+vim.keymap.set("n", "]Q", "<cmd>clast<cr>", { desc = "Quickfix item (last)" })
+vim.keymap.set("n", "[Q", "<cmd>cfirst<cr>", { desc = "Quickfix item (first)" })
 
 -- Shift left/right retaining selection in visual mode
 vim.keymap.set("v", "<", "<gv")
