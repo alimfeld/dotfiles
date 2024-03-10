@@ -27,15 +27,9 @@ return {
 
     vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Find files" })
     vim.keymap.set("n", "<leader>t", builtin.builtin, { desc = "Telescope builtins" })
-    vim.keymap.set("n", "<leader>w", builtin.grep_string, { desc = "Grep string" })
-    vim.keymap.set("n", "<leader>g", telescope.extensions.live_grep_args.live_grep_args, { desc = "Live grep" })
+    vim.keymap.set("n", "<leader>s", builtin.grep_string, { desc = "Grep string" })
+    vim.keymap.set("n", "<leader>/", telescope.extensions.live_grep_args.live_grep_args, { desc = "Live grep" })
     vim.keymap.set("n", "<leader>d", builtin.diagnostics, { desc = "Diagnostics" })
     vim.keymap.set("n", "<leader><space>", builtin.buffers, { desc = "Buffers" })
-    vim.keymap.set("n", "<leader>/", function()
-      builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-        winblend = 10,
-        previewer = false,
-      }))
-    end, { desc = "Fuzzy find in buffer" })
   end,
 }

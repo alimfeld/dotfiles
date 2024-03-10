@@ -4,12 +4,13 @@ return {
     plugins = { spelling = true },
     defaults = {
       mode = { "n", "v" },
-      ["g"] = { name = "+goto" },
-      ["]"] = { name = "+next" },
       ["["] = { name = "+prev" },
+      ["]"] = { name = "+next" },
+      ["g"] = { name = "+goto" },
       ["s"] = { name = "+Surrounding" },
-      ["<leader>h"] = { name = "+Hunks (Git)", _ = "which_key_ignore" },
+      ["<leader>g"] = { name = "+Git", _ = "which_key_ignore" },
       ["<leader>t"] = { name = "+Toggle", _ = "which_key_ignore" },
+      ["<leader>w"] = { name = "+Wiki", _ = "which_key_ignore" },
     },
   },
   config = function(_, opts)

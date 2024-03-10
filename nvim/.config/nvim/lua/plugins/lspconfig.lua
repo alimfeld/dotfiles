@@ -75,14 +75,6 @@ return {
         --  the definition of its *type*, not where it was *defined*.
         map("gy", require("telescope.builtin").lsp_type_definitions, "Type definition")
 
-        -- Fuzzy find all the symbols in your current document.
-        --  Symbols are things like variables, functions, types, etc.
-        map("<leader>s", require("telescope.builtin").lsp_document_symbols, "Search document symbols")
-
-        -- Fuzzy find all the symbols in your current workspace
-        --  Similar to document symbols, except searches over your whole project.
-        map("<leader>S", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Search workspace symbols")
-
         -- Rename the variable under your cursor
         --  Most Language Servers support renaming across files, etc.
         map("<leader>r", vim.lsp.buf.rename, "Rename")
