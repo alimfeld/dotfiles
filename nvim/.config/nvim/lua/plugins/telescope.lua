@@ -26,7 +26,7 @@ return {
     local builtin = require("telescope.builtin")
 
     vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Find files" })
-    vim.keymap.set("n", "<leader>t", builtin.builtin, { desc = "Telescope builtins" })
+    vim.keymap.set("n", "<leader>.", builtin.builtin, { desc = "Telescope builtins" })
     vim.keymap.set("n", "<leader>s", builtin.grep_string, { desc = "Grep string" })
     vim.keymap.set("n", "<leader>/", telescope.extensions.live_grep_args.live_grep_args, { desc = "Live grep" })
     vim.keymap.set("n", "<leader>d", builtin.diagnostics, { desc = "Diagnostics" })
