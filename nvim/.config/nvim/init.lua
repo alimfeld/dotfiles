@@ -6,6 +6,7 @@ vim.g.netrw_banner = 0
 
 -- [[ Options ]]
 
+vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cursorline = true
 vim.opt.hlsearch = true
@@ -116,7 +117,6 @@ require("lazy").setup("plugins", {
         "gzip",
         "man",
         "matchit",
-        "netrwPlugin",
         "rplugin",
         "tarPlugin",
         "tarPlugin",
