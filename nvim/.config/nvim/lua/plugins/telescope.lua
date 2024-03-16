@@ -8,6 +8,7 @@ return {
     "nvim-telescope/telescope-live-grep-args.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
   },
+  event = "VeryLazy",
   config = function()
     local telescope = require("telescope")
 
@@ -25,11 +26,15 @@ return {
 
     local builtin = require("telescope.builtin")
 
-    vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Find files" })
-    vim.keymap.set("n", "<leader>.", builtin.builtin, { desc = "Telescope builtins" })
-    vim.keymap.set("n", "<leader>s", builtin.grep_string, { desc = "Grep string" })
-    vim.keymap.set("n", "<leader>/", telescope.extensions.live_grep_args.live_grep_args, { desc = "Live grep" })
-    vim.keymap.set("n", "<leader>d", builtin.diagnostics, { desc = "Diagnostics" })
-    vim.keymap.set("n", "<leader><space>", builtin.buffers, { desc = "Buffers" })
+    vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
+    vim.keymap.set("n", "<leader>fw", builtin.grep_string, { desc = "Find word" })
+    vim.keymap.set("n", "<leader>fg", telescope.extensions.live_grep_args.live_grep_args, { desc = "Live grep" })
+    vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Find Diagnostics" })
+    vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find Buffers" })
+    vim.keymap.set("n", "<leader>fc", builtin.commands, { desc = "Find Commands" })
+
+    vim.keymap.set("n", "<leader>fn", function()
+      builtin.find_files({ cwd = vim.fn.stdpath("config") })
+    end, { desc = "Find Neovim config files" })
   end,
 }

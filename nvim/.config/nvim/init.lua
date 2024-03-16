@@ -1,13 +1,16 @@
--- [[ Globals ]]
+-- {{{ Globals
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.netrw_banner = 0
 
--- [[ Options ]]
+-- }}}
+
+-- {{{ Options
 
 vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
+vim.opt.conceallevel = 1
 vim.opt.cursorline = true
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
@@ -27,13 +30,12 @@ vim.opt.timeoutlen = 300
 vim.opt.undofile = true
 vim.opt.updatetime = 250
 
--- [[ Keymaps ]]
+-- }}}
+
+-- {{{ Keymaps
 
 -- Quit
 vim.keymap.set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit all" })
-
--- Lazy
-vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- Error messages
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic error messages" })
@@ -69,10 +71,9 @@ vim.keymap.set("n", "<C-A-h>", [[<cmd>vertical resize -5<cr>]])
 vim.keymap.set("n", "<C-A-j>", [[<cmd>horizontal resize +2<cr>]])
 vim.keymap.set("n", "<C-A-k>", [[<cmd>horizontal resize -2<cr>]])
 
--- Scratch
-vim.keymap.set("n", "gs", "<cmd>e $HOME/scratch.md<cr>", { desc = "Goto scratch" })
+-- }}}
 
--- [[ Filetype ]]
+-- {{{ Filetype
 
 vim.filetype.add({
   extension = {
@@ -81,18 +82,22 @@ vim.filetype.add({
   },
 })
 
--- [[ Autocommands ]]
+-- }}}
+
+-- {{{ Autocommands
 
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
-  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,
 })
 
--- [[ Lazy ]]
+-- }}}
+
+-- {{{ Plugins
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -127,3 +132,7 @@ require("lazy").setup("plugins", {
     },
   },
 })
+
+-- }}}
+
+-- vim: foldmethod=marker foldlevel=0
