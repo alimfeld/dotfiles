@@ -2,52 +2,45 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = {
     "nvim-telescope/telescope.nvim",
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-nvim-lsp",
   },
   event = { "BufReadPre", "BufNewFile" },
   config = function()
-    local lspconfig = require("lspconfig")
-
-    -- Lua
-    lspconfig.lua_ls.setup({
-      settings = {
-        Lua = {
-          runtime = { version = "LuaJIT" },
-          workspace = {
-            checkThirdParty = false,
-            -- Tells lua_ls where to find all the Lua files that you have loaded
-            -- for your neovim configuration.
-            library = {
-              "${3rd}/luv/library",
-              unpack(vim.api.nvim_get_runtime_file("", true)),
+    local server_configs = {
+      lua_ls = {
+        settings = {
+          Lua = {
+            runtime = { version = "LuaJIT" },
+            workspace = {
+              checkThirdParty = false,
+              library = {
+                "${3rd}/luv/library",
+                unpack(vim.api.nvim_get_runtime_file("", true)),
+              },
             },
-            -- If lua_ls is really slow on your computer, you can try this instead:
-            -- library = { vim.env.VIMRUNTIME },
-          },
-          completion = {
-            callSnippet = "Replace",
-          },
-          telemetry = {
-            enable = false,
+            completion = {
+              callSnippet = "Replace",
+            },
+            telemetry = {
+              enable = false,
+            },
           },
         },
       },
-    })
+      terraformls = {},
+      gopls = {},
+      marksman = {},
+    }
 
-    -- Terraform
-    lspconfig.terraformls.setup({
-      -- temporary fix; see https://github.com/hashicorp/terraform-ls/issues/1655
-      init_options = {
-        terraform = {
-          path = "/opt/homebrew/bin/terraform",
-        },
-      },
-    })
+    local lspconfig = require("lspconfig")
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-    -- Go
-    lspconfig.gopls.setup({})
-
-    -- Markdown
-    lspconfig.marksman.setup({})
+    for server, config in pairs(server_configs) do
+      config.capabilities = vim.tbl_deep_extend("force", {}, capabilities, config.capabilities or {})
+      lspconfig[server].setup(config)
+    end
 
     -- Use LspAttach autocommand to only map the following keys
     -- after the language server attaches to the current buffer

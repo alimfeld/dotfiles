@@ -1,8 +1,7 @@
 return {
   "lewis6991/gitsigns.nvim",
+  event = { "BufReadPre", "BufNewFile" },
   config = function()
-    -- The following is straight from gitsign README with minor modifications (adding description to keybindings for which-key)
-    -- https://github.com/lewis6991/gitsigns.nvim/blob/2c2463dbd82eddd7dbab881c3a62cfbfbe3c67ae/README.md#keymaps
     require("gitsigns").setup({
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
