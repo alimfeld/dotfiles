@@ -133,5 +133,3 @@ require("lazy").setup("plugins", {
 })
 
 -- }}}
-
--- vim: foldmethod=marker foldlevel=0
