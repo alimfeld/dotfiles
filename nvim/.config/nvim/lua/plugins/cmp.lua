@@ -15,8 +15,8 @@ return {
     snippy.setup({
       mappings = {
         is = {
-          ["<C-n>"] = "expand_or_advance",
-          ["<C-p>"] = "previous",
+          ["<Tab>"] = "expand_or_advance",
+          ["<S-Tab>"] = "previous",
         },
       },
     })
