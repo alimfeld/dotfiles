@@ -7,27 +7,34 @@ vim.g.maplocalleader = " "
 
 -- {{{ Options
 
-vim.opt.breakindent = true
-vim.opt.clipboard = "unnamedplus"
-vim.opt.conceallevel = 1
-vim.opt.cursorline = true
-vim.opt.hlsearch = true
-vim.opt.ignorecase = true
-vim.opt.inccommand = "split"
-vim.opt.laststatus = 3 -- global statusline
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-vim.opt.mouse = "a"
 vim.opt.number = true
-vim.opt.scrolloff = 10
-vim.opt.showmode = false -- mode is already in the status line
-vim.opt.signcolumn = "yes"
-vim.opt.smartcase = true
+vim.opt.relativenumber = true
+
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+
+vim.opt.scrolloff = 999
+
+vim.opt.wrap = false
+
+vim.opt.clipboard = "unnamedplus"
+
+vim.opt.completeopt = "menu,menuone,noinsert,noselect"
+
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.hlsearch = true
+
+vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.signcolumn = "yes"
+vim.opt.cursorline = true
+vim.opt.laststatus = 3 -- global statusline
+
 vim.opt.timeoutlen = 300
-vim.opt.undofile = true
 vim.opt.updatetime = 250
+
+vim.opt.undofile = true
 
 -- }}}
 
@@ -56,10 +63,6 @@ vim.keymap.set("n", "<A-j>", ":move .+1<CR>==")
 vim.keymap.set("n", "<A-k>", ":move .-2<CR>==")
 vim.keymap.set("v", "<A-j>", ":move '>+1<CR>gv=gv")
 vim.keymap.set("v", "<A-k>", ":move '<-2<CR>gv=gv")
-
--- Re-center after scrolling
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- Clear search with <esc>
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
