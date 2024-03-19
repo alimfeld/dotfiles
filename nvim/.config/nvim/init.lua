@@ -1,11 +1,7 @@
--- {{{ Globals
+-- {{{ Options
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-
--- }}}
-
--- {{{ Options
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -30,6 +26,7 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.signcolumn = "yes"
 vim.opt.cursorline = true
 vim.opt.laststatus = 3 -- global statusline
+vim.opt.termguicolors = true
 
 vim.opt.timeoutlen = 300
 vim.opt.updatetime = 250
@@ -58,20 +55,8 @@ vim.keymap.set("n", "[Q", "<cmd>cfirst<cr>", { desc = "Quickfix item (first)" })
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
--- Moving lines and preserving indentation
-vim.keymap.set("n", "<A-j>", ":move .+1<CR>==")
-vim.keymap.set("n", "<A-k>", ":move .-2<CR>==")
-vim.keymap.set("v", "<A-j>", ":move '>+1<CR>gv=gv")
-vim.keymap.set("v", "<A-k>", ":move '<-2<CR>gv=gv")
-
 -- Clear search with <esc>
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
-
--- Resize splits
-vim.keymap.set("n", "<C-A-l>", [[<cmd>vertical resize +5<cr>]])
-vim.keymap.set("n", "<C-A-h>", [[<cmd>vertical resize -5<cr>]])
-vim.keymap.set("n", "<C-A-j>", [[<cmd>horizontal resize +2<cr>]])
-vim.keymap.set("n", "<C-A-k>", [[<cmd>horizontal resize -2<cr>]])
 
 -- }}}
 
