@@ -30,9 +30,9 @@ return {
     vim.keymap.set("n", "<leader>fw", builtin.grep_string, { desc = "Find word" })
     vim.keymap.set("n", "<leader>fg", telescope.extensions.live_grep_args.live_grep_args, { desc = "Live grep" })
     vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Find Diagnostics" })
-    vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find Buffers" })
     vim.keymap.set("n", "<leader>fc", builtin.commands, { desc = "Find Commands" })
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find Help" })
+    vim.keymap.set("n", "<leader><space>", builtin.buffers, { desc = "Find Buffers" })
 
     vim.keymap.set("n", "<leader>fn", function()
       builtin.find_files({ cwd = vim.fn.stdpath("config") })
