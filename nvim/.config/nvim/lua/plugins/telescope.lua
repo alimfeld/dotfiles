@@ -32,6 +32,7 @@ return {
     vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Find Diagnostics" })
     vim.keymap.set("n", "<leader>fc", builtin.commands, { desc = "Find Commands" })
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find Help" })
+    vim.keymap.set("n", "<leader>fo", builtin.oldfiles, { desc = "Find old files" })
     vim.keymap.set("n", "<leader><space>", builtin.buffers, { desc = "Find Buffers" })
 
     vim.keymap.set("n", "<leader>fn", function()
