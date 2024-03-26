@@ -28,6 +28,7 @@ return {
       terraformls = {},
       gopls = {},
       marksman = {},
+      pyright = {},
     }
 
     local lspconfig = require("lspconfig")
