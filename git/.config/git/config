@@ -1,6 +1,11 @@
 [core]
   eol = native
   autocrlf = input
+  pager = delta
 
 [push]
   autoSetupRemote = true
+
+[delta]
+  navigate = true
+  side-by-side = true
