@@ -50,6 +50,9 @@ Neovim.
 navigate between Neovim and tmux splits using
 [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator).
 
+Key bindings in Neovim can be explored via
+[WhichKey](https://github.com/folke/which-key.nvim).
+
 ## 📋 Clipboard
 
 Z Shell uses
@@ -78,9 +81,33 @@ it's invoked using `<Ctrl-Space Tab>`.
 The dotfiles assume the following additional packages to be installed on your
 system:
 
+General purpose tools:
+
 - [fzf](https://github.com/junegunn/fzf)
 
-You can install them using your systems's package manager or via
+Language servers:
+
+- [gopls](https://github.com/golang/tools/tree/master/gopls)
+- [lua-language-server](https://github.com/luals/lua-language-server)
+- [marksman](https://github.com/artempyanykh/marksman)
+- [python-lsp-server](https://github.com/python-lsp/python-lsp-server)
+- [terraform-ls](https://github.com/hashicorp/terraform-ls)
+
+Formatters:
+
+- [black](https://github.com/psf/black)
+- [gofmt (go)](https://github.com/golang/go)
+- [isort](https://github.com/PyCQA/isort)
+- [prettier](https://github.com/prettier/prettier)
+- [stylua](https://pkg.go.dev/golang.org/x/tools/gopls)
+- [terraform fmt](https://github.com/hashicorp/terraform)
+
+Linters:
+
+- [pylint](https://github.com/pylint-dev/pylint)
+- [shellcheck](https://github.com/koalaman/shellcheck)
+
+You can install the packages using your systems's package manager or via
 [Homebrew](https://brew.sh/).
 
 ## 🛠️ Installation
