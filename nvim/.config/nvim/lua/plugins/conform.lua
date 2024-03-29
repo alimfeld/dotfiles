@@ -5,6 +5,7 @@ return {
     notify_on_error = false,
     format_on_save = {
       timeout_ms = 1000,
+      async = false,
       lsp_fallback = true,
     },
     formatters_by_ft = {
@@ -15,7 +16,6 @@ return {
       markdown = { "prettier" },
       python = { "isort", "black" },
       terraform = { "terraform_fmt" },
-      xml = { "xmlformat" },
       yaml = { "prettier" },
     },
   },
