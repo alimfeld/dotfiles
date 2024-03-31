@@ -24,9 +24,9 @@ HISTFILE="${XDG_STATE_HOME}/zsh/history"
 # }}}
 
 # {{{ Completion
-zstyle ':completion:*' cache-path "${XDG_CACHE_HOME}/zsh/zcompcache"
 autoload -Uz compinit
-compinit -d "${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}" # in accordance w/ XDG Base Directory
+zstyle ':completion:*' cache-path "${XDG_CACHE_HOME}/zsh/zcompcache"
+compinit -C -d "${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}" # in accordance w/ XDG Base Directory
 # }}}
 
 # {{{ Key Bindings
