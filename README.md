@@ -22,6 +22,11 @@ The dotfiles try to leverage and follow the XDG Base Directory specification.
 Since zsh only offers partial support for XDG, we still have a `.zshenv` in the
 home directory.
 
+## ⚙️ Custom Initialization
+
+Any custom shell initialization (such as `eval "$(brew shellenv)"`) should be
+put in `~/.config/zsh/.zprofile`.
+
 ## 🔌 Plugins
 
 Use of plugins in core tools is reduced to a minimum. Since plugins are
