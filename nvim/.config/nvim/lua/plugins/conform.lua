@@ -9,6 +9,7 @@ return {
       lsp_fallback = true,
     },
     formatters_by_ft = {
+      fish = { "fish_indent" },
       go = { "gofmt" },
       javascript = { "prettier" },
       json = { "prettier" },

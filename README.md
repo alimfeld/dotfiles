@@ -5,7 +5,7 @@ Configurations to improve the CLI dev experience.
 Core tools:
 
 - [WezTerm](https://wezfurlong.org/wezterm/)
-- [Z Shell (zsh)](https://www.zsh.org/)
+- [fish](https://fishshell.com/)
 - [Neovim](https://neovim.io/)
 - [tmux](https://github.com/tmux/tmux/wiki)
 - [Git](https://git-scm.com/)
@@ -19,13 +19,9 @@ Supporting TUIs:
 
 The dotfiles try to leverage and follow the XDG Base Directory specification.
 
-Since zsh only offers partial support for XDG, we still have a `.zshenv` in the
-home directory.
-
 ## ⚙️ Custom Initialization
 
-Any custom shell initialization (such as `eval "$(brew shellenv)"`) should be
-put in `~/.config/zsh/.zprofile`.
+TBD
 
 ## 🔌 Plugins
 
@@ -33,20 +29,12 @@ Use of plugins in core tools is reduced to a minimum. Since plugins are
 specific to the respective tool, the tools are configured in a way to have
 those plugins auto-installed.
 
-**Z Shell** plugins are listed in `.zshrc` and are automatically installed (and
-loaded) when the shell starts. The following functions are defined to manage
-plugins:
-
-- `zsh-plugins-install`
-- `zsh-plugins-update`
-- `zsh-plugins-remove`
-
 **Neovim** is configured to use [lazy.nvim](https://github.com/folke/lazy.nvim)
 for installing and managing plugins.
 
 ## ⌨️ Key Bindings
 
-Z Shell and tmux are setup with vi key bindings.
+Fish and tmux are setup with vi key bindings.
 
 The tmux prefix is `<Ctrl-Space>` following the leader key `<Space>` used in
 Neovim.
@@ -60,9 +48,8 @@ Key bindings in Neovim can be explored via
 
 ## 📋 Clipboard
 
-Z Shell uses
-[zsh-system-clipboard](https://github.com/kutsan/zsh-system-clipboard) to
-synchronize the system clipboard with ZLE buffers.
+Fish uses custom key bindings to interact with the system clipboard in normal
+mode.
 
 Neovim sets the `clipboard` option to `unnamedplus` to yank and paste to/from
 the system clipboard.
@@ -78,7 +65,7 @@ To start and switch to tmux sessions based on directories under '~/dev', the
 [ThePrimagen's
 tmux-sessionizer](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer)
 
-The script is started from zsh using the `<Ctrl-Space>` key binding. From tmux
+The script is started from fish using the `<Ctrl-Space>` key binding. From tmux
 it's invoked using `<Ctrl-Space Tab>`.
 
 ## 📦 Dependencies
