@@ -39,5 +39,45 @@ return {
     vim.keymap.set("n", "<leader>fn", function()
       builtin.find_files({ cwd = vim.fn.stdpath("config") })
     end, { desc = "Find Neovim config files" })
+
+    local pickers = require("telescope.pickers")
+    local finders = require("telescope.finders")
+    local themes = require("telescope.themes")
+    local sorters = require("telescope.sorters")
+    local journal = function(opts)
+      local now = os.time()
+      local results = {}
+      for i = 1, 7 do
+        local time = now - (i - 1) * 3600 * 24
+        results[i] = { index = i, weekday = os.date("%A", time), date = os.date("%Y-%m-%d", time) }
+      end
+      opts = opts or themes.get_dropdown()
+      pickers
+        .new(opts, {
+          prompt_title = "Journal",
+          finder = finders.new_table({
+            results = results,
+            entry_maker = function(entry)
+              local path = vim.fn.expand("~/journal/" .. entry.date .. ".md")
+              local readable = vim.fn.filereadable(path)
+              local indicator = ""
+              if readable == 1 then
+                indicator = require("nvim-web-devicons").get_icon("markdown", "md")
+              end
+              local display = string.format("%d: %-10s - %s   %s", entry.index, entry.weekday, entry.date, indicator)
+              return {
+                value = entry,
+                display = display,
+                ordinal = display,
+                path = path,
+              }
+            end,
+          }),
+          sorter = sorters.get_substr_matcher(),
+        })
+        :find()
+    end
+
+    vim.keymap.set("n", "<leader>j", journal, { desc = "Find journal daily" })
   end,
 }
