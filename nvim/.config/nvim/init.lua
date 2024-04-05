@@ -62,10 +62,6 @@ vim.keymap.set("v", ">", ">gv")
 -- Clear search with <esc>
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
-vim.keymap.set("n", "<leader>j", function()
-  vim.cmd("e " .. "~/journal/" .. os.date("%Y-%m-%d") .. ".md")
-end, { desc = "Open Journal" })
-
 -- }}}
 
 -- {{{ Filetype
