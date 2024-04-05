@@ -16,20 +16,15 @@ function fish_prompt
     else
         set status_indicator "$red❯"
     end
-    set -l cwd $cyan(basename (prompt_pwd))
+    set -l cwd $cyan(prompt_pwd)
 
     if [ (_git_branch_name) ]
 
-        if test (_git_branch_name) = master
-            set -l git_branch (_git_branch_name)
-            set git_info "$normal git:($red$git_branch$normal)"
-        else
-            set -l git_branch (_git_branch_name)
-            set git_info "$normal git:($blue$git_branch$normal)"
-        end
+        set -l git_branch (_git_branch_name)
+        set git_info " $blue$git_branch$normal"
 
         if [ (_is_git_dirty) ]
-            set -l dirty "$yellow ✗"
+            set -l dirty "$yellow*"
             set git_info "$git_info$dirty"
         end
     end
