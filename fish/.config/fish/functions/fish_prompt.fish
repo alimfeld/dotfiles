@@ -1,35 +1,37 @@
-# name: sashimi
 function fish_prompt
+    # store status
     set -l last_status $status
-    set -l cyan (set_color -o cyan)
-    set -l yellow (set_color -o yellow)
-    set -g red (set_color -o red)
-    set -g blue (set_color -o blue)
-    set -l green (set_color -o green)
-    set -g normal (set_color normal)
 
-    set -l ahead (_git_ahead)
-    set -g whitespace ' '
+    # configure colors
+    set cwd_color (set_color -o blue)
+    set git_branch_color (set_color -o brblack)
+    set git_dirty_color (set_color -o yellow)
+    set git_ahead_color (set_color -o blue)
+    set success_color (set_color -o magenta)
+    set failure_color (set_color -o red)
 
-    if test $last_status = 0
-        set status_indicator "$green❯"
-    else
-        set status_indicator "$red❯"
-    end
-    set -l cwd $cyan(prompt_pwd)
+    # cwd component
+    set cwd $cwd_color(prompt_pwd)
 
-    if [ (_git_branch_name) ]
-
-        set -l git_branch (_git_branch_name)
-        set git_info " $blue$git_branch$normal"
-
+    # git_info component
+    set git_branch (_git_branch)
+    if [ git_branch ]
+        set git_info $git_branch_color$git_branch
         if [ (_is_git_dirty) ]
-            set -l dirty "$yellow*"
-            set git_info "$git_info$dirty"
+            set git_info "$git_info$git_dirty_color*"
         end
+        set git_info "$git_info $git_ahead_color$(_git_ahead)"
     end
 
-    echo -n -s $cwd $git_info $whitespace $ahead \n $status_indicator $whitespace
+    # prompt component
+    if test $last_status = 0
+        set prompt "$success_color❯"
+    else
+        set prompt "$failure_color❯"
+    end
+
+    # assemble full prompt
+    echo -n -s $cwd ' ' $git_info \n $prompt ' '
 end
 
 function _git_ahead
@@ -44,15 +46,15 @@ function _git_ahead
         case '0 0' # equal to upstream
             return
         case '* 0' # ahead of upstream
-            echo "$blue↑$normal_c$ahead$whitespace"
+            echo "⇡"
         case '0 *' # behind upstream
-            echo "$red↓$normal_c$behind$whitespace"
+            echo "⇣"
         case '*' # diverged from upstream
-            echo "$blue↑$normal$ahead $red↓$normal_c$behind$whitespace"
+            echo "⇡⇣"
     end
 end
 
-function _git_branch_name
+function _git_branch
     echo (command git symbolic-ref HEAD 2>/dev/null | sed -e 's|^refs/heads/||')
 end
 
