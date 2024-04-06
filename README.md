@@ -17,11 +17,10 @@ Supporting TUIs:
 
 ## 📁 XDG Base Directory
 
-The dotfiles try to leverage and follow the XDG Base Directory specification.
+The dotfiles leverage and follow the [XDG Base Directory
+specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html).
 
-## ⚙️ Custom Initialization
-
-TBD
+`XDG_*_HOME` variables are exported by the shell.
 
 ## 🔌 Plugins
 
@@ -49,7 +48,7 @@ Key bindings in Neovim can be explored via
 ## 📋 Clipboard
 
 Fish uses custom key bindings to interact with the system clipboard in normal
-mode.
+mode (using `fish_clipboard_copy` and `fish_clipboard_paste`).
 
 Neovim sets the `clipboard` option to `unnamedplus` to yank and paste to/from
 the system clipboard.
@@ -68,6 +67,12 @@ tmux-sessionizer](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.loc
 The script is started from fish using the `<Ctrl-Space>` key binding. From tmux
 it's invoked using `<Ctrl-Space Tab>`.
 
+## 🎨 Colors
+
+WezTerm, Neovim and K9s are setup with the
+[gruvbox](https://github.com/gruvbox-community/gruvbox) color scheme. Fish and
+tmux rely on the colors from the terminal palette.
+
 ## 📦 Dependencies
 
 The dotfiles assume the following additional packages to be installed on your
@@ -75,6 +80,7 @@ system:
 
 General purpose tools:
 
+- [delta](https://github.com/dandavison/delta)
 - [fzf](https://github.com/junegunn/fzf)
 
 Language servers:

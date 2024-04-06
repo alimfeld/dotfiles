@@ -4,7 +4,7 @@ function fish_prompt
 
     # configure colors
     set cwd_color (set_color -o blue)
-    set git_branch_color (set_color -o brblack)
+    set git_branch_color (set_color -o black)
     set git_dirty_color (set_color -o yellow)
     set git_ahead_color (set_color -o blue)
     set success_color (set_color -o magenta)
