@@ -3,10 +3,9 @@ function fish_prompt
     set -l last_status $status
 
     # configure colors
-    set cwd_color (set_color -o blue)
-    set git_branch_color (set_color -o black)
-    set git_dirty_color (set_color -o yellow)
-    set git_ahead_color (set_color -o blue)
+    set cwd_color (set_color brblue)
+    set git_branch_color (set_color brblack)
+    set git_indicator_color (set_color yellow)
     set success_color (set_color -o magenta)
     set failure_color (set_color -o red)
 
@@ -16,11 +15,11 @@ function fish_prompt
     # git_info component
     set git_branch (_git_branch)
     if [ git_branch ]
-        set git_info $git_branch_color$git_branch
+        set git_info $git_branch_color$git_branch$git_indicator_color
         if [ (_is_git_dirty) ]
-            set git_info "$git_info$git_dirty_color*"
+            set git_info "$git_info*"
         end
-        set git_info "$git_info $git_ahead_color$(_git_ahead)"
+        set git_info "$git_info $(_git_ahead)"
     end
 
     # prompt component
@@ -46,11 +45,11 @@ function _git_ahead
         case '0 0' # equal to upstream
             return
         case '* 0' # ahead of upstream
-            echo "⇡"
+            echo "↑$ahead"
         case '0 *' # behind upstream
-            echo "⇣"
+            echo "↓$behind"
         case '*' # diverged from upstream
-            echo "⇡⇣"
+            echo "↑$ahead↓$behind"
     end
 end
 
