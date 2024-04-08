@@ -1,6 +1,6 @@
 function fish_prompt
     # store status
-    set -l last_status $status
+    set last_status $status
 
     # configure colors
     set cwd_color (set_color brblue)
@@ -34,27 +34,31 @@ function fish_prompt
 end
 
 function _git_ahead
-    set -l commits (command git rev-list --left-right '@{upstream}...HEAD' 2>/dev/null)
+    set ahead_behind (command git rev-list --left-right --count HEAD...@'{u}' 2>/dev/null)
     if [ $status != 0 ]
         return
     end
-    set -l behind (count (for arg in $commits; echo $arg; end | grep '^<'))
-    set -l ahead (count (for arg in $commits; echo $arg; end | grep -v '^<'))
-    switch "$ahead $behind"
-        case '' # no upstream
-        case '0 0' # equal to upstream
+    set counts (string split \t -- $ahead_behind)
+    switch "$counts[1] $counts[2]"
+        case "0 0" # equal to upstream
             return
         case '* 0' # ahead of upstream
-            echo "↑$ahead"
+            echo "↑$counts[1]"
         case '0 *' # behind upstream
-            echo "↓$behind"
+            echo "↓$counts[2]"
         case '*' # diverged from upstream
-            echo "↑$ahead↓$behind"
+            echo "↑$counts[1]↓$counts[2]"
     end
 end
 
 function _git_branch
-    echo (command git symbolic-ref HEAD 2>/dev/null | sed -e 's|^refs/heads/||')
+    set branch (command git symbolic-ref --quiet HEAD 2>/dev/null)
+    switch $status
+        case 0
+            echo (string replace -r '^refs/heads/' '' $branch)
+        case 1
+            echo (git rev-parse --short HEAD 2>/dev/null)
+    end
 end
 
 function _is_git_dirty
