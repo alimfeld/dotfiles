@@ -1,11 +1,12 @@
 [core]
-  eol = native
-  autocrlf = input
-  pager = delta
+    eol = native
+    autocrlf = input
+    pager = delta
 
 [push]
-  autoSetupRemote = true
+    autoSetupRemote = true
 
 [delta]
-  navigate = true
-  side-by-side = true
+    navigate = true
+    side-by-side = true
+    syntax-theme = ansi
