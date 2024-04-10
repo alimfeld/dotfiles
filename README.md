@@ -114,5 +114,5 @@ The dotfiles can be installed using [stow](https://www.gnu.org/software/stow/):
 ```shell
 git clone https://github.com/alimfeld/dotfiles ~/.dotfiles
 cd ~/.dotfiles
-stow */
+stow --target=$HOME --dotfiles */
 ```
