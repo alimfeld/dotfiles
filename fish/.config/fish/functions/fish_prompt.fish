@@ -8,9 +8,10 @@ function fish_prompt
     set git_indicator_color (set_color yellow)
     set success_color (set_color -o magenta)
     set failure_color (set_color -o red)
+    set normal_color (set_color normal)
 
     # cwd component
-    set cwd $cwd_color(prompt_pwd)
+    set cwd $cwd_color(prompt_pwd)$normal_color
 
     # git_info component
     set git_branch (_git_branch)
