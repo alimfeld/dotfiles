@@ -69,9 +69,7 @@ it's invoked using `<Ctrl-Space Tab>`.
 
 ## 🎨 Colors
 
-WezTerm, Neovim and K9s are setup with the
-[gruvbox](https://github.com/gruvbox-community/gruvbox) color scheme. Fish and
-tmux rely on the colors from the terminal palette.
+The tools are setup with the [catppuccin](https://catppuccin.com/) color scheme.
 
 ## 📦 Dependencies
 
@@ -80,6 +78,7 @@ system:
 
 General purpose tools:
 
+- [bat](https://github.com/sharkdp/bat)
 - [delta](https://github.com/dandavison/delta)
 - [fzf](https://github.com/junegunn/fzf)
 

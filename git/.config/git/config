@@ -6,7 +6,10 @@
 [push]
     autoSetupRemote = true
 
+[include]
+    path = ~/.config/delta/themes/catppuccin.gitconfig
+
 [delta]
     navigate = true
     side-by-side = true
-    syntax-theme = ansi
+    features = catppuccin-macchiato
