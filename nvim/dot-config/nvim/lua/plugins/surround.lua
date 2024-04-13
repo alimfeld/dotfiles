@@ -1,5 +1,4 @@
 return {
-  "echasnovski/mini.surround",
+  "tpope/vim-surround",
   event = { "BufReadPre", "BufNewFile" },
-  config = true,
 }
