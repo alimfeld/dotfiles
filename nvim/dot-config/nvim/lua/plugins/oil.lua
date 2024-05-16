@@ -4,5 +4,11 @@ return {
   keys = {
     { "-", "<cmd>Oil<cr>", desc = "Open parent directory" },
   },
-  config = true,
+  opts = {
+    keymaps = {
+      -- disable keymaps which interfere with tmux-navigator
+      ["<C-h>"] = false,
+      ["<C-l>"] = false,
+    },
+  },
 }
