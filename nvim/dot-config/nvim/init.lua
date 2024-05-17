@@ -24,13 +24,13 @@ vim.opt.completeopt = "menu,menuone,noinsert,noselect"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.hlsearch = true
+vim.opt.inccommand = "split"
 
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.signcolumn = "yes"
 vim.opt.cursorline = true
 vim.opt.laststatus = 3 -- global statusline
-vim.opt.termguicolors = true
 
 vim.opt.timeoutlen = 300
 vim.opt.updatetime = 250
@@ -48,8 +48,6 @@ vim.keymap.set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit all" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic error messages" })
 
 -- Next/Previous mappings (unimpaired / bracketed)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Diagnostic message" })
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Diagnostic message" })
 vim.keymap.set("n", "]q", "<cmd>cnext<cr>", { desc = "Quickfix item" })
 vim.keymap.set("n", "[q", "<cmd>cprevious<cr>", { desc = "Quickfix item" })
 vim.keymap.set("n", "]Q", "<cmd>clast<cr>", { desc = "Quickfix item (last)" })

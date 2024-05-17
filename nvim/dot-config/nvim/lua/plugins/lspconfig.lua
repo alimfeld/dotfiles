@@ -46,7 +46,6 @@ return {
         local map = function(keys, func, desc)
           vim.keymap.set("n", keys, func, { buffer = event.buf, desc = desc })
         end
-        map("K", vim.lsp.buf.hover, "Hover documentation")
         map("gd", require("telescope.builtin").lsp_definitions, "Definition")
         map("gr", require("telescope.builtin").lsp_references, "References")
         map("<leader>r", vim.lsp.buf.rename, "Rename")
