@@ -29,6 +29,7 @@ return {
       gopls = {},
       marksman = {},
       pyright = {},
+      jdtls = {},
     }
 
     local lspconfig = require("lspconfig")
