@@ -20,6 +20,7 @@ return {
       python = { "isort", "black" },
       terraform = { "terraform_fmt" },
       yaml = { "prettier" },
+      xml = { "xmllint" },
     },
   },
   config = function(_, opts)
