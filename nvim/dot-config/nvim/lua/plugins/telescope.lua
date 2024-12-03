@@ -58,7 +58,7 @@ return {
           finder = finders.new_table({
             results = results,
             entry_maker = function(entry)
-              local path = vim.fn.expand("~/journal/" .. entry.date .. ".md")
+              local path = vim.fn.expand("~/notes/journal/" .. entry.date .. ".md")
               local readable = vim.fn.filereadable(path)
               local indicator = ""
               if readable == 1 then
