@@ -4,10 +4,23 @@ return {
     "nvim-telescope/telescope.nvim",
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-nvim-lsp",
+    "cenk1cenk2/schema-companion.nvim",
   },
   event = { "BufReadPre", "BufNewFile" },
   config = function()
+    require("schema-companion").setup({
+      log_level = vim.log.levels.INFO,
+      enable_telescope = true,
+      matchers = {
+        require("schema-companion.matchers.kubernetes").setup({ version = "master" }),
+      },
+      schemas = {},
+    })
+
     local server_configs = {
+      gopls = {},
+      helm_ls = require("schema-companion").setup_client({}),
+      jdtls = {},
       lua_ls = {
         settings = {
           Lua = {
@@ -25,11 +38,19 @@ return {
           },
         },
       },
-      terraformls = {},
-      gopls = {},
       marksman = {},
       pyright = {},
-      jdtls = {},
+      terraformls = {},
+      yamlls = require("schema-companion").setup_client({
+        settings = {
+          redhat = {
+            telemetry = {
+              enabled = false,
+            },
+          },
+          yaml = {},
+        },
+      }),
     }
 
     local lspconfig = require("lspconfig")
@@ -51,6 +72,7 @@ return {
         map("gr", require("telescope.builtin").lsp_references, "References")
         map("<leader>r", vim.lsp.buf.rename, "Rename")
         map("<leader>a", vim.lsp.buf.code_action, "Code action")
+        map("<leader>y", require("telescope").extensions.schema_companion.select_from_matching_schemas, "YAML Schema")
       end,
     })
   end,
