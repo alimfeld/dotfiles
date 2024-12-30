@@ -85,10 +85,12 @@ General purpose tools:
 Language servers:
 
 - [gopls](https://github.com/golang/tools/tree/master/gopls)
+- [helm-ls](https://github.com/mrjosh/helm-ls)
 - [lua-language-server](https://github.com/luals/lua-language-server)
 - [marksman](https://github.com/artempyanykh/marksman)
 - [python-lsp-server](https://github.com/python-lsp/python-lsp-server)
 - [terraform-ls](https://github.com/hashicorp/terraform-ls)
+- [yaml-language-server](https://github.com/redhat-developer/yaml-language-server)
 
 Formatters:
 
