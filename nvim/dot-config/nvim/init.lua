@@ -69,6 +69,11 @@ vim.filetype.add({
     puml = "plantuml",
     tf = "terraform",
   },
+  pattern = {
+    [".*/templates/.*%.yaml"] = "helm",
+    [".*/*-templates/.*%.yaml"] = "helm",
+    ["helmfile.yaml"] = "helm",
+  },
 })
 
 -- }}}
