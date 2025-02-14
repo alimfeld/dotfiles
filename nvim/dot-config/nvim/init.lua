@@ -47,12 +47,6 @@ vim.keymap.set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit all" })
 -- Error messages
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic error messages" })
 
--- Next/Previous mappings (unimpaired / bracketed)
-vim.keymap.set("n", "]q", "<cmd>cnext<cr>", { desc = "Quickfix item" })
-vim.keymap.set("n", "[q", "<cmd>cprevious<cr>", { desc = "Quickfix item" })
-vim.keymap.set("n", "]Q", "<cmd>clast<cr>", { desc = "Quickfix item (last)" })
-vim.keymap.set("n", "[Q", "<cmd>cfirst<cr>", { desc = "Quickfix item (first)" })
-
 -- Shift left/right retaining selection in visual mode
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
@@ -115,9 +109,7 @@ require("lazy").setup("plugins", {
       disabled_plugins = {
         "gzip",
         "man",
-        "matchit",
         "rplugin",
-        "tarPlugin",
         "tarPlugin",
         "tohtml",
         "tutor",
