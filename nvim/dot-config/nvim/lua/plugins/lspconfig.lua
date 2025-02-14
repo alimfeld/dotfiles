@@ -48,7 +48,11 @@ return {
               enabled = false,
             },
           },
-          yaml = {},
+          yaml = {
+            schemas = {
+              ["https://taskfile.dev/schema.json"] = { "**/Taskfile.yml", "**/*Tasks.yml" },
+            },
+          },
         },
       }),
     }
