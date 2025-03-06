@@ -204,7 +204,7 @@ if.app-id = 'com.github.wez.wezterm'
 run = 'move-node-to-workspace T' # mnemonics T - Terminal
 
 [[on-window-detected]]
-if.app-id = 'com.google.Chrome'
+if.app-id = 'com.brave.Browser'
 run = 'move-node-to-workspace B' # mnemonics B - Browser
 
 [[on-window-detected]]
