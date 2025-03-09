@@ -1,4 +1,5 @@
 return {
+  -- https://github.com/mfussenegger/nvim-lint
   "mfussenegger/nvim-lint",
   event = { "BufReadPre", "BufNewFile" },
   config = function()
