@@ -66,7 +66,7 @@ return {
       end,
       desc = "File Explorer",
     },
-    -- find
+    -- Find
     {
       "<leader>fb",
       function()
@@ -79,21 +79,21 @@ return {
       function()
         Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
       end,
-      desc = "Find Config File",
+      desc = "Config File",
     },
     {
       "<leader>ff",
       function()
         Snacks.picker.files()
       end,
-      desc = "Find Files",
+      desc = "Files",
     },
     {
       "<leader>fg",
       function()
         Snacks.picker.git_files()
       end,
-      desc = "Find Git Files",
+      desc = "Git Files",
     },
     {
       "<leader>fp",
@@ -109,57 +109,57 @@ return {
       end,
       desc = "Recent",
     },
-    -- git
+    -- Git
     {
       "<leader>gb",
       function()
         Snacks.picker.git_branches()
       end,
-      desc = "Git Branches",
+      desc = "Branches",
     },
     {
       "<leader>gl",
       function()
         Snacks.picker.git_log()
       end,
-      desc = "Git Log",
+      desc = "Log",
     },
     {
       "<leader>gL",
       function()
         Snacks.picker.git_log_line()
       end,
-      desc = "Git Log Line",
+      desc = "Log Line",
     },
     {
       "<leader>gs",
       function()
         Snacks.picker.git_status()
       end,
-      desc = "Git Status",
+      desc = "Status",
     },
     {
       "<leader>gS",
       function()
         Snacks.picker.git_stash()
       end,
-      desc = "Git Stash",
+      desc = "Stash",
     },
     {
       "<leader>gd",
       function()
         Snacks.picker.git_diff()
       end,
-      desc = "Git Diff (Hunks)",
+      desc = "Diff (Hunks)",
     },
     {
       "<leader>gf",
       function()
         Snacks.picker.git_log_file()
       end,
-      desc = "Git Log File",
+      desc = "Log File",
     },
-    -- Grep (search)
+    -- Search / Grep
     {
       "<leader>sb",
       function()
@@ -172,7 +172,7 @@ return {
       function()
         Snacks.picker.grep_buffers()
       end,
-      desc = "Grep Open Buffers",
+      desc = "Open Buffers",
     },
     {
       "<leader>sg",
@@ -189,7 +189,6 @@ return {
       desc = "Visual selection or word",
       mode = { "n", "x" },
     },
-    -- search
     {
       '<leader>s"',
       function()
@@ -247,20 +246,6 @@ return {
       desc = "Help Pages",
     },
     {
-      "<leader>sH",
-      function()
-        Snacks.picker.highlights()
-      end,
-      desc = "Highlights",
-    },
-    {
-      "<leader>si",
-      function()
-        Snacks.picker.icons()
-      end,
-      desc = "Icons",
-    },
-    {
       "<leader>sj",
       function()
         Snacks.picker.jumps()
@@ -289,18 +274,11 @@ return {
       desc = "Marks",
     },
     {
-      "<leader>sM",
-      function()
-        Snacks.picker.man()
-      end,
-      desc = "Man Pages",
-    },
-    {
       "<leader>sp",
       function()
         Snacks.picker.lazy()
       end,
-      desc = "Search for Plugin Spec",
+      desc = "Plugin Spec",
     },
     {
       "<leader>sq",
