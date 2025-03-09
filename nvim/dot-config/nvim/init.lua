@@ -44,9 +44,6 @@ vim.opt.undofile = true
 -- Quit
 vim.keymap.set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit all" })
 
--- Error messages
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic error messages" })
-
 -- Shift left/right retaining selection in visual mode
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
@@ -120,3 +117,5 @@ require("lazy").setup("plugins", {
 })
 
 -- }}}
+
+-- vim: foldmethod=marker
