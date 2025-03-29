@@ -1,8 +1,6 @@
 return {
   -- https://github.com/neovim/nvim-lspconfig
-  -- TODO: Refactor once neovim 0.11 is released (see https://github.com/neovim/nvim-lspconfig/issues/3494)
   "neovim/nvim-lspconfig",
-  dependencies = { "saghen/blink.cmp" },
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local lspconfig = require("lspconfig")
@@ -47,7 +45,6 @@ return {
     }
 
     for server, config in pairs(server_configs) do
-      config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
       lspconfig[server].setup(config)
     end
   end,
