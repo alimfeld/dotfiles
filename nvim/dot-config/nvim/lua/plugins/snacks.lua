@@ -317,7 +317,7 @@ return {
       desc = "Goto Declaration",
     },
     {
-      "gr",
+      "grr",
       function()
         Snacks.picker.lsp_references()
       end,
@@ -325,7 +325,7 @@ return {
       desc = "References",
     },
     {
-      "gI",
+      "gri",
       function()
         Snacks.picker.lsp_implementations()
       end,
@@ -430,55 +430,55 @@ return {
 
         -- conform toggles
         Snacks.toggle
-          .new({
-            id = "format_on_save",
-            name = "Format on Save (global)",
-            get = function()
-              return not vim.g.disable_autoformat
-            end,
-            set = function(state)
-              vim.g.disable_autoformat = not state
-            end,
-          })
-          :map("<leader>tf")
+            .new({
+              id = "format_on_save",
+              name = "Format on Save (global)",
+              get = function()
+                return not vim.g.disable_autoformat
+              end,
+              set = function(state)
+                vim.g.disable_autoformat = not state
+              end,
+            })
+            :map("<leader>tf")
         Snacks.toggle
-          .new({
-            id = "format_on_save_buffer",
-            name = "Format on Save (buffer)",
-            get = function()
-              return not vim.b.disable_autoformat
-            end,
-            set = function(state)
-              vim.b.disable_autoformat = not state
-            end,
-          })
-          :map("<leader>tF")
+            .new({
+              id = "format_on_save_buffer",
+              name = "Format on Save (buffer)",
+              get = function()
+                return not vim.b.disable_autoformat
+              end,
+              set = function(state)
+                vim.b.disable_autoformat = not state
+              end,
+            })
+            :map("<leader>tF")
 
         -- gitsigns toggles
         Snacks.toggle
-          .new({
-            id = "git_current_line_blame",
-            name = "Git Line Blame",
-            get = function()
-              return require("gitsigns.config").config.current_line_blame
-            end,
-            set = function(state)
-              require("gitsigns").toggle_current_line_blame(state)
-            end,
-          })
-          :map("<leader>tb")
+            .new({
+              id = "git_current_line_blame",
+              name = "Git Line Blame",
+              get = function()
+                return require("gitsigns.config").config.current_line_blame
+              end,
+              set = function(state)
+                require("gitsigns").toggle_current_line_blame(state)
+              end,
+            })
+            :map("<leader>tb")
         Snacks.toggle
-          .new({
-            id = "git_show_deleted",
-            name = "Git Show Deleted",
-            get = function()
-              return require("gitsigns.config").config.show_deleted
-            end,
-            set = function(state)
-              require("gitsigns").toggle_deleted(state)
-            end,
-          })
-          :map("<leader>td")
+            .new({
+              id = "git_show_deleted",
+              name = "Git Show Deleted",
+              get = function()
+                return require("gitsigns.config").config.show_deleted
+              end,
+              set = function(state)
+                require("gitsigns").toggle_deleted(state)
+              end,
+            })
+            :map("<leader>td")
       end,
     })
 
