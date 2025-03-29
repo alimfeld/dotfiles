@@ -5,7 +5,12 @@ return {
   dependencies = { "saghen/blink.cmp" },
   event = { "BufReadPre", "BufNewFile" },
   config = function()
+    local lspconfig = require("lspconfig")
+
     local server_configs = {
+      denols = {
+        root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+      },
       gopls = {},
       helm_ls = {},
       jdtls = {},
@@ -26,6 +31,10 @@ return {
       marksman = {},
       pyright = {},
       terraformls = {},
+      ts_ls = {
+        root_dir = lspconfig.util.root_pattern("package.json"),
+        single_file_support = false,
+      },
       yamlls = {
         settings = {
           yaml = {
@@ -37,7 +46,6 @@ return {
       },
     }
 
-    local lspconfig = require("lspconfig")
     for server, config in pairs(server_configs) do
       config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
       lspconfig[server].setup(config)
