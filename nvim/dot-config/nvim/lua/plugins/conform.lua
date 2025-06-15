@@ -12,6 +12,7 @@ return {
       return { timeout_ms = 1000, async = false, lsp_fallback = true }
     end,
     formatters_by_ft = {
+      css = { "prettier" },
       fish = { "fish_indent" },
       go = { "gofmt" },
       javascript = { "prettier" },
@@ -20,8 +21,9 @@ return {
       markdown = { "prettier" },
       python = { "isort", "black" },
       terraform = { "terraform_fmt" },
-      yaml = { "prettier" },
+      typescript = { "prettier" },
       xml = { "xmllint" },
+      yaml = { "prettier" },
     },
   },
 }
