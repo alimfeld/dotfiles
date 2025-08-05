@@ -6,19 +6,16 @@
 [push]
     autoSetupRemote = true
 
-[include]
-    path = ~/.config/delta/themes/catppuccin.gitconfig
-
 [interactive]
     diffFilter = delta --color-only
 
 [delta]
     navigate = true # use n and N to move between diff sections
     side-by-side = true
-    features = catppuccin-macchiato
 
 [merge]
     conflictstyle = diff3
 
 [diff]
     colorMoved = default
+    tool = nvimdiff

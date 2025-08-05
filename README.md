@@ -67,10 +67,6 @@ tmux-sessionizer](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.loc
 The script is started from fish using the `<Ctrl-Space>` key binding. From tmux
 it's invoked using `<Ctrl-Space Tab>`.
 
-## 🎨 Colors
-
-The tools are setup with the [catppuccin](https://catppuccin.com/) color scheme.
-
 ## 📦 Dependencies
 
 The dotfiles assume the following additional packages to be installed on your
