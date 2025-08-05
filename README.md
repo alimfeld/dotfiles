@@ -75,7 +75,6 @@ system:
 General purpose tools:
 
 - [bat](https://github.com/sharkdp/bat)
-- [delta](https://github.com/dandavison/delta)
 - [fzf](https://github.com/junegunn/fzf)
 
 Language servers:

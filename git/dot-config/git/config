@@ -1,17 +1,9 @@
 [core]
     eol = native
     autocrlf = input
-    pager = delta
 
 [push]
     autoSetupRemote = true
-
-[interactive]
-    diffFilter = delta --color-only
-
-[delta]
-    navigate = true # use n and N to move between diff sections
-    side-by-side = true
 
 [merge]
     conflictstyle = diff3
