@@ -8,7 +8,6 @@ config.default_prog = { shell, "-l" }
 config.set_environment_variables = {
 	SHELL = shell,
 }
-config.color_scheme = "Catppuccin Macchiato"
 config.hide_tab_bar_if_only_one_tab = true
 config.font_size = 14
 
