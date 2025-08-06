@@ -70,12 +70,10 @@ add({ source = 'https://github.com/christoomey/vim-tmux-navigator' })
 add({ source = 'https://github.com/echasnovski/mini.nvim' })
 add({ source = 'https://github.com/neovim/nvim-lspconfig' })
 add({ source = 'https://github.com/stevearc/oil.nvim' })
-add({ source = 'https://github.com/neanias/everforest-nvim' })
+add({ source = 'https://github.com/ribru17/bamboo.nvim' })
 
-require('everforest').setup({
-  background = "hard"
-})
-require('everforest').load();
+require('bamboo').setup();
+require('bamboo').load();
 require('mini.diff').setup()
 require('mini.icons').setup()
 require('mini.pick').setup()
