@@ -73,7 +73,7 @@ add({ source = 'https://github.com/stevearc/oil.nvim' })
 add({ source = 'https://github.com/neanias/everforest-nvim' })
 
 require('everforest').setup({
-  background = "medium"
+  background = "hard"
 })
 require('everforest').load();
 require('mini.diff').setup()
@@ -91,7 +91,6 @@ require('oil').setup({
 -- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 -- ┃ LSP                                                                       ┃
 -- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
--- vim.lsp.enable("pylsp")
 vim.lsp.enable("jsonls")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("pyright")
@@ -134,4 +133,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
     end
   end
+})
+-- highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
