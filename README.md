@@ -28,9 +28,6 @@ Use of plugins in core tools is reduced to a minimum. Since plugins are
 specific to the respective tool, the tools are configured in a way to have
 those plugins auto-installed.
 
-**Neovim** is configured to use [lazy.nvim](https://github.com/folke/lazy.nvim)
-for installing and managing plugins.
-
 ## ⌨️ Key Bindings
 
 Fish and tmux are setup with vi key bindings.
@@ -41,9 +38,6 @@ Neovim.
 `<Ctrl-h>`, `<Ctrl-j>`, `<Ctrl-k>` and `<Ctrl-l>` can be used to seamlessly
 navigate between Neovim and tmux splits using
 [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator).
-
-Key bindings in Neovim can be explored via
-[WhichKey](https://github.com/folke/which-key.nvim).
 
 ## 📋 Clipboard
 
@@ -69,40 +63,9 @@ it's invoked using `<Ctrl-Space Tab>`.
 
 ## 📦 Dependencies
 
-The dotfiles assume the following additional packages to be installed on your
-system:
-
-General purpose tools:
-
-- [bat](https://github.com/sharkdp/bat)
-- [fzf](https://github.com/junegunn/fzf)
-
-Language servers:
-
-- [gopls](https://github.com/golang/tools/tree/master/gopls)
-- [helm-ls](https://github.com/mrjosh/helm-ls)
-- [lua-language-server](https://github.com/luals/lua-language-server)
-- [marksman](https://github.com/artempyanykh/marksman)
-- [python-lsp-server](https://github.com/python-lsp/python-lsp-server)
-- [terraform-ls](https://github.com/hashicorp/terraform-ls)
-- [yaml-language-server](https://github.com/redhat-developer/yaml-language-server)
-
-Formatters:
-
-- [black](https://github.com/psf/black)
-- [gofmt (go)](https://github.com/golang/go)
-- [isort](https://github.com/PyCQA/isort)
-- [prettier](https://github.com/prettier/prettier)
-- [stylua](https://pkg.go.dev/golang.org/x/tools/gopls)
-- [terraform fmt](https://github.com/hashicorp/terraform)
-
-Linters:
-
-- [pylint](https://github.com/pylint-dev/pylint)
-- [shellcheck](https://github.com/koalaman/shellcheck)
-
-You can install the packages using your systems's package manager or via
-[Homebrew](https://brew.sh/).
+The dotfiles assume some additional packages to be installed on your system
+(such as fzf or language servers. Install the packages using your systems's
+package manager or via [Homebrew](https://brew.sh/).
 
 ## 🛠️ Installation
 
