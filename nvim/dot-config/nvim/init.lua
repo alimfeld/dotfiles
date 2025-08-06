@@ -72,7 +72,6 @@ add({ source = 'https://github.com/neovim/nvim-lspconfig' })
 add({ source = 'https://github.com/stevearc/oil.nvim' })
 add({ source = 'https://github.com/ribru17/bamboo.nvim' })
 
-require('bamboo').setup();
 require('bamboo').load();
 require('mini.diff').setup()
 require('mini.icons').setup()
