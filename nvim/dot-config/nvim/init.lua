@@ -32,6 +32,7 @@ vim.opt.timeoutlen = 300
 vim.opt.updatetime = 250
 vim.opt.undofile = true
 vim.opt.winborder = "rounded"
+vim.opt.termguicolors = true
 
 -- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 -- ┃ FILETYPE                                                                  ┃
@@ -70,13 +71,13 @@ add({ source = 'https://github.com/echasnovski/mini.nvim' })
 add({ source = 'https://github.com/neovim/nvim-lspconfig' })
 add({ source = 'https://github.com/stevearc/oil.nvim' })
 add({ source = 'https://github.com/tpope/vim-fugitive' })
-add({ source = 'https://github.com/rose-pine/neovim', name = 'rose-pine' })
+add({ source = 'https://github.com/ellisonleao/gruvbox.nvim' })
 add({
   source = 'https://github.com/nvim-treesitter/nvim-treesitter',
   hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
 })
 
-vim.cmd.colorscheme("rose-pine")
+vim.cmd.colorscheme("gruvbox")
 
 require('mini.ai').setup()
 require('mini.diff').setup()
