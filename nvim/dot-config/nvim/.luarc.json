@@ -9,5 +9,10 @@
             "${3rd}/luv/library"
         ],
         "checkThirdParty": "Disable"
+    },
+    "diagnostics": {
+        "globalsRegex": [
+            "Mini.*"
+        ]
     }
 }

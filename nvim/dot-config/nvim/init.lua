@@ -64,20 +64,31 @@ if not vim.loop.fs_stat(mini_path) then
 end
 require('mini.deps').setup({ path = { package = path_package } })
 
----@diagnostic disable-next-line: undefined-global
 local add = MiniDeps.add -- replace with vim.pack.add, once neovim 0.12 lands
 add({ source = 'https://github.com/christoomey/vim-tmux-navigator' })
 add({ source = 'https://github.com/echasnovski/mini.nvim' })
 add({ source = 'https://github.com/neovim/nvim-lspconfig' })
 add({ source = 'https://github.com/stevearc/oil.nvim' })
-add({ source = 'https://github.com/ribru17/bamboo.nvim' })
 add({ source = 'https://github.com/tpope/vim-fugitive' })
+add({ source = 'https://github.com/rose-pine/neovim', name = 'rose-pine' })
+add({
+  source = 'https://github.com/nvim-treesitter/nvim-treesitter',
+  hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
+})
 
-require('bamboo').load();
+vim.cmd.colorscheme("rose-pine")
+
 require('mini.ai').setup()
 require('mini.diff').setup()
 require('mini.icons').setup()
-require('mini.pick').setup()
+require('mini.pick').setup({
+  mappings = {
+    send_to_quicklist = {
+      char = '<C-q>',
+      func = function() MiniPick.default_choose_marked(MiniPick.get_picker_items()) end,
+    }
+  }
+})
 require('mini.surround').setup()
 require('oil').setup({
   skip_confirm_for_simple_edits = true,
@@ -86,6 +97,24 @@ require('oil').setup({
     ["<C-h>"] = false, -- select (horizontal)
     ["<C-l>"] = false, -- refresh
   },
+})
+require('nvim-treesitter.configs').setup({
+  ensure_installed = {
+    "helm",
+    "json",
+    "lua",
+    "markdown",
+    "markdown_inline",
+    "python",
+    "terraform",
+    "typescript",
+    "vim",
+    "vimdoc",
+    "yaml",
+  },
+  highlight = {
+    enable = true
+  }
 })
 
 -- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -96,7 +125,7 @@ vim.lsp.enable("lua_ls")
 vim.lsp.enable("pyright")
 vim.lsp.enable("terraformls")
 vim.lsp.enable("ts_ls")
-vim.lsp.enable("yamlls")
+vim.lsp.enable("helm_ls")
 
 -- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 -- ┃ KEYMAP                                                                    ┃
