@@ -71,11 +71,14 @@ add({ source = 'https://github.com/echasnovski/mini.nvim' })
 add({ source = 'https://github.com/neovim/nvim-lspconfig' })
 add({ source = 'https://github.com/stevearc/oil.nvim' })
 add({ source = 'https://github.com/ribru17/bamboo.nvim' })
+add({ source = 'https://github.com/tpope/vim-fugitive' })
 
 require('bamboo').load();
+require('mini.ai').setup()
 require('mini.diff').setup()
 require('mini.icons').setup()
 require('mini.pick').setup()
+require('mini.surround').setup()
 require('oil').setup({
   skip_confirm_for_simple_edits = true,
   keymaps = {
@@ -98,15 +101,21 @@ vim.lsp.enable("yamlls")
 -- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 -- ┃ KEYMAP                                                                    ┃
 -- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
-vim.keymap.set("n", "<leader><space>", "<cmd>Pick files<cr>", { desc = "Pick files" })
-vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostic" })
-vim.keymap.set("n", "<leader>g", "<cmd>Pick grep_live<cr>", { desc = "Grep" })
-vim.keymap.set("n", "<leader>h", "<cmd>Pick help<cr>", { desc = "Help" })
-vim.keymap.set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit all" })
-vim.keymap.set("v", "<", "<gv", { desc = "Shift left retaining selection" })
-vim.keymap.set("v", ">", ">gv", { desc = "Shift right retaining selection" })
-vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+vim.keymap.set("n", "-", "<cmd>Oil<cr>")
+
+vim.keymap.set("n", "<leader><space>", "<cmd>Pick files<cr>")
+vim.keymap.set("n", "<leader>b", "<cmd>Pick buffers<cr>")
+vim.keymap.set("n", "<leader>/", "<cmd>Pick grep_live<cr>")
+vim.keymap.set("n", "<leader>h", "<cmd>Pick help<cr>")
+
+vim.keymap.set("n", "<leader>g", "<cmd>Git<cr>")
+
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
+vim.keymap.set("n", "<leader>q", "<cmd>qa<cr>")
+
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
 
 -- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 -- ┃ AUTOCMD                                                                   ┃
@@ -134,6 +143,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
 })
