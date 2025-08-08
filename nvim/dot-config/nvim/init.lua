@@ -82,14 +82,7 @@ vim.cmd.colorscheme("gruvbox")
 require('mini.ai').setup()
 require('mini.diff').setup()
 require('mini.icons').setup()
-require('mini.pick').setup({
-  mappings = {
-    send_to_quicklist = {
-      char = '<C-q>',
-      func = function() MiniPick.default_choose_marked(MiniPick.get_picker_items()) end,
-    }
-  }
-})
+require('mini.pick').setup()
 require('mini.surround').setup()
 require('oil').setup({
   skip_confirm_for_simple_edits = true,
