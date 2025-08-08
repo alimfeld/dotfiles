@@ -147,6 +147,7 @@ vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = ev.buf,
       callback = function()
         vim.lsp.buf.format { async = false, id = ev.data.client_id }
       end,
