@@ -114,6 +114,7 @@ require('nvim-treesitter.configs').setup({
 -- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 -- ┃ LSP                                                                       ┃
 -- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+vim.lsp.enable("cssls")
 vim.lsp.enable("jsonls")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("pyright")
