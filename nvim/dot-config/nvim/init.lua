@@ -69,6 +69,7 @@ local add = MiniDeps.add -- replace with vim.pack.add, once neovim 0.12 lands
 add({ source = 'https://github.com/christoomey/vim-tmux-navigator' })
 add({ source = 'https://github.com/echasnovski/mini.nvim' })
 add({ source = 'https://github.com/neovim/nvim-lspconfig' })
+add({ source = 'https://github.com/saghen/blink.cmp' })
 add({ source = 'https://github.com/stevearc/oil.nvim' })
 add({ source = 'https://github.com/tpope/vim-fugitive' })
 add({ source = 'https://github.com/ellisonleao/gruvbox.nvim' })
