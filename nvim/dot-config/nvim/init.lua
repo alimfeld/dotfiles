@@ -72,13 +72,12 @@ add({ source = 'https://github.com/neovim/nvim-lspconfig' })
 add({ source = 'https://github.com/saghen/blink.cmp' })
 add({ source = 'https://github.com/stevearc/oil.nvim' })
 add({ source = 'https://github.com/tpope/vim-fugitive' })
-add({ source = 'https://github.com/ellisonleao/gruvbox.nvim' })
 add({
   source = 'https://github.com/nvim-treesitter/nvim-treesitter',
   hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
 })
 
-vim.cmd.colorscheme("gruvbox")
+vim.cmd.colorscheme("minisummer")
 
 require('mini.ai').setup()
 require('mini.diff').setup()
