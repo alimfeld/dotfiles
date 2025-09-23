@@ -69,7 +69,6 @@ local add = MiniDeps.add -- replace with vim.pack.add, once neovim 0.12 lands
 add({ source = 'https://github.com/christoomey/vim-tmux-navigator' })
 add({ source = 'https://github.com/echasnovski/mini.nvim' })
 add({ source = 'https://github.com/neovim/nvim-lspconfig' })
-add({ source = 'https://github.com/saghen/blink.cmp' })
 add({ source = 'https://github.com/stevearc/oil.nvim' })
 add({ source = 'https://github.com/tpope/vim-fugitive' })
 add({
@@ -144,29 +143,35 @@ vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
 -- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 -- ┃ AUTOCMD                                                                   ┃
 -- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
--- LSP format on save
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(ev)
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = ev.buf,
-      callback = function()
-        vim.lsp.buf.format { async = false, id = ev.data.client_id }
-      end,
-    })
-  end
-})
--- LSP completion
+-- LSP features (see :help lsp)
 vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(ev)
-    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    assert(client ~= nil)
+  group = vim.api.nvim_create_augroup('my.lsp', {}),
+  callback = function(args)
+    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+    -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
     if client:supports_method('textDocument/completion') then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+      -- Optional: trigger autocompletion on EVERY keypress. May be slow!
+      -- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+      -- client.server_capabilities.completionProvider.triggerCharacters = chars
+      vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
     end
-  end
+    -- Auto-format ("lint") on save.
+    -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
+    if not client:supports_method('textDocument/willSaveWaitUntil')
+        and client:supports_method('textDocument/formatting') then
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+        buffer = args.buf,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+        end,
+      })
+    end
+  end,
 })
 -- highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup('my.hl', {}),
   callback = function()
     vim.hl.on_yank()
   end,
