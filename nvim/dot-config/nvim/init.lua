@@ -116,10 +116,31 @@ require('nvim-treesitter.configs').setup({
 vim.lsp.enable("cssls")
 vim.lsp.enable("jsonls")
 vim.lsp.enable("lua_ls")
-vim.lsp.enable("pyright")
+vim.lsp.enable("pylsp")
 vim.lsp.enable("terraformls")
 vim.lsp.enable("ts_ls")
 vim.lsp.enable("helm_ls")
+
+vim.lsp.config('pylsp', {
+  settings = {
+    pylsp = {
+      plugins = {
+        pylint = {
+          enabled = true,
+        },
+        black = {
+          enabled = true,
+        }
+      }
+    }
+  }
+})
+
+-- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+-- ┃ DIAGNOSTIC                                                                ┃
+-- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+--
+vim.diagnostic.config({ virtual_text = true })
 
 -- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 -- ┃ KEYMAP                                                                    ┃
