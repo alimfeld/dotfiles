@@ -113,6 +113,7 @@ require('nvim-treesitter.configs').setup({
 -- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 -- ┃ LSP                                                                       ┃
 -- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+vim.lsp.enable("bashls")
 vim.lsp.enable("cssls")
 vim.lsp.enable("jsonls")
 vim.lsp.enable("lua_ls")
