@@ -33,6 +33,7 @@ vim.opt.updatetime = 250
 vim.opt.undofile = true
 vim.opt.winborder = "rounded"
 vim.opt.termguicolors = true
+vim.opt.exrc = true -- enable per-project .nvim.lua, .nvimrc or .exrc
 
 -- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 -- ┃ FILETYPE                                                                  ┃
