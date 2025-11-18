@@ -24,6 +24,6 @@ config.keys = {
     },
 }
 
-config.color_scheme = 'Gruvbox Dark (Gogh)'
+config.color_scheme = 'tokyonight'
 
 return config
