@@ -69,6 +69,8 @@ require('mini.deps').setup({ path = { package = path_package } })
 local add = MiniDeps.add -- replace with vim.pack.add, once neovim 0.12 lands
 add({ source = 'https://github.com/christoomey/vim-tmux-navigator' })
 add({ source = 'https://github.com/echasnovski/mini.nvim' })
+add({ source = 'https://github.com/folke/snacks.nvim' })
+add({ source = 'https://github.com/folke/tokyonight.nvim' })
 add({ source = 'https://github.com/github/copilot.vim' })
 add({ source = 'https://github.com/neovim/nvim-lspconfig' })
 add({ source = 'https://github.com/stevearc/oil.nvim' })
@@ -78,12 +80,11 @@ add({
   hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
 })
 
-vim.cmd.colorscheme("minisummer")
+vim.cmd.colorscheme("tokyonight")
 
 require('mini.ai').setup()
 require('mini.diff').setup()
 require('mini.icons').setup()
-require('mini.pick').setup()
 require('mini.surround').setup()
 require('oil').setup({
   skip_confirm_for_simple_edits = true,
@@ -93,6 +94,9 @@ require('oil').setup({
     ["<C-l>"] = false, -- refresh
   },
 })
+require('snacks').setup({
+  picker = { enabled = true },
+})
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
     "helm",
@@ -101,6 +105,7 @@ require('nvim-treesitter.configs').setup({
     "markdown",
     "markdown_inline",
     "python",
+    "regex",
     "terraform",
     "typescript",
     "vim",
@@ -150,10 +155,9 @@ vim.diagnostic.config({ virtual_text = true })
 -- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 vim.keymap.set("n", "-", "<cmd>Oil<cr>")
 
-vim.keymap.set("n", "<leader><space>", "<cmd>Pick files<cr>")
-vim.keymap.set("n", "<leader>b", "<cmd>Pick buffers<cr>")
-vim.keymap.set("n", "<leader>/", "<cmd>Pick grep_live<cr>")
-vim.keymap.set("n", "<leader>h", "<cmd>Pick help<cr>")
+vim.keymap.set("n", "<leader><space>", function() Snacks.picker.smart() end)
+vim.keymap.set("n", "<leader>b", function() Snacks.picker.buffers() end)
+vim.keymap.set("n", "<leader>/", function() Snacks.picker.grep() end)
 
 vim.keymap.set("n", "<leader>g", "<cmd>Git<cr>")
 
