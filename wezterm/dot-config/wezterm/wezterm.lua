@@ -24,6 +24,6 @@ config.keys = {
     },
 }
 
-config.color_scheme = 'Everforest Dark (Gogh)'
+config.color_scheme = 'Catppuccin Mocha'
 
 return config
