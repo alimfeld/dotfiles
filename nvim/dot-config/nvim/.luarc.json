@@ -12,7 +12,8 @@
     },
     "diagnostics": {
         "globalsRegex": [
-            "Mini.*"
+            "Mini.*",
+            "Snacks"
         ]
     }
 }

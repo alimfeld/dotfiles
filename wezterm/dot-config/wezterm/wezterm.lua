@@ -24,6 +24,6 @@ config.keys = {
     },
 }
 
-config.color_scheme = 'tokyonight'
+config.color_scheme = 'Everforest Dark (Gogh)'
 
 return config
