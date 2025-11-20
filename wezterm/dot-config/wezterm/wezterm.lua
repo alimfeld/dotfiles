@@ -11,19 +11,6 @@ config.set_environment_variables = {
 config.hide_tab_bar_if_only_one_tab = true
 config.font_size = 14
 
-config.keys = {
-    {
-        key = 'f',
-        mods = 'CTRL|SHIFT',
-        action = wezterm.action.ToggleFullScreen
-    },
-    {
-        key = "Enter",
-        mods = "ALT",
-        action = wezterm.action.DisableDefaultAssignment,
-    },
-}
-
 config.color_scheme = 'Catppuccin Mocha'
 
 return config
