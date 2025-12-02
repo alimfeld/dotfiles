@@ -22,6 +22,7 @@ brew install \
     gomplate \
     gsed \
     helm \
+    helm-docs \
     helm-ls \
     helmfile \
     jinja2-cli \
@@ -56,3 +57,4 @@ pipx inject python-lsp-server pylint
 
 # Helm plugin installation
 helm plugin install https://github.com/databus23/helm-diff --verify=false
+helm plugin install https://github.com/dadav/helm-schema --verify=false
