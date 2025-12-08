@@ -38,6 +38,7 @@ brew install \
     pyright \
     python-setuptools \
     rg \
+    ruff \
     shellcheck \
     shfmt \
     stow \
