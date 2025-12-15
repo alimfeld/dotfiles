@@ -5,6 +5,7 @@ brew install --cask wezterm --appdir=~/Applications
 brew install --cask brave-browser --appdir=~/Applications
 brew install \
     ansifilter \
+    argocd \
     aws-sso-util \
     awscli \
     awsume \
@@ -14,6 +15,7 @@ brew install \
     delta \
     derlin/bitdowntoc/bitdowntoc \
     direnv \
+    docker \
     fd \
     fish \
     fzf \
