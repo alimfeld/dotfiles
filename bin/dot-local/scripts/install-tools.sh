@@ -16,6 +16,7 @@ brew install \
     derlin/bitdowntoc/bitdowntoc \
     direnv \
     docker \
+    docker-credential-helper \
     fd \
     fish \
     fzf \
