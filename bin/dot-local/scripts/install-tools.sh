@@ -11,6 +11,7 @@ brew install \
     awsume \
     bash-language-server \
     bat \
+    bats \
     black \
     delta \
     derlin/bitdowntoc/bitdowntoc \
@@ -41,8 +42,10 @@ brew install \
     pyright \
     python-setuptools \
     rg \
+    robscott/tap/kube-capacity \
     ruff \
     shellcheck \
+    shelltestrunner \
     shfmt \
     stow \
     terraform-docs \
