@@ -53,6 +53,7 @@ brew install \
     tfenv \
     tflint \
     tmux \
+    tree-sitter-cli \
     typescript-language-server \
     vscode-langservers-extracted \
     yaml-language-server \
