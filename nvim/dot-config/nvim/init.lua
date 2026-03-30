@@ -53,35 +53,21 @@ vim.filetype.add({
 })
 
 -- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
--- ┃ PACK (mini.deps)                                                          ┃
+-- ┃ PACK                                                                      ┃
 -- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
-local path_package = vim.fn.stdpath('data') .. '/site'
-local mini_path = path_package .. '/pack/deps/start/mini.nvim'
-if not vim.loop.fs_stat(mini_path) then
-  vim.cmd('echo "Installing `mini.nvim`" | redraw')
-  local clone_cmd = {
-    'git', 'clone', '--filter=blob:none',
-    'https://github.com/echasnovski/mini.nvim', mini_path
-  }
-  vim.fn.system(clone_cmd)
-  vim.cmd('packadd mini.nvim | helptags ALL')
-  vim.cmd('echo "Installed `mini.nvim`" | redraw')
-end
-require('mini.deps').setup({ path = { package = path_package } })
-
-local add = MiniDeps.add -- replace with vim.pack.add, once neovim 0.12 lands
-add({ source = "catppuccin/nvim", name = "catppuccin" })
-add({ source = 'christoomey/vim-tmux-navigator' })
-add({ source = 'echasnovski/mini.nvim' })
-add({ source = 'folke/snacks.nvim' })
-add({ source = 'folke/which-key.nvim' })
-add({ source = 'github/copilot.vim' })
-add({ source = 'neovim/nvim-lspconfig' })
-add({ source = 'nvim-treesitter/nvim-treesitter', hooks = { post_checkout = function() vim.cmd('TSUpdate') end } })
-add({ source = 'nvim-treesitter/nvim-treesitter-textobjects' })
-add({ source = 'stevearc/oil.nvim' })
-add({ source = 'tpope/vim-fugitive' })
+vim.pack.add({
+  { src = 'https://github.com/catppuccin/nvim', name = 'catppuccin' },
+  'https://github.com/christoomey/vim-tmux-navigator',
+  'https://github.com/echasnovski/mini.nvim',
+  'https://github.com/folke/snacks.nvim',
+  'https://github.com/folke/which-key.nvim',
+  'https://github.com/github/copilot.vim',
+  'https://github.com/neovim/nvim-lspconfig',
+  'https://github.com/nvim-treesitter/nvim-treesitter',
+  'https://github.com/stevearc/oil.nvim',
+  'https://github.com/tpope/vim-fugitive',
+})
 
 -- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 -- ┃ COLOR                                                                     ┃
@@ -113,55 +99,27 @@ require('snacks').setup({
   toggle = { enabled = true },
 })
 
-require('nvim-treesitter.configs').setup({
-  ensure_installed = {
-    "helm",
-    "json",
-    "lua",
-    "markdown",
-    "markdown_inline",
-    "python",
-    "regex",
-    "terraform",
-    "typescript",
-    "vim",
-    "vimdoc",
-    "yaml",
-  },
-  highlight = {
-    enable = true
-  }
-})
-
-require('nvim-treesitter.configs').setup {
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true,
-      keymaps = {
-        ["a="] = "@assignment.outer",
-        ["i="] = "@assignment.inner",
-        ["l="] = "@assignment.lhs",
-        ["r="] = "@assignment.rhs",
-        ["aa"] = "@parameter.outer",
-        ["ia"] = "@parameter.inner",
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-      },
-    },
-    swap = {
-      enable = true,
-      swap_next = {
-        ["<leader>a"] = "@parameter.inner",
-      },
-      swap_previous = {
-        ["<leader>A"] = "@parameter.inner",
-      },
-    },
-  },
+local parsers = {
+  "helm",
+  "json",
+  "lua",
+  "markdown",
+  "markdown_inline",
+  "python",
+  "regex",
+  "terraform",
+  "typescript",
+  "vim",
+  "vimdoc",
+  "yaml",
 }
+
+require 'nvim-treesitter'.install(parsers)
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = parsers,
+  callback = function() vim.treesitter.start() end,
+})
 
 -- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 -- ┃ LSP                                                                       ┃
@@ -176,6 +134,33 @@ vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
 vim.lsp.enable("terraformls")
 vim.lsp.enable("ts_ls")
+
+-- LSP features (see :help lsp)
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('my.lsp', {}),
+  callback = function(args)
+    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+    -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
+    if client:supports_method('textDocument/completion') then
+      -- Optional: trigger autocompletion on EVERY keypress. May be slow!
+      -- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+      -- client.server_capabilities.completionProvider.triggerCharacters = chars
+      vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+    end
+    -- Auto-format ("lint") on save.
+    -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
+    if not client:supports_method('textDocument/willSaveWaitUntil')
+        and client:supports_method('textDocument/formatting') then
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+        buffer = args.buf,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+        end,
+      })
+    end
+  end,
+})
 
 -- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 -- ┃ DIAGNOSTIC                                                                ┃
@@ -204,47 +189,23 @@ vim.keymap.set("n", "<leader>g", "<cmd>Git<cr>", { desc = "Git Status" })
 vim.keymap.set("n", "<leader>sd", function() Snacks.picker.diagnostics() end, { desc = "Diagnostics" })
 vim.keymap.set("n", "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, { desc = "Buffer Diagnostics" })
 vim.keymap.set("n", "<leader>sh", function() Snacks.picker.help() end, { desc = "Help Pages" })
+-- Pack
+vim.keymap.set("n", "<leader>pu", function() vim.pack.update() end, { desc = "Update packages" })
 
 -- Register groups
 require("which-key").add({
   { "<leader>s", group = "Search" },
   { "<leader>w", proxy = "<c-w>", group = "Windows" },
   { "<leader>u", group = "Toggle" },
+  { "<leader>p", group = "Pack" },
 })
 
 Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
 Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
 
 -- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
--- ┃ AUTOCMD                                                                   ┃
+-- ┃ VARIOUS                                                                   ┃
 -- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-
--- LSP features (see :help lsp)
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('my.lsp', {}),
-  callback = function(args)
-    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-    -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
-    if client:supports_method('textDocument/completion') then
-      -- Optional: trigger autocompletion on EVERY keypress. May be slow!
-      -- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
-      -- client.server_capabilities.completionProvider.triggerCharacters = chars
-      vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
-    end
-    -- Auto-format ("lint") on save.
-    -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
-    if not client:supports_method('textDocument/willSaveWaitUntil')
-        and client:supports_method('textDocument/formatting') then
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
-        buffer = args.buf,
-        callback = function()
-          vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
-        end,
-      })
-    end
-  end,
-})
 
 -- highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
