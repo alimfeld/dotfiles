@@ -20,10 +20,11 @@ vim.opt.splitright = true
 vim.opt.scrolloff = 999
 vim.opt.wrap = false
 vim.opt.clipboard = "unnamedplus"
+vim.opt.autocomplete = true
 vim.opt.completeopt = "menu,menuone,noinsert,noselect"
+vim.opt.pumborder = "rounded"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.hlsearch = true
 vim.opt.inccommand = "split"
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
@@ -214,3 +215,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.hl.on_yank()
   end,
 })
+
+require('vim._core.ui2').enable({})
