@@ -1,46 +1,70 @@
--- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
--- ┃ GLOBAL                                                                    ┃
--- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+-- =============================================================================
+-- CORE
+-- =============================================================================
+
+-- -----------------------------------------------------------------------------
+-- Options
+-- -----------------------------------------------------------------------------
+
+-- tabs and indentation
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = -1
+vim.opt.expandtab = true
+-- splits
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+-- clipboard
+vim.opt.clipboard = "unnamedplus"
+-- completion
+vim.opt.completeopt = "menu,menuone,noinsert,noselect"
+-- cursor
+vim.opt.scrolloff = 999
+vim.opt.cursorline = true
+-- wrap
+vim.opt.wrap = false
+-- UI
+vim.opt.number = true
+vim.opt.pumborder = "rounded"
+vim.opt.signcolumn = "yes"
+vim.opt.termguicolors = true
+vim.opt.winborder = "rounded"
+-- search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+-- whitespace
+vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+-- statusline
+vim.opt.laststatus = 3
+-- timeouts
+vim.opt.timeoutlen = 300
+vim.opt.updatetime = 250
+-- undo
+vim.opt.undofile = true
+-- project local config
+vim.opt.exrc = true
+
+-- -----------------------------------------------------------------------------
+-- Leader keys
+-- -----------------------------------------------------------------------------
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.g.tmux_navigator_preserve_zoom = 1 -- don't unzoom tmux pane when navigating
-vim.g.tmux_navigator_no_wrap = 1       -- don't wrap around the screen
 
--- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
--- ┃ OPTION                                                                    ┃
--- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+-- -----------------------------------------------------------------------------
+-- General key mappings
+-- -----------------------------------------------------------------------------
 
-vim.opt.number = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.scrolloff = 999
-vim.opt.wrap = false
-vim.opt.clipboard = "unnamedplus"
-vim.opt.autocomplete = true
-vim.opt.completeopt = "menu,menuone,noinsert,noselect"
-vim.opt.pumborder = "rounded"
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.inccommand = "split"
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-vim.opt.signcolumn = "yes"
-vim.opt.cursorline = true
-vim.opt.laststatus = 3 -- global statusline
-vim.opt.timeoutlen = 300
-vim.opt.updatetime = 250
-vim.opt.undofile = true
-vim.opt.winborder = "rounded"
-vim.opt.termguicolors = true
-vim.opt.exrc = true -- enable per-project .nvim.lua, .nvimrc or .exrc
+vim.keymap.set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit All" })
+vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
+vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", {
+  desc = "Clear search highlight on escape",
+})
 
--- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
--- ┃ FILETYPE                                                                  ┃
--- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+-- -----------------------------------------------------------------------------
+-- Filetype mappings
+-- -----------------------------------------------------------------------------
 
 vim.filetype.add({
   extension = {
@@ -53,52 +77,36 @@ vim.filetype.add({
   },
 })
 
--- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
--- ┃ PACK                                                                      ┃
--- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+-- -----------------------------------------------------------------------------
+-- Diagnostic config
+-- -----------------------------------------------------------------------------
 
-vim.pack.add({
-  { src = 'https://github.com/catppuccin/nvim', name = 'catppuccin' },
-  'https://github.com/christoomey/vim-tmux-navigator',
-  'https://github.com/echasnovski/mini.nvim',
-  'https://github.com/folke/snacks.nvim',
-  'https://github.com/folke/which-key.nvim',
-  'https://github.com/github/copilot.vim',
-  'https://github.com/neovim/nvim-lspconfig',
-  'https://github.com/nvim-treesitter/nvim-treesitter',
-  'https://github.com/stevearc/oil.nvim',
-  'https://github.com/tpope/vim-fugitive',
+vim.diagnostic.config({ virtual_text = true })
+
+-- -----------------------------------------------------------------------------
+-- Highlight on yank
+-- -----------------------------------------------------------------------------
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function() vim.hl.on_yank() end,
+  desc = "Briefly highlight yanked text"
 })
 
--- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
--- ┃ COLOR                                                                     ┃
--- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+-- -----------------------------------------------------------------------------
+-- UI2 (experimental)
+-- -----------------------------------------------------------------------------
 
-vim.cmd.colorscheme("catppuccin")
+require('vim._core.ui2').enable({}) -- No "Press ENTER" messages
 
--- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
--- ┃ SETUP                                                                     ┃
--- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+-- =============================================================================
+-- PLUGINS
+-- =============================================================================
 
-require('mini.ai').setup()
-require('mini.diff').setup()
-require('mini.icons').setup()
-require('mini.surround').setup()
+-- -----------------------------------------------------------------------------
+-- Treesitter
+-- -----------------------------------------------------------------------------
 
-require('oil').setup({
-  skip_confirm_for_simple_edits = true,
-  keymaps = {
-    -- disable default keymaps which interfere with tmux-navigator
-    ["<C-h>"] = false, -- select (horizontal)
-    ["<C-l>"] = false, -- refresh
-  },
-})
-
-require('snacks').setup({
-  explorer = { enabled = true },
-  picker = { enabled = true },
-  toggle = { enabled = true },
-})
+vim.pack.add({ 'https://github.com/nvim-treesitter/nvim-treesitter' })
 
 local parsers = {
   "helm",
@@ -115,16 +123,18 @@ local parsers = {
   "yaml",
 }
 
-require 'nvim-treesitter'.install(parsers)
+require('nvim-treesitter').install(parsers)
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = parsers,
   callback = function() vim.treesitter.start() end,
 })
 
--- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
--- ┃ LSP                                                                       ┃
--- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+-- -----------------------------------------------------------------------------
+-- LSP
+-- -----------------------------------------------------------------------------
+
+vim.pack.add({ 'https://github.com/neovim/nvim-lspconfig' })
 
 vim.lsp.enable("bashls")
 vim.lsp.enable("cssls")
@@ -163,57 +173,65 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
--- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
--- ┃ DIAGNOSTIC                                                                ┃
--- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-
-vim.diagnostic.config({ virtual_text = true })
-
--- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
--- ┃ KEYMAP                                                                    ┃
--- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-
-vim.keymap.set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit All" })
-vim.keymap.set("v", "<", "<gv")
-vim.keymap.set("v", ">", ">gv")
-vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
--- Top Pickers & Explorer
-vim.keymap.set("n", "<leader><space>", function() Snacks.picker.smart() end, { desc = "Smart Find File" })
-vim.keymap.set("n", "<leader>,", function() Snacks.picker.buffers() end, { desc = "Find Buffer" })
-vim.keymap.set("n", "<leader>/", function() Snacks.picker.grep() end, { desc = "Search with Grep" })
-vim.keymap.set("n", "<leader>:", function() Snacks.picker.command_history() end, { desc = "Search Command History" })
-vim.keymap.set("n", "<leader>e", function() Snacks.picker.explorer() end, { desc = "File Explorer" })
-vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open Parent Directory" })
+-- -----------------------------------------------------------------------------
 -- Git
+-- -----------------------------------------------------------------------------
+
+vim.pack.add({ 'https://github.com/tpope/vim-fugitive' })
+
 vim.keymap.set("n", "<leader>g", "<cmd>Git<cr>", { desc = "Git Status" })
--- Search
-vim.keymap.set("n", "<leader>sd", function() Snacks.picker.diagnostics() end, { desc = "Diagnostics" })
-vim.keymap.set("n", "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, { desc = "Buffer Diagnostics" })
-vim.keymap.set("n", "<leader>sh", function() Snacks.picker.help() end, { desc = "Help Pages" })
--- Pack
-vim.keymap.set("n", "<leader>pu", function() vim.pack.update() end, { desc = "Update packages" })
 
--- Register groups
-require("which-key").add({
-  { "<leader>s", group = "Search" },
-  { "<leader>w", proxy = "<c-w>", group = "Windows" },
-  { "<leader>u", group = "Toggle" },
-  { "<leader>p", group = "Pack" },
+-- -----------------------------------------------------------------------------
+-- GitHub Copilot
+-- -----------------------------------------------------------------------------
+
+vim.pack.add({ 'https://github.com/github/copilot.vim' })
+
+-- -----------------------------------------------------------------------------
+-- Tmux Navigator
+-- -----------------------------------------------------------------------------
+
+vim.pack.add({ 'https://github.com/christoomey/vim-tmux-navigator' })
+
+vim.g.tmux_navigator_preserve_zoom = 1 -- don't unzoom tmux pane when navigating
+vim.g.tmux_navigator_no_wrap = 1       -- don't wrap around the screen
+
+-- -----------------------------------------------------------------------------
+-- Colorscheme
+-- -----------------------------------------------------------------------------
+
+vim.pack.add({ { src = 'https://github.com/catppuccin/nvim', name = 'catppuccin' } })
+
+vim.cmd.colorscheme("catppuccin")
+
+-- -----------------------------------------------------------------------------
+-- Mini quality-of-life plugins
+-- -----------------------------------------------------------------------------
+
+vim.pack.add({ 'https://github.com/echasnovski/mini.nvim' })
+
+require('mini.ai').setup()
+require('mini.icons').setup()
+require('mini.pick').setup()
+require('mini.surround').setup()
+
+vim.keymap.set("n", "<leader><space>", function() MiniPick.builtin.files() end, { desc = "Find File" })
+vim.keymap.set("n", "<leader>,", function() MiniPick.builtin.buffers() end, { desc = "Find Buffer" })
+vim.keymap.set("n", "<leader>/", function() MiniPick.builtin.grep_live() end, { desc = "Search with Grep" })
+
+-- -----------------------------------------------------------------------------
+-- Oil
+-- -----------------------------------------------------------------------------
+
+vim.pack.add({ 'https://github.com/stevearc/oil.nvim' })
+
+require('oil').setup({
+  skip_confirm_for_simple_edits = true,
+  keymaps = {
+    -- disable default keymaps which interfere with tmux-navigator
+    ["<C-h>"] = false, -- select (horizontal)
+    ["<C-l>"] = false, -- refresh
+  },
 })
 
-Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
-Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
-
--- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
--- ┃ VARIOUS                                                                   ┃
--- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-
--- highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
-  group = vim.api.nvim_create_augroup('my.hl', {}),
-  callback = function()
-    vim.hl.on_yank()
-  end,
-})
-
-require('vim._core.ui2').enable({})
+vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open Parent Directory" })
