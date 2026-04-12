@@ -8,6 +8,8 @@
 [merge]
     conflictstyle = diff3
 
+[difftool "nvim_difftool"]
+    cmd = nvim -c \"packadd nvim.difftool\" -d \"$LOCAL\" \"$REMOTE\"
+
 [diff]
-    colorMoved = default
-    tool = nvimdiff
+    tool = nvim_difftool
