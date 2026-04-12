@@ -13,4 +13,10 @@ config.font_size = 14
 
 config.color_scheme = 'Catppuccin Mocha'
 
+config.keys = {
+    -- Toggle Fullscreen with CMD+Enter
+    { key = 'Enter', mods = 'ALT', action = wezterm.action.DisableDefaultAssignment },
+    { key = 'Enter', mods = 'CMD', action = wezterm.action.ToggleFullScreen },
+}
+
 return config
