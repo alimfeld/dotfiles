@@ -45,11 +45,10 @@ vim.opt.undofile = true
 vim.opt.exrc = true
 
 -- -----------------------------------------------------------------------------
--- Leader keys
+-- Leader key
 -- -----------------------------------------------------------------------------
 
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 -- -----------------------------------------------------------------------------
 -- General key mappings
@@ -67,9 +66,6 @@ vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", {
 -- -----------------------------------------------------------------------------
 
 vim.filetype.add({
-  extension = {
-    puml = "plantuml",
-  },
   pattern = {
     [".*/templates/.*%.yaml"] = "helm",
     [".*/*-templates/.*%.yaml"] = "helm",
@@ -108,18 +104,14 @@ require('vim._core.ui2').enable({}) -- No "Press ENTER" messages
 
 vim.pack.add({ 'https://github.com/nvim-treesitter/nvim-treesitter' })
 
+-- Parser names match filetypes 1:1 for these languages.
+-- Built-in parsers (lua, markdown, vim, vimdoc, etc.) are excluded.
 local parsers = {
   "helm",
   "json",
-  "lua",
-  "markdown",
-  "markdown_inline",
   "python",
-  "regex",
   "terraform",
   "typescript",
-  "vim",
-  "vimdoc",
   "yaml",
 }
 
@@ -212,7 +204,11 @@ vim.pack.add({ 'https://github.com/echasnovski/mini.nvim' })
 
 require('mini.ai').setup()
 require('mini.icons').setup()
-require('mini.pick').setup()
+require('mini.pick').setup({
+  mappings = {
+    refine = '<M-j>', -- <C-Space> is used by tmux
+  },
+})
 require('mini.surround').setup()
 
 vim.keymap.set("n", "<leader><space>", function() MiniPick.builtin.files() end, { desc = "Find File" })
