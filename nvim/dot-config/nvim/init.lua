@@ -206,7 +206,9 @@ require('mini.ai').setup()
 require('mini.icons').setup()
 require('mini.pick').setup({
   mappings = {
-    refine = '<M-j>', -- <C-Space> is used by tmux
+    refine        = '<C-j>',
+    refine_marked = '<M-j>',
+
   },
 })
 require('mini.surround').setup()
