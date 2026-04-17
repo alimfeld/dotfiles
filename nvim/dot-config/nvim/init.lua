@@ -104,8 +104,6 @@ require('vim._core.ui2').enable({}) -- No "Press ENTER" messages
 
 vim.pack.add({ 'https://github.com/nvim-treesitter/nvim-treesitter' })
 
--- Parser names match filetypes 1:1 for these languages.
--- Built-in parsers (lua, markdown, vim, vimdoc, etc.) are excluded.
 local parsers = {
   "helm",
   "json",
@@ -116,11 +114,6 @@ local parsers = {
 }
 
 require('nvim-treesitter').install(parsers)
-
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = parsers,
-  callback = function() vim.treesitter.start() end,
-})
 
 -- -----------------------------------------------------------------------------
 -- LSP
@@ -200,9 +193,10 @@ vim.cmd.colorscheme("catppuccin")
 -- Mini quality-of-life plugins
 -- -----------------------------------------------------------------------------
 
-vim.pack.add({ 'https://github.com/echasnovski/mini.nvim' })
+vim.pack.add({ 'https://github.com/nvim-mini/mini.nvim' })
 
 require('mini.ai').setup()
+require('mini.diff').setup()
 require('mini.icons').setup()
 require('mini.pick').setup({
   mappings = {
