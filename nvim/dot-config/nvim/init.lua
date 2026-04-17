@@ -1,10 +1,11 @@
 vim.o.clipboard = "unnamedplus"
 vim.o.completeopt = "menu,menuone,noinsert,noselect"
+vim.o.cursorline = true
+vim.o.exrc = true
 vim.o.list = true
 vim.o.number = true
 vim.o.signcolumn = "yes"
 vim.o.undofile = true
-vim.o.exrc = true
 
 vim.g.mapleader = " "
 
@@ -125,8 +126,8 @@ require('mini.icons').setup()
 require('mini.surround').setup()
 require('mini.pick').setup({
   mappings = {
-    refine        = '<C-j>',
-    refine_marked = '<M-j>',
+    refine        = '<C-j>', -- instead of <C-Space> (tmux leader)
+    refine_marked = '<M-j>', -- instead of <M-Space>
 
   },
 })
