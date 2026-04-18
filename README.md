@@ -4,10 +4,10 @@ Configurations to improve the CLI dev experience.
 
 Core tools:
 
-- [WezTerm](https://wezfurlong.org/wezterm/)
+- [Ghostty](https://ghostty.org/)
 - [fish](https://fishshell.com/)
-- [Neovim](https://neovim.io/)
 - [tmux](https://github.com/tmux/tmux/wiki)
+- [Neovim](https://neovim.io/)
 - [Git](https://git-scm.com/)
 
 Supporting TUIs:
@@ -64,7 +64,7 @@ it's invoked using `<Ctrl-Space Tab>`.
 ## 📦 Dependencies
 
 The dotfiles assume some additional packages to be installed on your system
-(such as fzf or language servers. Install the packages using your systems's
+(such as fzf or language servers. Install the packages using your system's
 package manager or via [Homebrew](https://brew.sh/).
 
 ## 🛠️ Installation
@@ -74,5 +74,5 @@ The dotfiles can be installed using [stow](https://www.gnu.org/software/stow/):
 ```shell
 git clone https://github.com/alimfeld/dotfiles ~/.dotfiles
 cd ~/.dotfiles
-stow --target=$HOME --dotfiles */
+stow --target=$HOME --dotfiles .
 ```
