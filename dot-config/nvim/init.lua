@@ -20,6 +20,8 @@ vim.diagnostic.config({ virtual_text = true })
 
 require('vim._core.ui2').enable({}) -- No "Press ENTER" messages
 
+vim.cmd.colorscheme("retrobox")
+
 -- nvim-lspconfig & LSP configuration
 
 vim.pack.add({ 'https://github.com/neovim/nvim-lspconfig' })
