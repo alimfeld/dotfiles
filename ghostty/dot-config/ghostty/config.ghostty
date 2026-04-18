@@ -1,4 +1,3 @@
-command = /opt/homebrew/bin/fish
-theme = Catppuccin Mocha
+command = ~/.local/bin/my-shell
 font-size = 14
 
