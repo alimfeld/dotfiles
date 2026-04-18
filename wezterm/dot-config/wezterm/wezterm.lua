@@ -6,17 +6,17 @@ local shell = "/opt/homebrew/bin/fish"
 
 config.default_prog = { shell, "-l" }
 config.set_environment_variables = {
-    SHELL = shell,
+  SHELL = shell,
 }
 config.hide_tab_bar_if_only_one_tab = true
 config.font_size = 14
 
-config.color_scheme = 'Catppuccin Mocha'
+config.color_scheme = 'NvimDark'
 
 config.keys = {
-    -- Toggle Fullscreen with CMD+Enter
-    { key = 'Enter', mods = 'ALT', action = wezterm.action.DisableDefaultAssignment },
-    { key = 'Enter', mods = 'CMD', action = wezterm.action.ToggleFullScreen },
+  -- Toggle Fullscreen with CMD+Enter
+  { key = 'Enter', mods = 'ALT', action = wezterm.action.DisableDefaultAssignment },
+  { key = 'Enter', mods = 'CMD', action = wezterm.action.ToggleFullScreen },
 }
 
 return config

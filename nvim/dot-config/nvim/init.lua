@@ -20,26 +20,6 @@ vim.diagnostic.config({ virtual_text = true })
 
 require('vim._core.ui2').enable({}) -- No "Press ENTER" messages
 
--- nvim-treesitter
-
-vim.pack.add({ 'https://github.com/nvim-treesitter/nvim-treesitter' })
-
-local parsers = {
-  "helm",
-  "json",
-  "python",
-  "terraform",
-  "typescript",
-  "yaml",
-}
-
-require('nvim-treesitter').install(parsers)
-
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = parsers,
-  callback = function() vim.treesitter.start() end,
-})
-
 -- nvim-lspconfig & LSP configuration
 
 vim.pack.add({ 'https://github.com/neovim/nvim-lspconfig' })
@@ -90,15 +70,6 @@ vim.pack.add({ 'https://github.com/tpope/vim-fugitive' })
 
 vim.keymap.set("n", "<leader>g", "<cmd>Git<cr>", { desc = "Git Status" })
 
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = "gitcommit",
-  callback = function()
-    vim.b.editorconfig = false
-    vim.bo.textwidth = 72
-    vim.wo.colorcolumn = "+1"
-  end,
-})
-
 -- copilot.vim
 
 vim.pack.add({ 'https://github.com/github/copilot.vim' })
@@ -109,12 +80,6 @@ vim.pack.add({ 'https://github.com/christoomey/vim-tmux-navigator' })
 
 vim.g.tmux_navigator_preserve_zoom = 1 -- don't unzoom tmux pane when navigating
 vim.g.tmux_navigator_no_wrap = 1       -- don't wrap around the screen
-
--- colorscheme (catppuccin)
-
-vim.pack.add({ { src = 'https://github.com/catppuccin/nvim', name = 'catppuccin' } })
-
-vim.cmd.colorscheme("catppuccin")
 
 -- mini.nvim
 
