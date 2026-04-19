@@ -1,22 +1,24 @@
-vim.o.clipboard = "unnamedplus"
-vim.o.completeopt = "menu,menuone,noinsert,noselect"
-vim.o.cursorline = true
-vim.o.exrc = true
-vim.o.list = true
-vim.o.number = true
-vim.o.signcolumn = "yes"
-vim.o.undofile = true
+vim.o.clipboard = "unnamedplus" -- use system clipboard
+vim.o.cursorline = true         -- highlight the current line
+vim.o.exrc = true               -- allow project-specific config
+vim.o.list = true               -- show whitespace characters
+vim.o.number = true             -- show line numbers
+vim.o.signcolumn = "yes"        -- always show the sign column
+vim.o.undofile = true           -- enable persistent undo
+vim.o.wrap = false              -- disable line wrapping
 
-vim.g.mapleader = " "
+vim.g.mapleader = vim.keycode('<Space>') -- set the leader key to Space
 
 vim.keymap.set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit All" })
+
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
-vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", {
-  desc = "Clear search highlight on escape",
-})
 
-vim.diagnostic.config({ virtual_text = true })
+vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Clear search highlight" })
+
+vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end, { desc = "Format Buffer" })
+
+vim.diagnostic.config({ virtual_text = true }) -- show diagnostics as virtual text
 
 require('vim._core.ui2').enable({}) -- No "Press ENTER" messages
 
@@ -35,36 +37,6 @@ vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
 vim.lsp.enable("terraformls")
 vim.lsp.enable("ts_ls")
-
--- see :help lsp-format
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('my.lsp', {}),
-  callback = function(ev)
-    local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
-
-    -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
-    if client:supports_method('textDocument/completion') then
-      -- Optional: trigger autocompletion on EVERY keypress. May be slow!
-      -- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
-      -- client.server_capabilities.completionProvider.triggerCharacters = chars
-
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-    end
-
-    -- Auto-format ("lint") on save.
-    -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
-    if not client:supports_method('textDocument/willSaveWaitUntil')
-        and client:supports_method('textDocument/formatting') then
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
-        buffer = ev.buf,
-        callback = function()
-          vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, timeout_ms = 1000 })
-        end,
-      })
-    end
-  end,
-})
 
 -- vim-fugitive
 
@@ -88,14 +60,16 @@ vim.g.tmux_navigator_no_wrap = 1       -- don't wrap around the screen
 vim.pack.add({ 'https://github.com/nvim-mini/mini.nvim' })
 
 require('mini.ai').setup()
+require('mini.completion').setup()
 require('mini.diff').setup()
 require('mini.icons').setup()
+require('mini.snippets').setup()
 require('mini.surround').setup()
+
 require('mini.pick').setup({
   mappings = {
     refine        = '<C-j>', -- instead of <C-Space> (tmux leader)
     refine_marked = '<M-j>', -- instead of <M-Space>
-
   },
 })
 
