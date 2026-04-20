@@ -1,11 +1,19 @@
-vim.o.clipboard = "unnamedplus" -- use system clipboard
-vim.o.cursorline = true         -- highlight the current line
-vim.o.exrc = true               -- allow project-specific config
-vim.o.list = true               -- show whitespace characters
-vim.o.number = true             -- show line numbers
-vim.o.signcolumn = "yes"        -- always show the sign column
-vim.o.undofile = true           -- enable persistent undo
-vim.o.wrap = false              -- disable line wrapping
+vim.o.number = true                      -- show line numbers
+vim.o.signcolumn = "yes"                 -- always show the sign column
+
+vim.o.ignorecase = true                  -- ignore case in search patterns
+vim.o.smartcase = true                   -- ...unless search pattern contains uppercase letters
+
+vim.o.wrap = false                       -- disable line wrapping
+vim.o.list = true                        -- show whitespace characters
+
+vim.o.clipboard = "unnamedplus"          -- use system clipboard
+
+vim.o.cursorline = true                  -- highlight the current line
+
+vim.o.exrc = true                        -- allow project-specific config
+
+vim.o.undofile = true                    -- enable persistent undo
 
 vim.g.mapleader = vim.keycode('<Space>') -- set the leader key to Space
 
@@ -20,7 +28,7 @@ vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end, { desc = "
 
 vim.diagnostic.config({ virtual_text = true }) -- show diagnostics as virtual text
 
-require('vim._core.ui2').enable({}) -- No "Press ENTER" messages
+require('vim._core.ui2').enable({})            -- No "Press ENTER" messages
 
 vim.cmd.colorscheme("retrobox")
 
