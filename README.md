@@ -67,6 +67,13 @@ The dotfiles assume some additional packages to be installed on your system
 (such as fzf or language servers. Install the packages using your system's
 package manager or via [Homebrew](https://brew.sh/).
 
+##  MacOS Keyboard Settings
+
+- Add 'U.S. International - PC' input source
+- Change ' Caps Lock' to 'Control' (Keyboard Shortcuts > Modifier Keys)
+- Disable keyboard shortcuts for 'Input Sources' (i.e. Ctrl-Space)
+- Set 'Key repeat rate' to 'Fast'
+
 ## 🛠️ Installation
 
 The dotfiles can be installed using [stow](https://www.gnu.org/software/stow/):
