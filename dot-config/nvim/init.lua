@@ -99,3 +99,14 @@ require('oil').setup({
 })
 
 vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open Parent Directory" })
+
+-- global-note.nvim
+
+vim.pack.add({ 'https://github.com/backdround/global-note.nvim' })
+
+local global_note = require('global-note')
+global_note.setup()
+
+vim.keymap.set("n", "<leader>n", global_note.toggle_note, {
+  desc = "Toggle global note",
+})
