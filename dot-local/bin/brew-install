@@ -7,7 +7,7 @@ brew install ghostty fish tmux neovim
 brew install lazygit k9s opencode
 
 # Dependencies
-brew install stow fzf
+brew install stow fzf ripgrep
 
 # Language servers
 brew install \
