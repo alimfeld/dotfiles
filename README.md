@@ -14,6 +14,7 @@ Supporting TUIs:
 
 - [lazygit](https://github.com/jesseduffield/lazygit)
 - [k9s](https://k9scli.io/)
+- [OpenCode](https://opencode.ai/)
 
 ## 📁 XDG Base Directory
 
