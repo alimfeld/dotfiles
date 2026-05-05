@@ -1,30 +1,26 @@
 vim.o.number = true                      -- show line numbers
 vim.o.signcolumn = "yes"                 -- always show the sign column
-
 vim.o.ignorecase = true                  -- ignore case in search patterns
 vim.o.smartcase = true                   -- ...unless search pattern contains uppercase letters
-
 vim.o.wrap = false                       -- disable line wrapping
 vim.o.list = true                        -- show whitespace characters
-
 vim.o.clipboard = "unnamedplus"          -- use system clipboard
-
 vim.o.cursorline = true                  -- highlight the current line
-
 vim.o.exrc = true                        -- allow project-specific config
-
 vim.o.undofile = true                    -- enable persistent undo
 
 vim.g.mapleader = vim.keycode('<Space>') -- set the leader key to Space
 
 vim.keymap.set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit All" })
-
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
-
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Clear search highlight" })
 
-vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end, { desc = "Format Buffer" })
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
 
 vim.diagnostic.config({ virtual_text = true }) -- show diagnostics as virtual text
 
@@ -45,6 +41,23 @@ vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
 vim.lsp.enable("terraformls")
 vim.lsp.enable("ts_ls")
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+    -- Auto-format ("lint") on save.
+    -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
+    if not client:supports_method('textDocument/willSaveWaitUntil')
+        and client:supports_method('textDocument/formatting') then
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        buffer = ev.buf,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, timeout_ms = 1000 })
+        end,
+      })
+    end
+  end,
+})
 
 -- vim-fugitive
 
@@ -99,14 +112,3 @@ require('oil').setup({
 })
 
 vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open Parent Directory" })
-
--- global-note.nvim
-
-vim.pack.add({ 'https://github.com/backdround/global-note.nvim' })
-
-local global_note = require('global-note')
-global_note.setup()
-
-vim.keymap.set("n", "<leader>n", global_note.toggle_note, {
-  desc = "Toggle global note",
-})

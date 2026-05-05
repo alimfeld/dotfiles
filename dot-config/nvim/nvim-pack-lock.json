@@ -4,10 +4,6 @@
       "rev": "a12fd5672110c8aa7e3c8419e28c96943ca179be",
       "src": "https://github.com/github/copilot.vim"
     },
-    "global-note.nvim": {
-      "rev": "1e0d4bba425d971ed3ce40d182c574a25507115c",
-      "src": "https://github.com/backdround/global-note.nvim"
-    },
     "mini.nvim": {
       "rev": "48555f1615f08c6318150aacb52bf7d61a5af798",
       "src": "https://github.com/nvim-mini/mini.nvim"
