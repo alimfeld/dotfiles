@@ -126,8 +126,8 @@ require('mini.pick').setup({
   },
 })
 
-vim.keymap.set("n", "<leader>f", function() MiniPick.builtin.files() end, { desc = "Find [F]ile" })
-vim.keymap.set("n", "<leader>b", function() MiniPick.builtin.buffers() end, { desc = "Find [B]uffer" })
+vim.keymap.set("n", "<leader>f", function() MiniPick.builtin.files() end, { desc = "[F]ind file" })
+vim.keymap.set("n", "<leader>b", function() MiniPick.builtin.buffers() end, { desc = "Search [B]uffer" })
 vim.keymap.set("n", "<leader>g", function() MiniPick.builtin.grep_live() end, { desc = "Search with [G]rep" })
 
 -- -----------------------------------------------------------------------------
