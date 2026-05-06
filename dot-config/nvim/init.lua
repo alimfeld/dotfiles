@@ -1,34 +1,50 @@
-vim.o.number = true                      -- show line numbers
-vim.o.signcolumn = "yes"                 -- always show the sign column
-vim.o.ignorecase = true                  -- ignore case in search patterns
-vim.o.smartcase = true                   -- ...unless search pattern contains uppercase letters
-vim.o.wrap = false                       -- disable line wrapping
-vim.o.list = true                        -- show whitespace characters
-vim.o.clipboard = "unnamedplus"          -- use system clipboard
-vim.o.cursorline = true                  -- highlight the current line
-vim.o.exrc = true                        -- allow project-specific config
-vim.o.undofile = true                    -- enable persistent undo
+-- -----------------------------------------------------------------------------
+-- Core
+-- -----------------------------------------------------------------------------
 
-vim.g.mapleader = vim.keycode('<Space>') -- set the leader key to Space
+-- Leader key
+vim.g.mapleader = vim.keycode('<Space>')
 
-vim.keymap.set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit All" })
+-- Options
+vim.o.number = true
+vim.o.signcolumn = "yes"
+vim.o.list = true
+vim.o.cursorline = true
+vim.o.splitright = true
+vim.o.splitbelow = true
+vim.o.scrolloff = 10
+vim.o.inccommand = "split"
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.exrc = true
+vim.o.undofile = true
+vim.o.clipboard = "unnamedplus"
+
+-- Convenience keymaps
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
-vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Clear search highlight" })
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
 
-vim.api.nvim_create_autocmd("TextYankPost", {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+-- Diagnostics
+vim.diagnostic.config({ virtual_text = true })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+
+-- Highlight when yanking
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('my.hl_on_yank', {}),
+  callback = function() vim.hl.on_yank() end,
 })
 
-vim.diagnostic.config({ virtual_text = true }) -- show diagnostics as virtual text
+-- UI2: No "Press ENTER" messages
+require('vim._core.ui2').enable({})
 
-require('vim._core.ui2').enable({})            -- No "Press ENTER" messages
-
+-- Colorscheme
 vim.cmd.colorscheme("retrobox")
 
--- nvim-lspconfig & LSP configuration
+-- -----------------------------------------------------------------------------
+-- LSP configuration (nvim-lspconfig)
+-- -----------------------------------------------------------------------------
 
 vim.pack.add({ 'https://github.com/neovim/nvim-lspconfig' })
 
@@ -43,6 +59,7 @@ vim.lsp.enable("terraformls")
 vim.lsp.enable("ts_ls")
 
 vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('my.lsp', {}),
   callback = function(ev)
     local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
     -- Auto-format ("lint") on save.
@@ -50,6 +67,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     if not client:supports_method('textDocument/willSaveWaitUntil')
         and client:supports_method('textDocument/formatting') then
       vim.api.nvim_create_autocmd('BufWritePre', {
+        group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
         buffer = ev.buf,
         callback = function()
           vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, timeout_ms = 1000 })
@@ -59,24 +77,30 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
--- vim-fugitive
+-- -----------------------------------------------------------------------------
+-- Git integration (vim-fugitive)
+-- -----------------------------------------------------------------------------
 
 vim.pack.add({ 'https://github.com/tpope/vim-fugitive' })
 
-vim.keymap.set("n", "<leader>g", "<cmd>Git<cr>", { desc = "Git Status" })
-
--- copilot.vim
+-- -----------------------------------------------------------------------------
+-- AI (copilot.vim)
+-- -----------------------------------------------------------------------------
 
 vim.pack.add({ 'https://github.com/github/copilot.vim' })
 
--- vim-tmux-navigator
+-- -----------------------------------------------------------------------------
+-- Tmux integration (vim-tmux-navigator)
+-- -----------------------------------------------------------------------------
 
 vim.pack.add({ 'https://github.com/christoomey/vim-tmux-navigator' })
 
 vim.g.tmux_navigator_preserve_zoom = 1 -- don't unzoom tmux pane when navigating
 vim.g.tmux_navigator_no_wrap = 1       -- don't wrap around the screen
 
--- mini.nvim
+-- -----------------------------------------------------------------------------
+-- QoL plugins (mini.nvim)
+-- -----------------------------------------------------------------------------
 
 vim.pack.add({ 'https://github.com/nvim-mini/mini.nvim' })
 
@@ -94,11 +118,13 @@ require('mini.pick').setup({
   },
 })
 
-vim.keymap.set("n", "<leader><space>", function() MiniPick.builtin.files() end, { desc = "Find File" })
-vim.keymap.set("n", "<leader>,", function() MiniPick.builtin.buffers() end, { desc = "Find Buffer" })
-vim.keymap.set("n", "<leader>/", function() MiniPick.builtin.grep_live() end, { desc = "Search with Grep" })
+vim.keymap.set("n", "<leader>f", function() MiniPick.builtin.files() end, { desc = "Find [F]ile" })
+vim.keymap.set("n", "<leader>b", function() MiniPick.builtin.buffers() end, { desc = "Find [B]uffer" })
+vim.keymap.set("n", "<leader>g", function() MiniPick.builtin.grep_live() end, { desc = "Search with [G]rep" })
 
--- oil.nvim
+-- -----------------------------------------------------------------------------
+-- File explorer (oil.nvim)
+-- -----------------------------------------------------------------------------
 
 vim.pack.add({ 'https://github.com/stevearc/oil.nvim' })
 
