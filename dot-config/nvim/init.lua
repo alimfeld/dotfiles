@@ -43,7 +43,10 @@ require('vim._core.ui2').enable({})
 vim.cmd.colorscheme("retrobox")
 
 -- Scratch
-vim.keymap.set("n", "<leader>s", "<cmd>e ~/scratch.md<CR>", { desc = "Edit [S]cratch file." })
+vim.keymap.set("n",
+  "<leader>s", "<cmd>edit ~/scratch.md | setlocal noswapfile<CR>",
+  { desc = "Edit [S]cratch file." }
+)
 
 -- -----------------------------------------------------------------------------
 -- LSP configuration (nvim-lspconfig)
