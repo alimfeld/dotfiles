@@ -21,13 +21,14 @@ vim.o.undofile = true
 vim.o.clipboard = "unnamedplus"
 
 -- Convenience keymaps
+vim.keymap.set("n", "<leader>q", "<cmd>qa<CR>", { desc = "[q]uit all" })
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
 
 -- Diagnostics
 vim.diagnostic.config({ virtual_text = true })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set("n", "<leader>d", vim.diagnostic.setloclist, { desc = "Open [d]iagnostic quickfix list" })
 
 -- Highlight when yanking
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -89,6 +90,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 vim.pack.add({ 'https://github.com/tpope/vim-fugitive' })
 
+vim.keymap.set("n", "<leader>g", "<cmd>G<CR>", { desc = "Search [b]uffer" })
+
 -- -----------------------------------------------------------------------------
 -- AI (copilot.vim)
 -- -----------------------------------------------------------------------------
@@ -132,9 +135,9 @@ require('mini.pick').setup({
   },
 })
 
-vim.keymap.set("n", "<leader>f", function() MiniPick.builtin.files() end, { desc = "[F]ind file" })
-vim.keymap.set("n", "<leader>b", function() MiniPick.builtin.buffers() end, { desc = "Search [B]uffer" })
-vim.keymap.set("n", "<leader>g", function() MiniPick.builtin.grep_live() end, { desc = "Search with [G]rep" })
+vim.keymap.set("n", "<leader><Space>", function() MiniPick.builtin.files() end, { desc = "Find file" })
+vim.keymap.set("n", "<leader>/", function() MiniPick.builtin.grep_live() end, { desc = "Search with grep" })
+vim.keymap.set("n", "<leader>b", function() MiniPick.builtin.buffers() end, { desc = "Search [b]uffer" })
 
 -- -----------------------------------------------------------------------------
 -- File explorer (oil.nvim)
