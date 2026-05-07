@@ -1,5 +1,0 @@
-# This file contains fish universal variable definitions.
-# VERSION: 3.0
-SETUVAR --export OPENCODE_CONFIG_DIR:/Users/aimfeld/dev/cnn\x2daimfeld/dotfiles/opencode
-SETUVAR __fish_initialized:4300
-SETUVAR fish_user_paths:/Users/aimfeld/\x2elocal/bin\x1e/Users/aimfeld/go/bin\x1e/Users/aimfeld/\x2elocal/scripts
