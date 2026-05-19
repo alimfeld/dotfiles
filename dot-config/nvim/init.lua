@@ -135,8 +135,8 @@ require('mini.pick').setup({
   },
 })
 
-vim.keymap.set("n", "<leader><Space>", function() MiniPick.builtin.files() end, { desc = "Find file" })
-vim.keymap.set("n", "<leader>/", function() MiniPick.builtin.grep_live() end, { desc = "Search with grep" })
+vim.keymap.set("n", "<leader><Space>", function() MiniPick.builtin.files({ tool = 'git' }) end, { desc = "Find file" })
+vim.keymap.set("n", "<leader>/", function() MiniPick.builtin.grep_live({ tool = 'git' }) end, { desc = "Search with grep" })
 vim.keymap.set("n", "<leader>b", function() MiniPick.builtin.buffers() end, { desc = "Search [b]uffer" })
 
 -- -----------------------------------------------------------------------------
