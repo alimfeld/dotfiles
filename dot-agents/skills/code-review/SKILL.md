@@ -50,7 +50,7 @@ Review the code in scope through each lens. Not every lens will yield findings �
 
 - 🔴 **Critical** — bug, security vulnerability, or serious design flaw; must be fixed
 - 🟡 **Suggestion** — meaningful improvement worth making; should be addressed
-- 🟢 **Nit** — minor style, naming, or polish issue; optional but good practice
+- ⚪ **Nit** — minor style, naming, or polish issue; optional but good practice. Nit is for minor issues only — use the Highlights section for positive observations.
 
 ---
 
@@ -104,6 +104,10 @@ Structure the output as follows:
 [... only include lenses with findings ...]
 
 ---
+## Highlights
+- ✅ ...
+- ✅ ...
+
 ## Summary
 <2–4 sentence synthesis of the overall code quality and the main themes across findings>
 
