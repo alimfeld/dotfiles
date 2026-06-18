@@ -7,7 +7,7 @@ function k8sc --description "EKS kube context (uses current AWS_PROFILE; pick cl
     set -l cluster (aws eks list-clusters --query 'clusters[]' --output text \
         | tr '\t' '\n' | sort \
         | fzf --prompt="EKS cluster> " --height=~40% --select-1 --exit-0 \
-              --header="Profile: $AWS_PROFILE")
+              --header="Profile: $AWS_PROFILE  Region: $AWS_REGION")
     test -z "$cluster"; and return 0
 
     # Pin the profile into the context name so different roles stay separate contexts.
