@@ -127,8 +127,6 @@ require('mini.ai').setup()
 require('mini.surround').setup()
 require('mini.diff').setup()
 
-vim.schedule(MiniIcons.tweak_lsp_kind)
-
 require('mini.pick').setup({
   mappings = {
     refine        = '<C-j>', -- instead of <C-Space> (tmux leader)
