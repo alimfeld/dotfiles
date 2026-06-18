@@ -96,12 +96,6 @@ vim.pack.add({ 'https://github.com/tpope/vim-fugitive' })
 vim.keymap.set("n", "<leader>g", "<cmd>G<CR>", { desc = "Search [b]uffer" })
 
 -- -----------------------------------------------------------------------------
--- AI (copilot.vim)
--- -----------------------------------------------------------------------------
-
-vim.pack.add({ 'https://github.com/github/copilot.vim' })
-
--- -----------------------------------------------------------------------------
 -- Tmux integration (vim-tmux-navigator)
 -- -----------------------------------------------------------------------------
 
@@ -109,12 +103,6 @@ vim.pack.add({ 'https://github.com/christoomey/vim-tmux-navigator' })
 
 vim.g.tmux_navigator_preserve_zoom = 1 -- don't unzoom tmux pane when navigating
 vim.g.tmux_navigator_no_wrap = 1       -- don't wrap around the screen
-
--- -----------------------------------------------------------------------------
--- Snippets (friendly-snippets)
--- -----------------------------------------------------------------------------
-
-vim.pack.add({ 'https://github.com/rafamadriz/friendly-snippets' })
 
 -- -----------------------------------------------------------------------------
 -- QoL plugins (mini.nvim)
