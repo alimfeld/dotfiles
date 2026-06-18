@@ -19,6 +19,9 @@ vim.o.smartcase = true
 vim.o.exrc = true
 vim.o.undofile = true
 vim.o.clipboard = "unnamedplus"
+vim.o.autocomplete = true
+vim.o.complete = "o,.,w,b,u"
+vim.o.completeopt = "fuzzy,menuone,noselect,popup"
 
 -- Convenience keymaps
 vim.keymap.set("n", "<leader>q", "<cmd>qa<CR>", { desc = "[q]uit all" })
@@ -123,8 +126,6 @@ require('mini.icons').setup()
 require('mini.ai').setup()
 require('mini.surround').setup()
 require('mini.diff').setup()
-require('mini.snippets').setup()
-require('mini.completion').setup()
 
 vim.schedule(MiniIcons.tweak_lsp_kind)
 
@@ -136,7 +137,8 @@ require('mini.pick').setup({
 })
 
 vim.keymap.set("n", "<leader><Space>", function() MiniPick.builtin.files({ tool = 'git' }) end, { desc = "Find file" })
-vim.keymap.set("n", "<leader>/", function() MiniPick.builtin.grep_live({ tool = 'git' }) end, { desc = "Search with grep" })
+vim.keymap.set("n", "<leader>/", function() MiniPick.builtin.grep_live({ tool = 'git' }) end,
+  { desc = "Search with grep" })
 vim.keymap.set("n", "<leader>b", function() MiniPick.builtin.buffers() end, { desc = "Search [b]uffer" })
 
 -- -----------------------------------------------------------------------------
