@@ -1,16 +1,20 @@
 #!/usr/bin/env bash
 
-dev_dir="$HOME/dev"
+set -euo pipefail
 
-selected=$(find "$dev_dir" -mindepth 1 -maxdepth 2 -type d | fzf --query "$1" --select-1 --exit-0)
+dev_dir="${TS_DEV_DIR:-$HOME/dev}"
+
+[[ -d $dev_dir ]] || { echo "tmux-sessionizer: directory not found: $dev_dir" >&2; exit 1; }
+
+selected=$(find "$dev_dir" -mindepth 1 -maxdepth 2 -type d | fzf --query "${1:-}" --select-1 --exit-0) || true
 
 if [[ -z $selected ]]; then
 	exit 0
 fi
 
-selected_name=$(echo "${selected#"$dev_dir/"}" | tr '/. ' _)
+selected_name=$(echo "${selected#"$dev_dir/"}" | tr '/.: ' _)
 
-if [[ -z $TMUX ]]; then
+if [[ -z ${TMUX:-} ]]; then
 	tmux new-session -As "$selected_name" -c "$selected"
 	exit 0
 fi
