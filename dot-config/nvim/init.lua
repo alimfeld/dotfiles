@@ -8,6 +8,7 @@ vim.g.mapleader = vim.keycode('<Space>')
 -- Options
 vim.o.number = true
 vim.o.signcolumn = "yes"
+vim.o.wrap = false
 vim.o.list = true
 vim.o.cursorline = true
 vim.o.splitright = true
