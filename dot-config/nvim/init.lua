@@ -111,9 +111,10 @@ vim.g.tmux_navigator_no_wrap = 1       -- don't wrap around the screen
 
 vim.pack.add({ 'https://github.com/nvim-mini/mini.nvim' })
 
+require('mini.ai').setup()
+require('mini.diff').setup()
 require('mini.icons').setup()
 require('mini.surround').setup()
-require('mini.diff').setup()
 
 require('mini.pick').setup({
   mappings = {
