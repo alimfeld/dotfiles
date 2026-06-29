@@ -1,6 +1,6 @@
-function k8sc --description "EKS kube context (uses current AWS_PROFILE; pick cluster)"
+function kc --description "EKS kube context (uses current AWS_PROFILE; pick cluster)"
     if test -z "$AWS_PROFILE"
-        echo "k8sc: no AWS_PROFILE set — pick one with awsp first." >&2
+        echo "kc: no AWS_PROFILE set — pick one with awsp first." >&2
         return 1
     end
 
