@@ -1,0 +1,12 @@
+onboarding = false
+# ── Terminal ────────────────────────────────────────────
+[terminal]
+default_shell = "/opt/homebrew/bin/fish"
+
+[theme]
+name = "gruvbox"
+auto_switch = false
+
+# ── Keys ────────────────────────────────────────────────
+[keys]
+prefix = "ctrl+space"

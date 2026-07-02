@@ -7,6 +7,7 @@ Core tools:
 - [Ghostty](https://ghostty.org/)
 - [fish](https://fishshell.com/)
 - [tmux](https://github.com/tmux/tmux/wiki)
+- [Herdr](https://herdr.dev/)
 - [Neovim](https://neovim.io/)
 - [Git](https://git-scm.com/)
 
