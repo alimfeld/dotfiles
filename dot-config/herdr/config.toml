@@ -10,3 +10,10 @@ auto_switch = false
 # ── Keys ────────────────────────────────────────────────
 [keys]
 prefix = "ctrl+space"
+
+# fzf picker: select or create a workspace from directories under a base dir.
+# Opens a temporary pane running fzf; the pane closes when the command exits.
+[[keys.command]]
+key = "prefix+f"
+type = "pane"
+command = "~/.config/herdr/herdr-workspace-picker.sh ~/dev"
