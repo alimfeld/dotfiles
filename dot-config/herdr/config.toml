@@ -10,6 +10,8 @@ auto_switch = false
 # ── Keys ────────────────────────────────────────────────
 [keys]
 prefix = "ctrl+space"
+# tmux-style back-and-forth: jump to the last focused pane, across workspaces/tabs.
+last_pane = "prefix+tab"
 
 # fzf picker: select or create a workspace from directories under a base dir.
 # Opens a temporary pane running fzf; the pane closes when the command exits.
