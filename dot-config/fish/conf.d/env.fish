@@ -1,6 +1,9 @@
 # Path
 fish_add_path ~/.local/bin
 fish_add_path ~/go/bin
+if test -d ~/.local/opt
+  fish_add_path ~/.local/opt
+end
 
 # Default programs
 set -x EDITOR nvim
