@@ -6,6 +6,7 @@
 - Be precise and avoid vague phrasing.
 - Be concise; avoid redundancy and repetition.
 - Apply this to conversation, documentation, and code comments.
+- Write documentation and comments so they stand on their own; never assume knowledge of the session or its history.
 
 ## Actions
 - Do not perform any write or modification without explicit user consent or confirmation.
