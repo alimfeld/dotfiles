@@ -3,3 +3,6 @@
 /dot-local/state
 /dot-config/fish/fish_variables
 /dot-config/herdr/session.json
+/dot-config/herdr/.plugins.lock
+/dot-config/herdr/herdr-client.log
+/dot-config/herdr/herdr-server.log
