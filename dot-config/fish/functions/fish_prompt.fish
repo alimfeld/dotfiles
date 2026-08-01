@@ -15,7 +15,7 @@ function fish_prompt
 
     # git_info component
     set git_branch (_git_branch)
-    if [ git_branch ]
+    if [ $git_branch ]
         set git_info $git_branch_color$git_branch$git_indicator_color
         if [ (_is_git_dirty) ]
             set git_info "$git_info*"
