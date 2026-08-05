@@ -6,3 +6,5 @@
 /dot-config/herdr/.plugins.lock
 /dot-config/herdr/herdr-client.log
 /dot-config/herdr/herdr-server.log
+/dot-config/hunk/state.json
+/dot-config/herdr/release-notes.json
