@@ -16,11 +16,13 @@ last_pane = "prefix+tab"
 workspace_picker = ""
 
 # fzf picker: select or create a workspace from directories under a base dir.
-# Opens a temporary pane running fzf; the pane closes when the command exits.
+# Opens as a popup; closes when the command exits.
 [[keys.command]]
 key = "prefix+f"
-type = "pane"
+type = "popup"
 command = "~/.config/herdr/herdr-workspace-picker.sh ~/dev"
+width = "60%"
+height = "60%"
 description = "Open/create workspace by directory"
 
 # fzf popup: switch focus to an existing workspace by label.
