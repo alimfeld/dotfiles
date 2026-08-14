@@ -7,6 +7,9 @@ default_shell = "/opt/homebrew/bin/fish"
 name = "gruvbox"
 auto_switch = false
 
+[ui.toast]
+delivery = "system"
+
 # ── Keys ────────────────────────────────────────────────
 [keys]
 prefix = "ctrl+space"
