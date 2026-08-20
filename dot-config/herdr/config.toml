@@ -36,3 +36,12 @@ command = "~/.config/herdr/herdr-workspace-switcher.sh"
 width = "60%"
 height = "60%"
 description = "Switch workspace"
+
+# fzf popup: switch focus to an existing agent pane.
+[[keys.command]]
+key = "prefix+a"
+type = "popup"
+command = "~/.config/herdr/herdr-agent-switcher.sh"
+width = "60%"
+height = "60%"
+description = "Switch agent"
