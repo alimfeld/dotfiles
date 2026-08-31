@@ -4,6 +4,10 @@
 # they do NOT fall back to defaults, so they must be spelled out in full below.
 # See: https://nikitabobko.github.io/AeroSpace/guide#default-config
 
+# Config version for compatibility and deprecations (default: 1)
+# See: https://nikitabobko.github.io/AeroSpace/guide#config-version
+config-version = 2
+
 # Start AeroSpace at login (default: false)
 start-at-login = true
 
