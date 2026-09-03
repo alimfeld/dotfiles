@@ -1,2 +1,3 @@
 command = /opt/homebrew/bin/fish
-theme = Gruvbox Dark
+theme = Gruvbox Dark Hard
+font-family = JetBrainsMono Nerd Font Mono
