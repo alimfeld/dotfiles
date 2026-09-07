@@ -1,5 +1,7 @@
 nerdfont: true
 
+mode: session
+
 agent: pi
 
 agents:
