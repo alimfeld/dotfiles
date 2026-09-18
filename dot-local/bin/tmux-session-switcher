@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Switch to a tmux session, or kill one (or more) without leaving the picker.
+# The current session is excluded: switching to it is a no-op, killing it
+# would yank the popup out from under you.
+#   enter   switch to the highlighted session
+#   tab     multi-select
+#   ctrl-k  kill the selected session(s), list stays open
+#   esc     do nothing
+
+set -euo pipefail
+
+current=$(tmux display-message -p '#{session_name}')
+
+selected=$(tmux list-sessions -F '#{session_name}' | { grep -vFx "$current" || true; } | fzf -m \
+	--header 'enter: switch | tab: multi-select | ctrl-k: kill selected' \
+	--bind 'ctrl-k:execute-silent(echo {+} | xargs -r -n1 tmux kill-session -t)+reload(tmux list-sessions -F "#{session_name}" | { grep -vFx '"$current"' || true; })') || true
+
+[[ -z $selected ]] && exit 0
+
+tmux switch-client -t "$(head -n1 <<<"$selected")"
