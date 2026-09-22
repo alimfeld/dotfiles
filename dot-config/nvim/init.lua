@@ -32,7 +32,7 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highl
 
 -- Diagnostics
 vim.diagnostic.config({ virtual_text = true })
-vim.keymap.set("n", "<leader>x", vim.diagnostic.setloclist, { desc = "Open [x] diagnostic quickfix list" })
+vim.keymap.set("n", "<leader>d", vim.diagnostic.setloclist, { desc = "Open [d]iagnostic quickfix list" })
 
 -- Highlight when yanking
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -97,25 +97,23 @@ vim.pack.add({ 'https://github.com/tpope/vim-fugitive' })
 vim.keymap.set("n", "<leader>g", "<cmd>G<CR>", { desc = "Search [b]uffer" })
 
 -- -----------------------------------------------------------------------------
--- Diff review (diffview.nvim)
+-- Diff review with annotations (review.nvim)
 -- -----------------------------------------------------------------------------
 
-vim.pack.add({ 'https://github.com/sindrets/diffview.nvim' })
+vim.pack.add({
+  'https://github.com/esmuellert/codediff.nvim',
+  'https://github.com/MunifTanjim/nui.nvim',
+  'https://github.com/georgeguimaraes/review.nvim',
+})
+require('review').setup({})
 
--- ponytail: assumes the default branch (origin/HEAD) is the diff base; retype
--- the ref manually when comparing against something else.
-local function default_branch()
-  local ref = vim.fn.system('git symbolic-ref refs/remotes/origin/HEAD --short 2>/dev/null'):gsub('%s+$', '')
-  return ref ~= '' and ref or 'origin/main'
-end
-
-vim.keymap.set("n", "<leader>do", function() vim.cmd('DiffviewOpen ' .. default_branch() .. '...HEAD') end,
-  { desc = "[d]iffview diff (squashed)" })
-vim.keymap.set("n", "<leader>dh", function()
-  vim.cmd('DiffviewFileHistory --range=' .. default_branch() .. '...HEAD --right-only --no-merges')
-end, { desc = "[d]iffview commit-by-commit" })
-vim.keymap.set("n", "<leader>dl", "<cmd>DiffviewFileHistory %<CR>", { desc = "[d]iffview current file history" })
-vim.keymap.set("n", "<leader>dq", "<cmd>DiffviewClose<CR>", { desc = "[d]iffview close" })
+vim.keymap.set("n", "<leader>rr", "<cmd>Review<CR>", { desc = "[r]eview working tree" })
+vim.keymap.set("n", "<leader>rc", "<cmd>Review commits<CR>", { desc = "[r]eview commits" })
+vim.keymap.set("n", "<leader>rb", "<cmd>Review branch<CR>", { desc = "[r]eview branch" })
+vim.keymap.set({ "n", "v" }, "<leader>rn", ":Review note<CR>", { desc = "[r]eview note here" })
+vim.keymap.set("n", "<leader>re", "<cmd>Review edit<CR>", { desc = "[r]eview edit comment" })
+vim.keymap.set("n", "<leader>rd", "<cmd>Review delete<CR>", { desc = "[r]eview delete comment" })
+vim.keymap.set("n", "<leader>rx", "<cmd>Review export<CR>", { desc = "[r]eview export" })
 
 -- -----------------------------------------------------------------------------
 -- Tmux integration (vim-tmux-navigator)
