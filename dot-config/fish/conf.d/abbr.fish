@@ -1,6 +1,7 @@
 abbr -a vi nvim
 abbr -a vim nvim
 abbr -a lg lazygit
+abbr -a wm workmux
 
 abbr -a init terraform init
 abbr -a plan terraform plan
