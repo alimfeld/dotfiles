@@ -65,9 +65,17 @@ it's invoked using `<Ctrl-Space Tab>`.
 
 ## 📦 Dependencies
 
-The dotfiles assume some additional packages to be installed on your system
-(such as fzf or language servers. Install the packages using your system's
-package manager or via [Homebrew](https://brew.sh/).
+The dotfiles assume some additional packages to be installed on your system.
+Install them using your system's package manager or via
+[Homebrew](https://brew.sh/):
+
+- [fzf](https://github.com/junegunn/fzf)
+- [fd](https://github.com/sharkdp/fd)
+- [ripgrep](https://github.com/BurntSushi/ripgrep)
+- [zoxide](https://github.com/ajeetdsouza/zoxide)
+- [sesh](https://github.com/joshmedeski/sesh)
+- [workmux](https://workmux.raine.dev/)
+- language servers
 
 ##  MacOS Keyboard Settings
 
