@@ -97,25 +97,6 @@ vim.pack.add({ 'https://github.com/tpope/vim-fugitive' })
 vim.keymap.set("n", "<leader>g", "<cmd>G<CR>", { desc = "Search [b]uffer" })
 
 -- -----------------------------------------------------------------------------
--- Diff review with annotations (review.nvim)
--- -----------------------------------------------------------------------------
-
-vim.pack.add({
-  'https://github.com/esmuellert/codediff.nvim',
-  'https://github.com/MunifTanjim/nui.nvim',
-  'https://github.com/georgeguimaraes/review.nvim',
-})
-require('review').setup({})
-
-vim.keymap.set("n", "<leader>rr", "<cmd>Review<CR>", { desc = "[r]eview working tree" })
-vim.keymap.set("n", "<leader>rc", "<cmd>Review commits<CR>", { desc = "[r]eview commits" })
-vim.keymap.set("n", "<leader>rb", "<cmd>Review branch<CR>", { desc = "[r]eview branch" })
-vim.keymap.set({ "n", "v" }, "<leader>rn", ":Review note<CR>", { desc = "[r]eview note here" })
-vim.keymap.set("n", "<leader>re", "<cmd>Review edit<CR>", { desc = "[r]eview edit comment" })
-vim.keymap.set("n", "<leader>rd", "<cmd>Review delete<CR>", { desc = "[r]eview delete comment" })
-vim.keymap.set("n", "<leader>rx", "<cmd>Review export<CR>", { desc = "[r]eview export" })
-
--- -----------------------------------------------------------------------------
 -- Tmux integration (vim-tmux-navigator)
 -- -----------------------------------------------------------------------------
 
