@@ -7,7 +7,6 @@ Core tools:
 - [Ghostty](https://ghostty.org/)
 - [fish](https://fishshell.com/)
 - [tmux](https://github.com/tmux/tmux/wiki)
-- [Herdr](https://herdr.dev/)
 - [Neovim](https://neovim.io/)
 - [Git](https://git-scm.com/)
 
@@ -15,7 +14,6 @@ Supporting TUIs:
 
 - [lazygit](https://github.com/jesseduffield/lazygit)
 - [k9s](https://k9scli.io/)
-- [OpenCode](https://opencode.ai/)
 
 ## 📁 XDG Base Directory
 
@@ -91,5 +89,11 @@ The dotfiles can be installed using [stow](https://www.gnu.org/software/stow/):
 ```shell
 git clone https://github.com/alimfeld/dotfiles ~/.dotfiles
 cd ~/.dotfiles
-stow --target=$HOME --dotfiles .
+mkdir -p ~/.config ~/.local ~/.agents/skills ~/.pi/agent/extensions
+stow .
 ```
+
+The directories are created first because they are shared with other sources
+(e.g. a work dotfiles repo). Stow links a whole directory when its target does
+not exist, so everything below them is linked per app. `.stowrc` supplies
+`--target=~ --dotfiles`.
