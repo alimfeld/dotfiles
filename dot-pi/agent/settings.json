@@ -1,12 +1,12 @@
 {
-  "lastChangelogVersion": "0.87.1",
-  "defaultProvider": "github-copilot",
-  "defaultModel": "claude-sonnet-5",
-  "defaultThinkingLevel": "medium",
-  "packages": [
-    "git:github.com/DietrichGebert/ponytail",
-    "npm:pi-web-access"
-  ],
-  "theme": "dark",
-  "enableInstallTelemetry": false
+    "lastChangelogVersion": "0.87.1",
+    "defaultProvider": "github-copilot",
+    "defaultModel": "claude-opus-5.5",
+    "defaultThinkingLevel": "medium",
+    "packages": [
+        "git:github.com/DietrichGebert/ponytail",
+        "npm:pi-web-access"
+    ],
+    "theme": "dark",
+    "enableInstallTelemetry": false
 }
