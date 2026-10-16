@@ -53,13 +53,11 @@ details.
 
 ## 🖥️ Tmux Sessions
 
-To start and switch to tmux sessions based on directories under '~/dev', the
-`tmux-sessionizer` script is used. This script is heavily inspired by
-[ThePrimagen's
-tmux-sessionizer](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer)
+To start and switch tmux sessions, [sesh](https://github.com/joshmedeski/sesh)
+is used. It lists tmux sessions, configured sessions and zoxide directories.
 
-The script is started from fish using the `<Ctrl-Space>` key binding. From tmux
-it's invoked using `<Ctrl-Space Tab>`.
+The picker is started from fish using the `<Ctrl-Space>` key binding. From tmux
+it's invoked using `<Ctrl-Space s>`.
 
 ## 📦 Dependencies
 
@@ -73,6 +71,9 @@ Install them using your system's package manager or via
 - [zoxide](https://github.com/ajeetdsouza/zoxide)
 - [sesh](https://github.com/joshmedeski/sesh)
 - [workmux](https://workmux.raine.dev/)
+- [hunk](https://hunk.dev/)
+- [worktrunk](https://worktrunk.dev/)
+- [AWS CLI](https://aws.amazon.com/cli/)
 - language servers
 
 ##  MacOS Keyboard Settings

@@ -1,13 +1,14 @@
 #!/bin/sh
 
 # Core tools
-brew install ghostty fish tmux neovim
+brew install ghostty wezterm fish tmux neovim
+brew install --cask nikitabobko/tap/aerospace
 
 # Supporting TUIs
-brew install lazygit k9s
+brew install lazygit k9s hunk
 
 # Dependencies
-brew install stow fzf fd ripgrep zoxide sesh raine/workmux/workmux
+brew install stow fzf fd ripgrep zoxide sesh raine/workmux/workmux worktrunk awscli todo-txt
 
 # Language servers
 brew install \
