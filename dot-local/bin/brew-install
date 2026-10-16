@@ -1,8 +1,7 @@
 #!/bin/sh
 
 # Core tools
-brew install ghostty wezterm fish tmux neovim
-brew install --cask nikitabobko/tap/aerospace
+brew install ghostty fish tmux neovim
 
 # Supporting TUIs
 brew install lazygit k9s hunk
