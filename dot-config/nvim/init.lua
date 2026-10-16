@@ -94,7 +94,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 vim.pack.add({ 'https://github.com/tpope/vim-fugitive' })
 
-vim.keymap.set("n", "<leader>g", "<cmd>G<CR>", { desc = "Search [b]uffer" })
+vim.keymap.set("n", "<leader>g", "<cmd>G<CR>", { desc = "[g]it status" })
 
 -- -----------------------------------------------------------------------------
 -- Tmux integration (vim-tmux-navigator)
