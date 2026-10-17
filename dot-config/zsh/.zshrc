@@ -22,6 +22,8 @@ eval "$(starship init zsh)"
 
 # Aliases
 alias vi=nvim vim=nvim lg=lazygit wm=workmux
+alias ll='ls -lAhG'
+alias la='ls -AG'
 
 # <Ctrl-Space>: tmux session picker
 function sesh-pick() {
