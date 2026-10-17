@@ -61,12 +61,10 @@ vim.pack.add({ 'https://github.com/neovim/nvim-lspconfig' })
 
 vim.lsp.enable("bashls")
 vim.lsp.enable("cssls")
-vim.lsp.enable("helm_ls")
 vim.lsp.enable("jsonls")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
-vim.lsp.enable("terraformls")
 vim.lsp.enable("ts_ls")
 
 vim.api.nvim_create_autocmd('LspAttach', {

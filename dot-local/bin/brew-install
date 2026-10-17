@@ -1,21 +1,19 @@
 #!/bin/sh
 
 # Core tools
-brew install ghostty fish tmux neovim
+brew install ghostty tmux neovim
 
 # Supporting TUIs
-brew install lazygit k9s hunk
+brew install lazygit hunk
 
 # Dependencies
-brew install stow fzf fd ripgrep zoxide sesh raine/workmux/workmux worktrunk awscli todo-txt
+brew install stow fzf fd ripgrep zoxide sesh starship zsh-vi-mode zsh-autosuggestions zsh-syntax-highlighting raine/workmux/workmux
 
 # Language servers
 brew install \
 	bash-language-server \
-	helm-ls \
 	lua-language-server \
 	pyright \
 	ruff \
-	terraform-ls \
 	typescript-language-server \
-	vscode-langservers-extracted \
+	vscode-langservers-extracted
