@@ -74,3 +74,9 @@ stow .
 
 The directories are created first because they are shared with other stow
 sources (e.g. a work dotfiles repo).
+
+Machine-local overrides go in `~/.config/local/` (`zsh.zsh`, `tmux.conf`),
+which zsh and tmux source if present. Another repo can own that directory,
+e.g. a work dotfiles repo stowing `dot-config/local`. Git, Neovim and Ghostty
+have their own untracked spots: `~/.gitconfig`, `~/.config/nvim/plugin/` and
+`~/Library/Application Support/com.mitchellh.ghostty/config.ghostty`.

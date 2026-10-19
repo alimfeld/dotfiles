@@ -37,6 +37,9 @@ source $HOMEBREW_PREFIX/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 # fzf comes after vi-mode, which overwrites keymaps.
 source <(fzf --zsh)
 
+# Machine-local overrides (e.g. stowed from a work dotfiles repo).
+[[ -r ~/.config/local/zsh.zsh ]] && source ~/.config/local/zsh.zsh
+
 # Plugins: syntax highlighting must be sourced last.
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
