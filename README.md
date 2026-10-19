@@ -69,7 +69,7 @@ cd ~/.dotfiles
 mkdir -p ~/.config ~/.local/bin ~/.agents/skills ~/.pi/agent/extensions
 ./dot-local/bin/brew-install  # core tools, dependencies and language servers
 stow .
-# then install pi (see pi.dev) — workmux runs it
+# then install pi (see pi.dev) — workmux runs it — and run `workmux setup` for its pi status extension
 ```
 
 The directories are created first because they are shared with other stow

@@ -22,9 +22,6 @@ unsetopt BEEP
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
-# Fallback for shells that never ran .zprofile
-HOMEBREW_PREFIX=${HOMEBREW_PREFIX:-/opt/homebrew}
-
 # Aliases
 alias vi=nvim vim=nvim lg=lazygit wm=workmux
 alias ll='ls -lAhG'

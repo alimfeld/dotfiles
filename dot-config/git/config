@@ -1,5 +1,4 @@
 [core]
-    eol = native
     autocrlf = input
 
 [push]
