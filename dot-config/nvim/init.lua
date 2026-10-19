@@ -32,7 +32,7 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highl
 
 -- Diagnostics
 vim.diagnostic.config({ virtual_text = true })
-vim.keymap.set("n", "<leader>d", vim.diagnostic.setloclist, { desc = "Open [d]iagnostic quickfix list" })
+vim.keymap.set("n", "<leader>d", vim.diagnostic.setloclist, { desc = "Open [d]iagnostic location list" })
 
 -- Highlight when yanking
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -49,7 +49,7 @@ vim.cmd.colorscheme("retrobox")
 
 -- Scratch
 vim.keymap.set("n",
-  "<leader>s", "<cmd>edit ~/scratch.md | setlocal noswapfile<CR>",
+  "<leader>s", "<cmd>edit $XDG_STATE_HOME/scratch.md | setlocal noswapfile<CR>",
   { desc = "Edit [S]cratch file." }
 )
 
@@ -67,24 +67,7 @@ vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
 vim.lsp.enable("ts_ls")
 
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('my.lsp', {}),
-  callback = function(ev)
-    local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
-    -- Auto-format ("lint") on save.
-    -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
-    if not client:supports_method('textDocument/willSaveWaitUntil')
-        and client:supports_method('textDocument/formatting') then
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
-        buffer = ev.buf,
-        callback = function()
-          vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, timeout_ms = 1000 })
-        end,
-      })
-    end
-  end,
-})
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = "[f]ormat buffer" })
 
 -- -----------------------------------------------------------------------------
 -- Git integration (vim-fugitive)

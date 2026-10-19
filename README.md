@@ -78,5 +78,5 @@ sources (e.g. a work dotfiles repo).
 Machine-local overrides go in `~/.config/local/` (`zsh.zsh`, `tmux.conf`),
 which zsh and tmux source if present. Another repo can own that directory,
 e.g. a work dotfiles repo stowing `dot-config/local`. Git, Neovim and Ghostty
-have their own untracked spots: `~/.gitconfig`, `~/.config/nvim/plugin/` and
+have their own untracked spots: `~/.gitconfig`, `~/.local/share/nvim/site/plugin/` and
 `~/Library/Application Support/com.mitchellh.ghostty/config.ghostty`.

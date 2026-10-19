@@ -1,4 +1,0 @@
-git:
-  diffRenderers:
-    - colorArg: always
-      type: rawGit

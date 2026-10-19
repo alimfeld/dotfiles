@@ -1,4 +1,4 @@
-# Interactive shell only. Environment setup (PATH, XDG, EDITOR) is in ~/.zshenv.
+# Interactive shell only. Environment is in ~/.zshenv, PATH in .zprofile.
 
 # Completions. macOS' /etc/zshrc does not run compinit.
 [[ -d $XDG_CACHE_HOME ]] || mkdir -p $XDG_CACHE_HOME

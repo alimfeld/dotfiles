@@ -1,5 +1,5 @@
-# Read by every zsh (interactive or not). Keep it cheap.
-# zsh never reads $ZDOTDIR/.zshenv, so all environment setup lives here.
+# Read by every top-level zsh (interactive or not). Keep it cheap.
+# Nested shells read $ZDOTDIR/.zshenv (absent) instead, so export everything.
 export ZDOTDIR=$HOME/.config/zsh
 
 # XDG
@@ -8,10 +8,6 @@ export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
 export PI_WEB_ACCESS_CACHE_ROOT=$XDG_CACHE_HOME
-
-# Path (Homebrew is prepended in .zprofile, after /etc/zprofile's path_helper)
-path=(~/.local/bin ~/go/bin $path)
-[[ -d ~/.local/opt ]] && path=(~/.local/opt $path)
 
 # Default programs
 export EDITOR=nvim VISUAL=nvim
