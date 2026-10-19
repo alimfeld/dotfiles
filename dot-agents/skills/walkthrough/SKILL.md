@@ -1,51 +1,37 @@
 ---
 name: walkthrough
-description: Walk the user through a list of findings one at a time (code review, ponytail review, audit, DefectDojo vulns, PR comments), verify each against the code, recommend an action, and pause for confirmation before applying it and moving on. Use when the user says "walk me through", "one by one", or "go through the findings". Do not start it just because a findings list appeared.
+description: Walk the user through a list of items (review findings, vulns, PR comments, open questions, TODOs) one at a time, verifying each and recommending an action or answer before applying it. Use when the user says "walk me through", "one by one", or "go through the findings/questions". Do not start it just because a list appeared.
 ---
 
-Work through the findings strictly **one at a time**. Never batch, never run ahead.
+Handle items strictly **one at a time**, in the list's order. No list in the conversation: ask for one.
 
-No findings list in the conversation: ask the user for one, or which review to run first.
+## Per item
 
-## Per finding
-
-1. **Verify first.** Re-read the code or component the finding points at. The reviewer's output is data, not a verdict: it may be wrong, overstated, or have a smaller fix than suggested.
-2. **Present** in this shape, kept short:
+1. **Verify.** Re-read the code, docs or earlier answers it touches. The list may be wrong, already resolved, or have a smaller fix than suggested; if resolved, say so and move on.
+2. **Present**, short, omitting lines that don't apply:
 
    ```
-   ### 3/7 – <title>  [severity]
+   ### 3/7 – <title or question>  [severity, if any]
 
    📍 **Where:** file:line or component@version
 
-   🔎 **Issue:** 1–2 sentences
+   🔎 **Context:** the issue, or why the question matters
 
-   ⚖️ **Verdict:** agree / partly / disagree – why
+   ⚖️ **Assessment:** agree / partly / disagree – why; or the options
 
-   ✅ **Recommended:** concrete action (diff preview only if a few lines)
+   ✅ **Recommended:** action or answer; "skip" if you disagree; name any external change (small diff preview ok)
 
    👉 **Reply:** y / n / defer / stop / <instructions>
    ```
 
-   On "disagree", recommend skipping it; `y` then confirms the skip.
+3. **Wait** for the reply, then:
+   - `y` / free text: do it (the user's way if given). Code change: run relevant tests/lint, show this change's diff. External change (PR reply, ticket status): report what was done. Pure decision: just record it.
+   - `n`: skip. `defer`: note it, change nothing. `stop`: summarize now.
+   - a question: answer, then re-ask. Ambiguous: ask, don't guess.
+   - A failed fix: report it, ask keep / revert / retry.
 
-3. **Stop and wait** for the reply.
-4. **Act on the reply:**
-   - `y`, "ok", "sounds good": apply the recommended action, run the relevant test/lint if one exists, show the diff of this fix only.
-   - `n`, "skip": drop it.
-   - free text: do it the user's way, show the diff of this fix only.
-   - a question: answer it, then re-ask the same finding.
-   - `defer`: note it for the summary, change nothing.
-   - `stop`: end now and summarize.
-   - Anything ambiguous: ask, don't guess.
-5. Move to the next finding. Account for earlier changes: a finding may already be fixed or obsolete; say so and move on.
-
-## Rules
-
-- Keep the reviewer's order. Re-sort by severity only if the list is unordered.
-- Do not commit. Leave changes uncommitted for the user.
-- If the action changes an external system (PR reply, DefectDojo status), name it in **Recommended**; `y` is the confirmation. Report what was done instead of a diff.
-- If a fix fails (tests, build), report it and ask whether to keep, revert or retry it.
+Never commit.
 
 ## End
 
-Show a summary table: `# | finding | outcome (applied / skipped / skipped (disagree) / deferred / already fixed)`, with deferred items listed so nothing is lost.
+Summary table `# | item | outcome` (applied / decided: … / skipped / deferred / already resolved), deferred items called out.
