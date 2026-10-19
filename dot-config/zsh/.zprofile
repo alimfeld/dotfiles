@@ -5,5 +5,5 @@ if [[ -d /opt/homebrew ]]; then
 elif command -v brew >/dev/null; then
   eval "$(brew shellenv)"
 fi
-typeset -U path  # dedupe on assignment
+typeset -U path fpath  # dedupe on assignment
 path=(~/.local/opt(N) ~/.local/bin $path)
