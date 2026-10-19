@@ -25,7 +25,8 @@ Terminal.
 ### [zsh](https://www.zsh.org/)
 
 Shell. Vi mode, autosuggestions, syntax highlighting, [starship](https://starship.rs/)
-prompt and [zoxide](https://github.com/ajeetdsouza/zoxide) jumps.
+prompt, [zoxide](https://github.com/ajeetdsouza/zoxide) jumps and
+[direnv](https://direnv.net/) per-directory environments.
 
 ### [tmux](https://github.com/tmux/tmux/wiki)
 

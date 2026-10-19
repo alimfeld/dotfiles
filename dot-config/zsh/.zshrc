@@ -21,6 +21,7 @@ unsetopt BEEP
 # Tools
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"  # after prompt setup, per direnv docs
 
 # Aliases
 alias vi=nvim vim=nvim lg=lazygit wm=workmux
