@@ -5,7 +5,7 @@ set -e
 brew install ghostty tmux neovim
 
 # Supporting TUIs
-brew install lazygit hunk
+brew install lazygit
 
 # Dependencies
 brew install stow fzf fd ripgrep direnv zoxide sesh starship zsh-vi-mode zsh-autosuggestions zsh-syntax-highlighting raine/workmux/workmux

@@ -49,7 +49,7 @@ Version control, with Neovim as the difftool and
 
 Agent, installed separately.
 [workmux](https://workmux.raine.dev/) turns a worktree into a tmux session
-holding pi and a [hunk](https://hunk.dev/) diff.
+holding pi.
 
 ## 🍎 macOS Keyboard Settings
 

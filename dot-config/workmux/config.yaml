@@ -7,6 +7,3 @@ agent: pi
 panes:
   - command: <agent>
     focus: true
-  - command: hunk diff --watch
-    split: horizontal
-    size: 60
