@@ -76,8 +76,14 @@ stow .
 The directories are created first because they are shared with other stow
 sources (e.g. a work dotfiles repo).
 
-Machine-local overrides go in `~/.config/local/` (`zsh.zsh`, `tmux.conf`),
-which zsh and tmux source if present. Another repo can own that directory,
-e.g. a work dotfiles repo stowing `dot-config/local`. Git, Neovim and Ghostty
-have their own untracked spots: `~/.gitconfig`, `~/.local/share/nvim/site/plugin/` and
+Machine-local overrides go in `~/.config/local/` (`zsh.zsh`, `tmux.conf`,
+`git.inc`), which zsh, tmux and git read if present. `git.inc` must set
+`[user] email` for repos outside `github.com/alimfeld`: git has no fallback
+identity. Edit that file, never `git config --global` (it writes into the
+stowed file above). Another repo can own that directory, e.g. a work dotfiles
+repo stowing `dot-config/local`. Neovim and Ghostty have their own untracked
+spots: `~/.local/share/nvim/site/plugin/` and
 `~/Library/Application Support/com.mitchellh.ghostty/config.ghostty`.
+
+If `~/.gitconfig` exists, delete it: git reads it after `~/.config/git/config`,
+so it silently overrides every rule above.

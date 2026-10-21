@@ -1,3 +1,19 @@
+[user]
+    name = Alexander Imfeld
+    useConfigOnly = true
+
+# Machine/work-specific identities (absent = ignored). Last rule wins, so the
+# personal rules below stay after this include.
+[include]
+    path = ~/.config/local/git.inc
+
+[includeIf "hasconfig:remote.*.url:https://github.com/alimfeld/*"]
+    path = github.inc
+[includeIf "hasconfig:remote.*.url:git@github.com:alimfeld/*"]
+    path = github.inc
+[includeIf "hasconfig:remote.*.url:ssh://git@github.com/alimfeld/*"]
+    path = github.inc
+
 [core]
     autocrlf = input
 
