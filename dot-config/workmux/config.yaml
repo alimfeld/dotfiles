@@ -1,9 +1,0 @@
-nerdfont: true
-
-mode: session
-
-agent: pi
-
-panes:
-  - command: <agent>
-    focus: true

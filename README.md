@@ -31,8 +31,7 @@ prompt, [zoxide](https://github.com/ajeetdsouza/zoxide) jumps and
 ### [tmux](https://github.com/tmux/tmux/wiki)
 
 Multiplexer, with a [sesh](https://github.com/joshmedeski/sesh) +
-[fzf](https://github.com/junegunn/fzf) session picker, a
-[workmux](https://workmux.raine.dev/) dashboard and sidebar, and split
+[fzf](https://github.com/junegunn/fzf) session picker and split
 navigation that reaches into Neovim.
 
 ### [Neovim](https://neovim.io/)
@@ -48,8 +47,6 @@ Version control, with Neovim as the difftool and
 ### [pi](https://pi.dev/)
 
 Agent, installed separately.
-[workmux](https://workmux.raine.dev/) turns a worktree into a tmux session
-holding pi.
 
 ## 🍎 macOS Keyboard Settings
 
@@ -70,7 +67,7 @@ cd ~/.dotfiles
 mkdir -p ~/.config ~/.local/bin ~/.agents/skills ~/.pi/agent/extensions
 ./dot-local/bin/brew-install  # core tools, dependencies and language servers
 stow .
-# then install pi (see pi.dev) — workmux runs it — and run `workmux setup` for its pi status extension
+# then install pi (see pi.dev)
 ```
 
 The directories are created first because they are shared with other stow

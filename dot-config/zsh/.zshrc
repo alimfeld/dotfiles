@@ -24,7 +24,7 @@ eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"  # after prompt setup, per direnv docs
 
 # Aliases
-alias vi=nvim vim=nvim lg=lazygit wm=workmux
+alias vi=nvim vim=nvim lg=lazygit
 alias ll='ls -lAhG'
 alias la='ls -AG'
 
