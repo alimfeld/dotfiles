@@ -8,7 +8,10 @@ vim.g.mapleader = vim.keycode('<Space>')
 -- Options
 vim.o.number = true
 vim.o.signcolumn = "yes"
-vim.o.wrap = false
+vim.o.wrap = true
+vim.o.linebreak = true
+vim.o.breakindent = true
+vim.o.breakindentopt = "list:-1"
 vim.o.list = true
 vim.o.cursorline = true
 vim.o.splitright = true
@@ -29,6 +32,8 @@ vim.keymap.set("n", "<leader>q", "<cmd>qa<CR>", { desc = "[q]uit all" })
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
+vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, desc = "Down (screen line without count)" })
+vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, desc = "Up (screen line without count)" })
 
 -- Diagnostics
 vim.diagnostic.config({ virtual_text = true })
@@ -125,3 +130,16 @@ require('oil').setup({
 })
 
 vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open Parent Directory" })
+
+-- -----------------------------------------------------------------------------
+-- Markdown rendering (render-markdown.nvim)
+-- -----------------------------------------------------------------------------
+
+vim.pack.add({ 'https://github.com/MeanderingProgrammer/render-markdown.nvim' })
+
+require('render-markdown').setup({
+  anti_conceal = { enabled = false },  -- always render, no raw text on cursor line
+  quote = { repeat_linebreak = true }, -- continue quote bar on wrapped lines
+})
+
+vim.keymap.set("n", "<leader>m", "<cmd>RenderMarkdown toggle<CR>", { desc = "Toggle [m]arkdown rendering" })
