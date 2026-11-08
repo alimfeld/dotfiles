@@ -17,5 +17,5 @@ brew install \
 	marksman \
 	pyright \
 	ruff \
-	typescript-language-server \
+	typescript \
 	vscode-langservers-extracted
