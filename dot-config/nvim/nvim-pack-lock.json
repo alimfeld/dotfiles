@@ -1,11 +1,11 @@
 {
   "plugins": {
     "mini.nvim": {
-      "rev": "a321b535c75ca88ba7fddfd8eb5b583fbda50dd6",
+      "rev": "f9ac12d7cbd2563cfc2cce9a8152fc8df2ad0d6f",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nvim-lspconfig": {
-      "rev": "cc404d425c7752f56b8eaa269107be44d888ea51",
+      "rev": "993d048db0d83d8e8ba3f9cb376456321acdcce3",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "oil.nvim": {
@@ -13,7 +13,7 @@
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "render-markdown.nvim": {
-      "rev": "8e8795368391036643b622875a6da6a51bcd33f4",
+      "rev": "9c235bedc4f96145e63fcad5b78cd78bce8822c4",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "vim-fugitive": {
