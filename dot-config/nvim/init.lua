@@ -37,7 +37,6 @@ vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, de
 
 -- Diagnostics
 vim.diagnostic.config({ virtual_text = true })
-vim.keymap.set("n", "<leader>d", vim.diagnostic.setloclist, { desc = "Open [d]iagnostic location list" })
 
 -- Highlight when yanking
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -76,6 +75,31 @@ vim.lsp.enable("tsc")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = "[f]ormat buffer" })
 
 -- -----------------------------------------------------------------------------
+-- Treesitter (nvim-treesitter: parsers + queries; highlighting is built in)
+-- -----------------------------------------------------------------------------
+
+-- Parsers must match the plugin version, so update them with it.
+vim.api.nvim_create_autocmd('PackChanged', {
+  callback = function(ev)
+    if ev.data.spec.name == 'nvim-treesitter' and ev.data.kind == 'update' then
+      if not ev.data.active then vim.cmd.packadd('nvim-treesitter') end
+      vim.cmd('TSUpdate')
+    end
+  end,
+})
+
+vim.pack.add({ 'https://github.com/nvim-treesitter/nvim-treesitter' })
+
+-- Languages with an LSP above; lua, markdown and vimdoc ship with Neovim.
+require('nvim-treesitter').install({ 'bash', 'css', 'javascript', 'json', 'python', 'tsx', 'typescript' })
+
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Start treesitter highlighting where a parser exists',
+  group = vim.api.nvim_create_augroup('my.treesitter', {}),
+  callback = function() pcall(vim.treesitter.start) end,
+})
+
+-- -----------------------------------------------------------------------------
 -- Git integration (vim-fugitive)
 -- -----------------------------------------------------------------------------
 
@@ -99,6 +123,7 @@ vim.g.tmux_navigator_no_wrap = 1       -- don't wrap around the screen
 vim.pack.add({ 'https://github.com/nvim-mini/mini.nvim' })
 
 require('mini.ai').setup()
+require('mini.extra').setup()
 require('mini.diff').setup()
 require('mini.icons').setup()
 require('mini.surround').setup()
@@ -114,6 +139,34 @@ vim.keymap.set("n", "<leader><Space>", function() MiniPick.builtin.files() end, 
 vim.keymap.set("n", "<leader>/", function() MiniPick.builtin.grep_live() end,
   { desc = "Search with grep" })
 vim.keymap.set("n", "<leader>b", function() MiniPick.builtin.buffers() end, { desc = "Search [b]uffer" })
+vim.keymap.set("n", "<leader>h", function() MiniPick.builtin.help() end, { desc = "Search [h]elp" })
+vim.keymap.set("n", "<leader>'", function() MiniPick.builtin.resume() end, { desc = "Resume last picker" })
+vim.keymap.set("n", "<leader>d", function() MiniExtra.pickers.diagnostic() end, { desc = "Search [d]iagnostics" })
+
+-- Show pending keymaps after a trigger key
+local miniclue = require('mini.clue')
+miniclue.setup({
+  triggers = {
+    { mode = { 'n', 'x' }, keys = '<Leader>' },
+    { mode = { 'n', 'x' }, keys = 'g' },
+    { mode = { 'n', 'x' }, keys = 'z' },
+    { mode = 'n', keys = '[' },
+    { mode = 'n', keys = ']' },
+    { mode = 'n', keys = '<C-w>' },
+    { mode = { 'n', 'x' }, keys = "'" },
+    { mode = { 'n', 'x' }, keys = '`' },
+    { mode = { 'n', 'x' }, keys = '"' },
+    { mode = { 'i', 'c' }, keys = '<C-r>' },
+  },
+  clues = {
+    miniclue.gen_clues.g(),
+    miniclue.gen_clues.z(),
+    miniclue.gen_clues.square_brackets(),
+    miniclue.gen_clues.windows(),
+    miniclue.gen_clues.marks(),
+    miniclue.gen_clues.registers(),
+  },
+})
 
 -- -----------------------------------------------------------------------------
 -- File explorer (oil.nvim)
