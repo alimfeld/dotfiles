@@ -1,0 +1,2 @@
+os:
+  editPreset: nvim-remote  # open files in the parent Neovim when run inside it
