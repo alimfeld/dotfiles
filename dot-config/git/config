@@ -17,14 +17,53 @@
 [core]
     autocrlf = input
 
+[init]
+    defaultBranch = main
+
+[column]
+    ui = auto
+
+[branch]
+    sort = -committerdate
+
+[tag]
+    sort = version:refname
+
+[help]
+    autocorrect = prompt
+
+[commit]
+    verbose = true
+
+[fetch]
+    prune = true
+
+[pull]
+    rebase = true
+
 [push]
     autoSetupRemote = true
+    followTags = true
+
+[rebase]
+    autoStash = true
+    autoSquash = true
+    updateRefs = true
+
+[rerere]
+    enabled = true
 
 [merge]
-    conflictstyle = diff3
+    conflictstyle = zdiff3
+
+[diff]
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    tool = nvim_difftool
+
+[difftool]
+    prompt = false
 
 [difftool "nvim_difftool"]
     cmd = nvim -c \"packadd nvim.difftool\" -d \"$LOCAL\" \"$REMOTE\"
-
-[diff]
-    tool = nvim_difftool
