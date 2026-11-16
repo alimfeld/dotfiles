@@ -53,7 +53,6 @@ Agent, installed separately.
 - Add 'U.S. International - PC' input source
 - Change ' Caps Lock' to 'Control' (Keyboard Shortcuts > Modifier Keys)
 - Disable keyboard shortcuts for 'Input Sources' (i.e. Ctrl-Space)
-- Set 'Key repeat rate' to 'Fast'
 
 ## 🛠️ Installation
 
@@ -64,9 +63,12 @@ Requires [Homebrew](https://brew.sh/). Install with
 chsh -s /bin/zsh  # Ghostty and tmux use the login shell
 git clone https://github.com/alimfeld/dotfiles ~/.dotfiles
 cd ~/.dotfiles
-mkdir -p ~/.config ~/.local/bin ~/.agents/skills ~/.pi/agent/extensions
-./dot-local/bin/brew-install  # core tools, dependencies and language servers
+mkdir -p ~/.config ~/.agents/skills ~/.pi/agent/extensions
+brew bundle  # core tools, dependencies and language servers (Brewfile)
 stow .
+# key repeat: rate 'Fast' (2) and a short delay (30); log out to apply
+defaults write -g KeyRepeat -int 2
+defaults write -g InitialKeyRepeat -int 30
 # then install pi (see pi.dev)
 ```
 
