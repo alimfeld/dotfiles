@@ -1,4 +1,12 @@
 theme = light:Modus Operandi Tinted,dark:Modus Vivendi Tinted
 window-decoration = none
 font-size = 15
-minimum-contrast = 1.1
+minimum-contrast = 3
+
+font-thicken = true
+font-thicken-strength = 64
+alpha-blending = linear-corrected
+
+window-padding-x = 5
+window-padding-y = 10
+window-padding-balance = true
