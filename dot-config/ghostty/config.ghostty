@@ -1,5 +1,4 @@
 theme = light:Modus Operandi Tinted,dark:Modus Vivendi Tinted
 window-decoration = none
-font-size = 16
-font-thicken = true
+font-size = 15
 minimum-contrast = 1.1
