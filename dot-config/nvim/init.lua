@@ -49,7 +49,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('vim._core.ui2').enable({})
 
 -- Colorscheme
-vim.cmd.colorscheme("retrobox")
+-- Follows background (detected from the terminal), matching Ghostty's light/dark Modus Tinted
+vim.pack.add({ 'https://github.com/miikanissi/modus-themes.nvim' })
+require('modus-themes').setup({ variants = { modus_operandi = 'tinted', modus_vivendi = 'tinted' } })
+vim.cmd.colorscheme("modus")
 
 -- Scratch
 vim.keymap.set("n",
