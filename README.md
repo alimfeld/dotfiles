@@ -14,7 +14,11 @@ Configurations to improve the CLI dev experience.
 - **One clipboard.** Copy in one tool, paste in another.
 - **One session per worktree.** Every piece of work is isolated and restorable,
   with its own agent and diff.
-- **One look.** Gruvbox-like colours everywhere.
+- **One look.** [Modus](https://protesilaos.com/emacs/modus-themes) themes everywhere:
+  Ghostty's builtin tinted palette is the single source, and every CLI reads it
+  through ANSI colours (tmux `theme terminal`, zsh, fzf, lazygit). Neovim uses
+  [modus-themes.nvim](https://github.com/miikanissi/modus-themes.nvim) with the
+  same tinted variants, light/dark chosen from the terminal background.
 
 ## 🧰 Tools
 
