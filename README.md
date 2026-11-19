@@ -14,10 +14,10 @@ Configurations to improve the CLI dev experience.
 - **One clipboard.** Copy in one tool, paste in another.
 - **One session per worktree.** Every piece of work is isolated and restorable,
   with its own agent and diff.
-- **One look.** [Rosé Pine](https://rosepinetheme.com/) everywhere:
-  Ghostty's builtin palette (Dawn/Main) is the single source, and every CLI reads it
+- **One look.** [Flexoki](https://stephango.com/flexoki) everywhere:
+  Ghostty's builtin palette (Light/Dark) is the single source, and every CLI reads it
   through ANSI colours (tmux `theme terminal`, zsh, fzf, lazygit). Neovim uses
-  [rose-pine/neovim](https://github.com/rose-pine/neovim) with the
+  [flexoki-neovim](https://github.com/kepano/flexoki-neovim) with the
   same variants, light/dark chosen from the terminal background.
 
 ## 🧰 Tools

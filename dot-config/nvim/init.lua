@@ -49,9 +49,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('vim._core.ui2').enable({})
 
 -- Colorscheme
--- Follows background (detected from the terminal), matching Ghostty's light/dark Rose Pine
-vim.pack.add({ { src = 'https://github.com/rose-pine/neovim', name = 'rose-pine' } })
-vim.cmd.colorscheme('rose-pine')
+-- Follows background (detected from the terminal), matching Ghostty's light/dark Flexoki
+vim.pack.add({ { src = 'https://github.com/kepano/flexoki-neovim', name = 'flexoki' } })
+vim.cmd.colorscheme('flexoki')
 
 -- Scratch
 vim.keymap.set("n",
