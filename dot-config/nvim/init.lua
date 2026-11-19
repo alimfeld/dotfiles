@@ -49,16 +49,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('vim._core.ui2').enable({})
 
 -- Colorscheme
--- Follows background (detected from the terminal), matching Ghostty's light/dark Modus Tinted
-vim.pack.add({ 'https://github.com/miikanissi/modus-themes.nvim' })
-require('modus-themes').setup({
-  variants = { modus_operandi = 'tinted', modus_vivendi = 'tinted' },
-  on_colors = function(c)
-    -- operandi tinted's cursorline (#f1d5d0) is indistinguishable from DiffDelete (#f4d0cf)
-    if c.bg_hl_line == '#f1d5d0' then c.bg_hl_line = '#dae5ec' end
-  end,
-})
-vim.cmd.colorscheme("modus")
+-- Follows background (detected from the terminal), matching Ghostty's light/dark Rose Pine
+vim.pack.add({ { src = 'https://github.com/rose-pine/neovim', name = 'rose-pine' } })
+vim.cmd.colorscheme('rose-pine')
 
 -- Scratch
 vim.keymap.set("n",
