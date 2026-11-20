@@ -1,12 +1,12 @@
 {
   "plugins": {
-    "flexoki": {
-      "rev": "c3e2251e813d29d885a7cbbe9808a7af234d845d",
-      "src": "https://github.com/kepano/flexoki-neovim"
-    },
     "mini.nvim": {
       "rev": "22619434ccca787cdb34406c97f0e395d4debadc",
       "src": "https://github.com/nvim-mini/mini.nvim"
+    },
+    "modus-themes.nvim": {
+      "rev": "15ffb5ab6a12f72ee1e8393fe5810d5317da2d3e",
+      "src": "https://github.com/miikanissi/modus-themes.nvim"
     },
     "nvim-lspconfig": {
       "rev": "4648fd8ba5c678d7e2db75ae44ffac269bb589d8",
