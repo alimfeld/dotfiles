@@ -143,6 +143,7 @@ require('mini.pick').setup({
     refine_marked = '<M-j>', -- instead of <M-Space>
   },
 })
+vim.ui.select = MiniPick.ui_select
 
 vim.keymap.set("n", "<leader><Space>", function() MiniPick.builtin.files() end, { desc = "Find file" })
 vim.keymap.set("n", "<leader>/", function() MiniPick.builtin.grep_live() end,
