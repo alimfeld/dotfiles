@@ -12,6 +12,7 @@ vim.o.wrap = true
 vim.o.linebreak = true
 vim.o.breakindent = true
 vim.o.breakindentopt = "list:-1"
+vim.opt.diffopt:append("followwrap") -- diffs keep wrap instead of forcing nowrap
 vim.o.list = true
 vim.o.cursorline = true
 vim.o.splitright = true
