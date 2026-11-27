@@ -53,6 +53,7 @@ require('vim._core.ui2').enable({})
 -- Follows background (detected from the terminal), matching Ghostty's light/dark Modus Tinted
 vim.pack.add({ 'https://github.com/miikanissi/modus-themes.nvim' })
 require('modus-themes').setup({
+  transparent = true, -- let tmux's inactive-pane tint show through
   variants = { modus_operandi = 'tinted', modus_vivendi = 'tinted' },
   on_colors = function(c)
     -- operandi tinted's cursorline (#f1d5d0) is indistinguishable from DiffDelete (#f4d0cf)
