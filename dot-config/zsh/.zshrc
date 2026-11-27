@@ -36,6 +36,14 @@ alias la='ls -AG'
 # sourced, so everything bound after it below survives.
 ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 ZVM_INIT_MODE=sourcing
+# p/P paste from the system clipboard, like Neovim's unnamedplus. The vicmd
+# keymap is bound lazily, so override it in this hook.
+function zvm_after_lazy_keybindings() {
+  zvm_bindkey vicmd p zvm_paste_clipboard_after
+  zvm_bindkey vicmd P zvm_paste_clipboard_before
+  zvm_bindkey visual p zvm_visual_paste_clipboard
+  zvm_bindkey visual P zvm_visual_paste_clipboard
+}
 source $HOMEBREW_PREFIX/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # fzf comes after vi-mode, which overwrites keymaps. fd is faster than find
